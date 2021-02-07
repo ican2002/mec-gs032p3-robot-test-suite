@@ -1,11 +1,50 @@
 {
-  "properties": {
-    "undefinedJsonSchema": {
-      "type": "string",
-      "description": "Json Schema for the given object is not yet defined"
-    }
-  },
-  "required": [
-    "undefinedJsonSchema"
-  ]
+	"type": "object",
+	"properties": {
+		"terminalDistance": {
+			"description": "A type containing information about the distance from a terminal to a location or between two terminals, in addition the accuracy and a timestamp of the information are provided.",
+			"properties": {
+				"accuracy": {
+					"description": "Accuracy of the provided distance in meters",
+					"type": "integer",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "integer"
+				},
+				"distance": {
+					"description": "Distance from terminal to a location or between two terminals specified in meters",
+					"type": "integer",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "integer"
+				},
+				"timestamp": {
+					"properties": {
+						"nanoSeconds": {
+							"description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+							"format": "int32",
+							"type": "integer",
+							"x-etsi-mec-cardinality": "1",
+							"x-etsi-mec-origin-type": "Uint32"
+						},
+						"seconds": {
+							"description": "The seconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+							"format": "int32",
+							"type": "integer",
+							"x-etsi-mec-cardinality": "1",
+							"x-etsi-mec-origin-type": "Uint32"
+						}
+					},
+					"required": [
+						"seconds",
+						"nanoSeconds"
+					],
+					"type": "object",
+					"x-etsi-ref": "6.5.2"
+				}
+			},
+			"required": [
+				"distance"
+			],
+			"type": "object"
+		}
+	}
 }

@@ -1,12 +1,89 @@
 {
-  "properties": {
-    "undefinedJsonSchema": {
-      "type": "string",
-      "description": "Json Schema for the given object is not yet defined"
-    }
-  },
-  "required": [
-    "undefinedJsonSchema"
-  ]
+	"type": "object",
+	"properties": {
+		"zonalTrafficSubscription": {
+			"description": "A type containing zonal traffic subscription",
+			"properties": {
+				"callbackReference": {
+					"properties": {
+						"callbackData": {
+							"description": "Data the application can register with the server when subscribing to notifications, and that are passed back unchanged in each of the related notifications. These data can be used by the application in the processing of the notification, e.g. for correlation purposes.",
+							"type": "string",
+							"x-etsi-mec-cardinality": "0..1",
+							"x-etsi-mec-origin-type": "string"
+						},
+						"notificationFormat": {
+							"enum": [
+								"XML",
+								"JSON"
+							],
+							"type": "string"
+						},
+						"notifyURL": {
+							"description": "Notify Callback URL",
+							"type": "string",
+							"x-etsi-mec-cardinality": "1",
+							"x-etsi-mec-origin-type": "anyURI"
+						}
+					},
+					"required": [
+						"notifyURL"
+					],
+					"type": "object"
+				},
+				"clientCorrelator": {
+					"description": "A correlator that the client can use to tag this particular resource representation during a request to create a resource on the server.",
+					"type": "string",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "string"
+				},
+				"duration": {
+					"description": "Period (in seconds) of time notifications are provided for. If set to \"0\" (zero), a default duration time, which is specified by the service policy, will be used. If the parameter is omitted, the notifications will continue until the maximum duration time, which is specified by the service policy, unless the notifications are stopped by deletion of subscription for notifications. This element MAY be given by the client during resource creation in order to signal the desired lifetime of the subscription. The server MUST return in this element the   period of time for which the subscription will still be valid.",
+					"type": "integer",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "unsignedInt"
+				},
+				"interestRealm": {
+					"description": "Interest realm of access point (e.g. geographical area, a type of industry etc.).",
+					"items": {
+						"type": "string"
+					},
+					"type": "array",
+					"x-etsi-mec-cardinality": "0..N",
+					"x-etsi-mec-origin-type": "string"
+				},
+				"resourceURL": {
+					"description": "Self referring URL",
+					"type": "string",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "anyURI"
+				},
+				"userEventCriteria": {
+					"description": "List of user event values to generate notifications for (these apply to zone identifier or all interest realms within zone identifier specified). If this element is missing, a notification is requested to be generated for any change in user event.",
+					"items": {
+						"enum": [
+							"Entering",
+							"Leaving",
+							"Transferring"
+						],
+						"type": "string"
+					},
+					"type": "array",
+					"x-etsi-mec-cardinality": "0..N",
+					"x-etsi-mec-origin-type": "UserEventType"
+				},
+				"zoneId": {
+					"description": "Identifier of zone",
+					"type": "string",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "string"
+				}
+			},
+			"required": [
+				"callbackReference",
+				"zoneId"
+			],
+			"type": "object"
+		}
+	}
 }
-

@@ -1,32 +1,36 @@
 {
 	"type": "object",
 	"properties": {
-		"userInfo": {
+		"accessPointInfo": {
+			"description": "A type containing access point information.",
 			"properties": {
 				"accessPointId": {
-					"description": "The identity of the access point the user is currently on, see note 1.",
+					"description": "Identifier of access point.",
 					"type": "string",
-					"x-etsi-mec-cardinality": "1",
-					"x-etsi-mec-origin-type": "String"
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "string"
 				},
-				"address": {
-					"description": "Address of user (e.g. 'sip' URI, 'tel' URI, 'acr' URI) currently on the access point, see note 1.",
-					"format": "uri",
-					"type": "string",
-					"x-etsi-mec-cardinality": "1",
-					"x-etsi-mec-origin-type": "AnyURI"
+				"connectionType": {
+					"description": "The connection type for the access point",
+					"enum": [
+						"Femto",
+						"LTE-femto",
+						"Smallcell",
+						"LTE-smallcell",
+						"Wifi",
+						"Pico",
+						"Micro",
+						"Macro",
+						"Wimax",
+						"Unknown"
+					],
+					"type": "string"
 				},
-				"ancillaryInfo": {
-					"description": "Reserved for future use.",
+				"interestRealm": {
+					"description": "Interest realm of access point.",
 					"type": "string",
 					"x-etsi-mec-cardinality": "0..1",
-					"x-etsi-mec-origin-type": "String"
-				},
-				"contextLocationInfo": {
-					"description": "Contextual information of a user location (e.g. aisle, floor, room number, etc.).",
-					"type": "string",
-					"x-etsi-mec-cardinality": "0..1",
-					"x-etsi-mec-origin-type": "String"
+					"x-etsi-mec-origin-type": "string"
 				},
 				"locationInfo": {
 					"properties": {
@@ -201,53 +205,41 @@
 					"type": "object",
 					"x-etsi-ref": "6.5.3"
 				},
-				"resourceURL": {
-					"description": "Self-referring URL, see note 1.",
-					"type": "string",
-					"x-etsi-mec-cardinality": "1",
-					"x-etsi-mec-origin-type": "String"
+				"numberOfUsers": {
+					"description": "Number of users currently on the access point.",
+					"type": "integer",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "integer"
 				},
-				"timestamp": {
-					"properties": {
-						"nanoSeconds": {
-							"description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
-							"format": "int32",
-							"type": "integer",
-							"x-etsi-mec-cardinality": "1",
-							"x-etsi-mec-origin-type": "Uint32"
-						},
-						"seconds": {
-							"description": "The seconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
-							"format": "int32",
-							"type": "integer",
-							"x-etsi-mec-cardinality": "1",
-							"x-etsi-mec-origin-type": "Uint32"
-						}
-					},
-					"required": [
-						"seconds",
-						"nanoSeconds"
+				"operationStatus": {
+					"enum": [
+						"Serviceable",
+						"Unserviceable",
+						"Unknown"
 					],
-					"type": "object",
-					"x-etsi-ref": "6.5.2"
+					"type": "string"
 				},
-				"zoneId": {
-					"description": "The identity of the zone the user is currently within, see note 1.",
+				"resourceURL": {
+					"description": "Self referring URL",
 					"type": "string",
-					"x-etsi-mec-cardinality": "1",
-					"x-etsi-mec-origin-type": "String"
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "anyURI"
+				},
+				"timezone": {
+					"description": "Time zone of access point.",
+					"type": "string",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "dateTimeStamp"
 				}
 			},
 			"required": [
-				"address",
 				"accessPointId",
-				"zoneId",
-				"resourceURL",
-				"timestamp"
+				"connectionType",
+				"operationStatus",
+				"numberOfUsers",
+				"resourceURL"
 			],
-			"type": "object",
-			"x-etsi-notes": "NOTE 1:\tAs specified in [5], clause 5.2.2.7.\nNOTE 2: \tAs specified in [5], clause 5.2.2.5.",
-			"x-etsi-ref": "6.2.2"
+			"type": "object"
 		}
 	}
 }

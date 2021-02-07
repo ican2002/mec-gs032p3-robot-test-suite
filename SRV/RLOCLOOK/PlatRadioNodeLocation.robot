@@ -25,7 +25,7 @@ TC_MEC_SRV_RLOCLOOK_001_OK
     Get the access points list        ${ZONE_ID}
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is    AccessPointList
-    Should Be Equal As Strings    ${response['body']['accessPointList']['zoneId']}	${ZONE_ID}
+    Should Be Equal As Strings    ${response['body']['accessPointList']['zoneId']}    ${ZONE_ID}
 
 
 TC_MEC_SRV_RLOCLOOK_001_NF
@@ -45,7 +45,7 @@ Get the access points list
     [Arguments]    ${zoneId}
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Get    ${apiRoot}/${apiName}/${apiVersion}/zones/${zoneId}/accessPoints
+    Get    ${apiRoot}/${apiName}/${apiVersion}/queries/zones/${zoneId}/accessPoints
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
 

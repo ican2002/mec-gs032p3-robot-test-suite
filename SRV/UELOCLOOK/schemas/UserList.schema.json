@@ -1,169 +1,274 @@
 {
-	"description": "A type containing list of users.",
 	"type": "object",
-	"required": [
-		"resourceURL"
-	],
 	"properties": {
-		"user": {
-			"description": "Collection of the zone information list.",
-			"type": "array",
-			"items": {
-				"properties": {
-					"accessPointId": {
-						"description": "The identity of the access point the user is currently on, see note 1.",
-						"type": "string",
-						"x-etsi-mec-cardinality": "1",
-						"x-etsi-mec-origin-type": "String"
-					},
-					"address": {
-						"description": "Address of user (e.g. 'sip' URI, 'tel' URI, 'acr' URI) currently on the access point, see note 1.",
-						"format": "uri",
-						"type": "string",
-						"x-etsi-mec-cardinality": "1",
-						"x-etsi-mec-origin-type": "AnyURI"
-					},
-					"ancillaryInfo": {
-						"description": "Reserved for future use.",
-						"type": "string",
-						"x-etsi-mec-cardinality": "0..1",
-						"x-etsi-mec-origin-type": "String"
-					},
-					"contextLocationInfo": {
-						"description": "Contextual information of a user location (e.g. aisle, floor, room number, etc.).",
-						"type": "string",
-						"x-etsi-mec-cardinality": "0..1",
-						"x-etsi-mec-origin-type": "String"
-					},
-					"locationInfo": {
+		"userList": {
+			"description": "A type containing list of users.",
+			"properties": {
+				"resourceURL": {
+					"description": "Self referring URL",
+					"type": "string",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "anyURI"
+				},
+				"user": {
+					"description": "Collection of the zone information list.",
+					"items": {
 						"properties": {
-							"accuracy": {
-								"type": "number"
-							},
-							"accuracyAltitude": {
-								"type": "number"
-							},
-							"accuracySemiMinor": {
-								"type": "number"
-							},
-							"altitude": {
-								"description": "Location altitude relative to the WGS84 ellipsoid surface.",
-								"type": "number",
-								"x-etsi-mec-cardinality": "0..1",
-								"x-etsi-mec-origin-type": "Float"
-							},
-							"confidence": {
-								"type": "number"
-							},
-							"includedAngle": {
-								"type": "number"
-							},
-							"innerRadius": {
-								"type": "number"
-							},
-							"latitude": {
-								"description": "Location latitude, expressed in the range -90Â° to +90Â°. Cardinality greater than one only if \"shape\" equals 7.",
-								"items": {
-									"type": "number"
-								},
-								"type": "array",
-								"x-etsi-mec-cardinality": "1..N",
-								"x-etsi-mec-origin-type": "Float"
-							},
-							"longitude": {
-								"description": "Location longitude, expressed in the range -180Â° to +180Â°. Cardinality greater than one only if \"shape\" equals 7.",
-								"items": {
-									"type": "number"
-								},
-								"type": "array",
-								"x-etsi-mec-cardinality": "1..N",
-								"x-etsi-mec-origin-type": "Float"
-							},
-							"offsetAngle": {
-								"type": "number"
-							},
-							"orientationMajorAxis": {
-								"type": "number"
-							},
-							"shape": {
-								"description": "Shape information, as detailed in [14], associated with the reported location coordinate:\n1 = Ellipsoid_Arc\n2 = ellipsoid_Point\n3 = ellipsoid_Point_Altitude\n4 = ellipsoid_Point_Altitude_Uncert_Ellipsoid\n5 = ellipsoid_Point_Uncert_Circle\n6 = ellipsoid_Point_Uncert_Ellipse\n7 = polygon",
-								"enum": [
-									"ELLIPSOID_ARC",
-									"ELLIPSOID_POINT",
-									"ELLIPSOID_POINT_ALTITUDE",
-									"ELLIPSOID_POINT_ALTITUDE_UNCERT_ELLIPSOID",
-									"ELLIPSOID_POINT_UNCERT_CIRCLE",
-									"ELLIPSOID_POINT_UNCERT_ELLIPSE",
-									"POLYGON"
-								],
+							"accessPointId": {
+								"description": "The identity of the access point the user is currently on, see note 1.",
 								"type": "string",
 								"x-etsi-mec-cardinality": "1",
-								"x-etsi-mec-origin-type": "Enum (inlined)"
+								"x-etsi-mec-origin-type": "String"
 							},
-							"uncertaintyRadius": {
-								"type": "number"
+							"address": {
+								"description": "Address of user (e.g. 'sip' URI, 'tel' URI, 'acr' URI) currently on the access point, see note 1.",
+								"format": "uri",
+								"type": "string",
+								"x-etsi-mec-cardinality": "1",
+								"x-etsi-mec-origin-type": "AnyURI"
 							},
-							"velocity": {
-								"description": "Structure with attributes relating to the target entityâ€™s velocity, as defined in [14].",
-								"type": "object",
+							"ancillaryInfo": {
+								"description": "Reserved for future use.",
+								"type": "string",
 								"x-etsi-mec-cardinality": "0..1",
-								"x-etsi-mec-origin-type": "Structure (inlined)"
-							}
-						},
-						"required": [
-							"latitude",
-							"longitude",
-							"shape"
-						],
-						"type": "object",
-						"x-etsi-ref": "6.5.3"
-					},
-					"resourceURL": {
-						"description": "Self-referring URL, see note 1.",
-						"type": "string",
-						"x-etsi-mec-cardinality": "1",
-						"x-etsi-mec-origin-type": "String"
-					},
-					"timeStamp": {
-						"properties": {
-							"nanoSeconds": {
-								"type": "number"
+								"x-etsi-mec-origin-type": "String"
 							},
-							"seconds": {
-								"type": "number"
+							"contextLocationInfo": {
+								"description": "Contextual information of a user location (e.g. aisle, floor, room number, etc.).",
+								"type": "string",
+								"x-etsi-mec-cardinality": "0..1",
+								"x-etsi-mec-origin-type": "String"
+							},
+							"locationInfo": {
+								"properties": {
+									"accuracy": {
+										"description": "Horizontal accuracy / (semi-major) uncertainty of location provided in meters, as defined in [14]. Present only if \"shape\" equals 4, 5 or 6",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "UnsignedInt"
+									},
+									"accuracyAltitude": {
+										"description": "Altitude accuracy / uncertainty of location provided in meters, as defined in [14]. Present only if \"shape\" equals 3 or 4",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "UnsignedInt"
+									},
+									"accuracySemiMinor": {
+										"description": "Horizontal accuracy / (semi-major) uncertainty of location provided in meters, as defined in [14]. Present only if \"shape\" equals 4, 5 or 6",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "UnsignedInt"
+									},
+									"altitude": {
+										"description": "Location altitude relative to the WGS84 ellipsoid surface.",
+										"format": "float",
+										"type": "number",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "Float"
+									},
+									"confidence": {
+										"description": "Confidence by which the position of a target entity is known to be within the shape description, expressed as a percentage and defined in [14]. Present only if \"shape\" equals 1, 4 or 6",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "UnsignedInt"
+									},
+									"includedAngle": {
+										"description": "Present only if \"shape\" equals 6",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "UnsignedInt"
+									},
+									"innerRadius": {
+										"description": "Present only if \"shape\" equals 6",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "UnsignedInt"
+									},
+									"latitude": {
+										"description": "Location latitude, expressed in the range -90° to +90°. Cardinality greater than one only if \"shape\" equals 7.",
+										"items": {
+											"format": "float",
+											"type": "number"
+										},
+										"minItems": 1,
+										"type": "array",
+										"x-etsi-mec-cardinality": "1..N",
+										"x-etsi-mec-origin-type": "Float"
+									},
+									"longitude": {
+										"description": "Location longitude, expressed in the range -180° to +180°. Cardinality greater than one only if \"shape\" equals 7.",
+										"items": {
+											"format": "float",
+											"type": "number"
+										},
+										"minItems": 1,
+										"type": "array",
+										"x-etsi-mec-cardinality": "1..N",
+										"x-etsi-mec-origin-type": "Float"
+									},
+									"offsetAngle": {
+										"description": "Present only if \"shape\" equals 6",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "UnsignedInt"
+									},
+									"orientationMajorAxis": {
+										"description": "Angle of orientation of the major axis, expressed in the range 0° to 180°, as defined in [14]. Present only if \"shape\" equals 4 or 6",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "UnsignedInt"
+									},
+									"shape": {
+										"description": "Shape information, as detailed in [14], associated with the reported location coordinate: <p>1 = ELLIPSOID_ARC <p>2 = ELLIPSOID_POINT <p>3 = ELLIPSOID_POINT_ALTITUDE <p>4 = ELLIPSOID_POINT_ALTITUDE_UNCERT_ELLIPSOID <p>5 = ELLIPSOID_POINT_UNCERT_CIRCLE <p>6 = ELLIPSOID_POINT_UNCERT_ELLIPSE <p>7 = POLYGON",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "1",
+										"x-etsi-mec-origin-type": "Enum_inlined"
+									},
+									"timestamp": {
+										"properties": {
+											"nanoSeconds": {
+												"description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+												"format": "int32",
+												"type": "integer",
+												"x-etsi-mec-cardinality": "1",
+												"x-etsi-mec-origin-type": "Uint32"
+											},
+											"seconds": {
+												"description": "The seconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+												"format": "int32",
+												"type": "integer",
+												"x-etsi-mec-cardinality": "1",
+												"x-etsi-mec-origin-type": "Uint32"
+											}
+										},
+										"required": [
+											"seconds",
+											"nanoSeconds"
+										],
+										"type": "object",
+										"x-etsi-ref": "6.5.2"
+									},
+									"uncertaintyRadius": {
+										"description": "Present only if \"shape\" equals 6",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "UnsignedInt"
+									},
+									"velocity": {
+										"description": "Structure with attributes relating to the target entity’s velocity, as defined in [14].",
+										"properties": {
+											"bearing": {
+												"description": "Bearing, expressed in the range 0° to 360°, as defined in [14].",
+												"type": "integer",
+												"x-etsi-mec-cardinality": "1",
+												"x-etsi-mec-origin-type": "UnsignedInt"
+											},
+											"horizontalSpeed": {
+												"description": "Horizontal speed, expressed in km/h and defined in [14].",
+												"type": "integer",
+												"x-etsi-mec-cardinality": "1",
+												"x-etsi-mec-origin-type": "UnsignedInt"
+											},
+											"uncertainty": {
+												"description": "Horizontal uncertainty, as defined in [14]. Present only if \"velocityType\" equals 3 or 4",
+												"type": "integer",
+												"x-etsi-mec-cardinality": "0..1",
+												"x-etsi-mec-origin-type": "UnsignedInt"
+											},
+											"velocityType": {
+												"description": "Velocity information, as detailed in [14], associated with the reported location coordinate: <p>1 = HORIZONTAL <p>2 = HORIZONTAL_VERTICAL <p>3 = HORIZONTAL_UNCERT <p>4 = HORIZONTAL_VERTICAL_UNCERT",
+												"type": "integer",
+												"x-etsi-mec-cardinality": "1",
+												"x-etsi-mec-origin-type": "Enum_inlined"
+											},
+											"verticalSpeed": {
+												"description": "Vertical speed, expressed in km/h and defined in [14]. Present only if \"velocityType\" equals 2 or 4",
+												"type": "integer",
+												"x-etsi-mec-cardinality": "0..1",
+												"x-etsi-mec-origin-type": "Int"
+											},
+											"verticalUncertainty": {
+												"description": "Vertical uncertainty, as defined in [14]. Present only if \"velocityType\" equals 4",
+												"type": "integer",
+												"x-etsi-mec-cardinality": "0..1",
+												"x-etsi-mec-origin-type": "UnsignedInt"
+											}
+										},
+										"required": [
+											"velocityType",
+											"bearing",
+											"horizontalSpeed"
+										],
+										"type": "object",
+										"x-etsi-mec-cardinality": "0..1",
+										"x-etsi-mec-origin-type": "Structure (inlined)"
+									}
+								},
+								"required": [
+									"latitude",
+									"longitude",
+									"shape"
+								],
+								"type": "object",
+								"x-etsi-ref": "6.5.3"
+							},
+							"resourceURL": {
+								"description": "Self-referring URL, see note 1.",
+								"type": "string",
+								"x-etsi-mec-cardinality": "1",
+								"x-etsi-mec-origin-type": "String"
+							},
+							"timestamp": {
+								"properties": {
+									"nanoSeconds": {
+										"description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+										"format": "int32",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "1",
+										"x-etsi-mec-origin-type": "Uint32"
+									},
+									"seconds": {
+										"description": "The seconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+										"format": "int32",
+										"type": "integer",
+										"x-etsi-mec-cardinality": "1",
+										"x-etsi-mec-origin-type": "Uint32"
+									}
+								},
+								"required": [
+									"seconds",
+									"nanoSeconds"
+								],
+								"type": "object",
+								"x-etsi-ref": "6.5.2"
+							},
+							"zoneId": {
+								"description": "The identity of the zone the user is currently within, see note 1.",
+								"type": "string",
+								"x-etsi-mec-cardinality": "1",
+								"x-etsi-mec-origin-type": "String"
 							}
 						},
 						"required": [
-							"seconds",
-							"nanoSeconds"
+							"address",
+							"accessPointId",
+							"zoneId",
+							"resourceURL",
+							"timestamp"
 						],
 						"type": "object",
-						"x-etsi-ref": "6.5.2"
+						"x-etsi-notes": "NOTE 1:\tAs specified in [5], clause 5.2.2.7.\nNOTE 2: \tAs specified in [5], clause 5.2.2.5.",
+						"x-etsi-ref": "6.2.2"
 					},
-					"zoneId": {
-						"description": "The identity of the zone the user is currently within, see note 1.",
-						"type": "string",
-						"x-etsi-mec-cardinality": "1",
-						"x-etsi-mec-origin-type": "String"
-					}
-				},
-				"required": [
-					"address",
-					"accessPointId",
-					"zoneId",
-					"resourceURL",
-					"timeStamp"
-				],
-				"type": "object",
-				"x-etsi-notes": ":\tAs specified in [5], clause 5.2.2.7.\nNOTE 2: \tAs specified in [5], clause 5.2.2.5.",
-				"x-etsi-ref": "6.2.2"
-			}
-		},
-		"resourceURL": {
-			"description": "Self referring URL.",
-			"type": "string",
-			"format": "uri",
-			"example": "http://example.com/exampleAPI/location/v1/subscriptions/userTracking/subscription123"
+					"type": "array",
+					"x-etsi-mec-cardinality": "0..N",
+					"x-etsi-mec-origin-type": "UserInfo"
+				}
+			},
+			"required": [
+				"resourceURL"
+			],
+			"type": "object"
 		}
 	}
 }

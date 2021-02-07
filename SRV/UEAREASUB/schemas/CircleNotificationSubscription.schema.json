@@ -1,11 +1,177 @@
 {
-  "properties": {
-    "undefinedJsonSchema": {
-      "type": "string",
-      "description": "Json Schema for the given object is not yet defined"
-    }
-  },
-  "required": [
-    "undefinedJsonSchema"
-  ]
+	"type": "object",
+	"properties": {
+		"circleNotificationSubscription": {
+			"description": "A type containing data for notifications, when the area is defined as a circle.",
+			"properties": {
+				"address": {
+					"description": "Address of terminals to monitor (e.g. \"sip\" URI, \"tel\" URI, \"acr\" URI)",
+					"items": {
+						"type": "string"
+					},
+					"type": "array",
+					"x-etsi-mec-cardinality": "1..N",
+					"x-etsi-mec-origin-type": "anyURI"
+				},
+				"callbackReference": {
+					"properties": {
+						"callbackData": {
+							"description": "Data the application can register with the server when subscribing to notifications, and that are passed back unchanged in each of the related notifications. These data can be used by the application in the processing of the notification, e.g. for correlation purposes.",
+							"type": "string",
+							"x-etsi-mec-cardinality": "0..1",
+							"x-etsi-mec-origin-type": "string"
+						},
+						"notificationFormat": {
+							"enum": [
+								"XML",
+								"JSON"
+							],
+							"type": "string"
+						},
+						"notifyURL": {
+							"description": "Notify Callback URL",
+							"type": "string",
+							"x-etsi-mec-cardinality": "1",
+							"x-etsi-mec-origin-type": "anyURI"
+						}
+					},
+					"required": [
+						"notifyURL"
+					],
+					"type": "object"
+				},
+				"checkImmediate": {
+					"description": "Check location immediately after establishing notification.",
+					"type": "boolean",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "boolean"
+				},
+				"clientCorrelator": {
+					"description": "A correlator that the client can use to tag this particular resource representation during a request to create a resource on the server.",
+					"type": "string",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "string"
+				},
+				"count": {
+					"description": "Maximum number of notifications per individual address. For no maximum, either do not include this element or specify a value of zero. Default value is 0.",
+					"type": "integer",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "int"
+				},
+				"duration": {
+					"description": "Period of time (in seconds) notifications are provided for. If set to “0” (zero), a default duration time, which is specified by the service policy, will be used. If the parameter is omitted, the notifications will continue until the maximum duration time, which is specified by the service policy, unless the notifications are stopped by deletion of subscription for notifications.",
+					"type": "integer",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "int"
+				},
+				"enteringLeavingCriteria": {
+					"enum": [
+						"Entering",
+						"Leaving"
+					],
+					"type": "string"
+				},
+				"frequency": {
+					"description": "Maximum frequency (in seconds) of notifications per subscription (can also be considered minimum time between notifications).",
+					"type": "integer",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "int"
+				},
+				"latitude": {
+					"description": "Latitude of center point.",
+					"format": "float",
+					"type": "number",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "float"
+				},
+				"link": {
+					"description": "Link to other resources that are in relationship with the resource.",
+					"items": {
+						"description": "Link to other resources",
+						"properties": {
+							"href": {
+								"description": "URI",
+								"format": "anyURI",
+								"type": "string"
+							},
+							"rel": {
+								"description": "Describes the relationship between the URI and the resource.",
+								"type": "string"
+							}
+						},
+						"required": [
+							"rel",
+							"href"
+						],
+						"type": "object"
+					},
+					"type": "array",
+					"x-etsi-mec-cardinality": "0..N",
+					"x-etsi-mec-origin-type": "Link"
+				},
+				"longitude": {
+					"description": "Longitude of center point.",
+					"format": "float",
+					"type": "number",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "float"
+				},
+				"radius": {
+					"description": "Radius circle around center point in meters.",
+					"format": "float",
+					"type": "number",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "float"
+				},
+				"requester": {
+					"description": "Identifies the entity that is requesting the information (e.g. \"sip\" URI, \"tel\" URI, \"acr\" URI)",
+					"type": "string",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "anyURI"
+				},
+				"resourceURL": {
+					"description": "Self referring URL",
+					"type": "string",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "anyURI"
+				},
+				"trackingAccuracy": {
+					"description": "Number of meters of acceptable error in tracking distance.",
+					"format": "float",
+					"type": "number",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "float"
+				}
+			},
+			"required": [
+				"callbackReference",
+				"address",
+				"latitude",
+				"longitude",
+				"radius",
+				"trackingAccuracy",
+				"enteringLeavingCriteria",
+				"checkImmediate",
+				"frequency"
+			],
+			"type": "object"
+		}
+	},
+	"example": {
+		"circleNotificationSubscription": {
+			"clientCorrelator": "0123",
+			"callbackReference": {
+				"callbackData": "1234",
+				"notifyURL": "http://clientApp.example.com/location_notifications/123456"
+			},
+			"address": "acr:10.0.0.1",
+			"checkImmediate": true,
+			"enteringLeavingCriteria": "Entering",
+			"frequency": 10,
+			"latitude": -80.88,
+			"longitude": 41.277,
+			"radius": 500,
+			"trackingAccuracy": 10
+		}
+	}
 }

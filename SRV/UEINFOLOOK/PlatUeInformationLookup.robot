@@ -56,6 +56,6 @@ Get list of users with filter
     [Arguments]     ${key}   ${value}
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Get    ${apiRoot}/${apiName}/${apiVersion}/users?${key}=${value}
+    Get    ${apiRoot}/${apiName}/${apiVersion}/queries/users?${key}=${value}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}

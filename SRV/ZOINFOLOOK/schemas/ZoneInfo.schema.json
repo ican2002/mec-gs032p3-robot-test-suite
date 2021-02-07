@@ -1,0 +1,48 @@
+{
+	"type": "object",
+	"properties": {
+		"zoneInfo": {
+			"description": "A type containing zone information.",
+			"properties": {
+				"numberOfAccessPoints": {
+					"description": "The number of access points within the zone",
+					"type": "integer",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "unsignedInt"
+				},
+				"numberOfUnserviceableAccessPoints": {
+					"description": "Number of inoperable access points within the zone.",
+					"type": "integer",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "unsignedInt"
+				},
+				"numberOfUsers": {
+					"description": "The number of users currently on the access point.",
+					"type": "integer",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "unsignedInt"
+				},
+				"resourceURL": {
+					"description": "Self referring URL",
+					"type": "string",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "anyURI"
+				},
+				"zoneId": {
+					"description": "Identifier of zone",
+					"type": "string",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "string"
+				}
+			},
+			"required": [
+				"zoneId",
+				"numberOfAccessPoints",
+				"numberOfUnserviceableAccessPoints",
+				"numberOfUsers",
+				"resourceURL"
+			],
+			"type": "object"
+		}
+	}
+}

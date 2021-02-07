@@ -1,11 +1,74 @@
 {
-  "properties": {
-    "undefinedJsonSchema": {
-      "type": "string",
-      "description": "Json Schema for the given object is not yet defined"
-    }
-  },
-  "required": [
-    "undefinedJsonSchema"
-  ]
+	"type": "object",
+	"properties": {
+		"userTrackingSubscription": {
+			"description": "A type containing user tracking subscription.",
+			"properties": {
+				"address": {
+					"description": "Address of user (e.g. \"sip\" URI, \"tel\" URI, \"acr\" URI) to monitor",
+					"type": "string",
+					"x-etsi-mec-cardinality": 1,
+					"x-etsi-mec-origin-type": "anyURI"
+				},
+				"callbackReference": {
+					"properties": {
+						"callbackData": {
+							"description": "Data the application can register with the server when subscribing to notifications, and that are passed back unchanged in each of the related notifications. These data can be used by the application in the processing of the notification, e.g. for correlation purposes.",
+							"type": "string",
+							"x-etsi-mec-cardinality": "0..1",
+							"x-etsi-mec-origin-type": "string"
+						},
+						"notificationFormat": {
+							"enum": [
+								"XML",
+								"JSON"
+							],
+							"type": "string"
+						},
+						"notifyURL": {
+							"description": "Notify Callback URL",
+							"type": "string",
+							"x-etsi-mec-cardinality": "1",
+							"x-etsi-mec-origin-type": "anyURI"
+						}
+					},
+					"required": [
+						"notifyURL"
+					],
+					"type": "object"
+				},
+				"clientCorrelator": {
+					"description": "A correlator that the client can use to tag this particular resource representation during a request to create a resource on the server.",
+					"type": "string",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "string"
+				},
+				"resourceURL": {
+					"description": "Self referring URL",
+					"type": "string",
+					"x-etsi-mec-cardinality": "0..1",
+					"x-etsi-mec-origin-type": "anyURI"
+				},
+				"userEventCriteria": {
+					"description": "List of user event values to generate notifications for (these apply to address specified). If this element is missing, a notification is requested to be generated for any change in user event.",
+					"items": {
+						"enum": [
+							"Entering",
+							"Leaving",
+							"Transferring"
+						],
+						"type": "string"
+					},
+					"type": "array",
+					"x-etsi-mec-cardinality": "0..N",
+					"x-etsi-mec-origin-type": "UserEventType"
+				}
+			},
+			"required": [
+				"callbackReference",
+				"address"
+			],
+			"type": "object"
+		}
+	}
 }

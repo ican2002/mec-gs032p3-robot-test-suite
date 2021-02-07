@@ -1,15 +1,17 @@
 {
-		"address": "acr:10.0.0.1",
-		"callback": {
-			"callbackData": "1234",
-			"notifyURL": "http://application.example.com/notifications/distance_notifications/123456"
-		},
-		"checkImmediate": "true",
-		"clientCorrelator": "0123",
-		"enteringLeavingCriteria": "Entering",
-		"frequency": "10",
-		"latitude": "-80.86302",
-		"longitude": "41.277306",
-		"radius": "500",
-		"trackingAccuracy": "10"
+  "circleNotificationSubscription": {
+    "clientCorrelator": "0123",
+    "callback": {
+      "callbackData": "1234",
+      "notifyURL": "http://clientApp.example.com/location_notifications/123456"
+    },
+    "address": "acr:10.0.0.1",
+    "checkImmediate": true,
+    "enteringLeavingCriteria": "Entering",
+    "frequency": 10,
+    "latitude": -80.88,
+    "longitude": 41.277,
+    "radius": 500,
+    "trackingAccuracy": 10
+  }
 }
