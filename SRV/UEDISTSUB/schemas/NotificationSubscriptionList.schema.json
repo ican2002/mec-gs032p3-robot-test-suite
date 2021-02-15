@@ -66,7 +66,7 @@
 								"x-etsi-mec-origin-type": "int"
 							},
 							"duration": {
-								"description": "Period of time (in seconds) notifications are provided for. If set to “0” (zero), a default duration time, which is specified by the service policy, will be used. If the parameter is omitted, the notifications will continue until the maximum duration time, which is specified by the service policy, unless the notifications are stopped by deletion of subscription for notifications.",
+								"description": "Period of time (in seconds) notifications are provided for. If set to 0 (zero), a default duration time, which is specified by the service policy, will be used. If the parameter is omitted, the notifications will continue until the maximum duration time, which is specified by the service policy, unless the notifications are stopped by deletion of subscription for notifications.",
 								"type": "integer",
 								"x-etsi-mec-cardinality": "0..1",
 								"x-etsi-mec-origin-type": "int"
@@ -235,7 +235,7 @@
 								"x-etsi-mec-origin-type": "float"
 							},
 							"duration": {
-								"description": "Period of time (in seconds) notifications are provided for. If set to “0” (zero), a default duration time, which is specified by the service policy, will be used. If the parameter is omitted, the notifications will continue until the maximum duration time, which is specified by the service policy, unless the notifications are stopped by deletion of subscription for notifications.",
+								"description": "Period of time (in seconds) notifications are provided for. If set to 0 (zero), a default duration time, which is specified by the service policy, will be used. If the parameter is omitted, the notifications will continue until the maximum duration time, which is specified by the service policy, unless the notifications are stopped by deletion of subscription for notifications.",
 								"type": "integer",
 								"x-etsi-mec-cardinality": "0..1",
 								"x-etsi-mec-origin-type": "int"
@@ -373,7 +373,7 @@
 								"x-etsi-mec-origin-type": "string"
 							},
 							"duration": {
-								"description": "Period of time (in seconds) notifications are provided for. If set to “0” (zero), a default duration time, which is specified by the service policy, will be used. If the parameter is omitted, the notifications will continue until the maximum duration time, which is specified by the service policy, unless the notifications are stopped by deletion of subscription for notifications.",
+								"description": "Period of time (in seconds) notifications are provided for. If set to 0 (zero), a default duration time, which is specified by the service policy, will be used. If the parameter is omitted, the notifications will continue until the maximum duration time, which is specified by the service policy, unless the notifications are stopped by deletion of subscription for notifications.",
 								"type": "integer",
 								"x-etsi-mec-cardinality": "0..1",
 								"x-etsi-mec-origin-type": "int"

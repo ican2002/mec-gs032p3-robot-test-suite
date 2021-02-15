@@ -65,7 +65,7 @@
 								"type": "number"
 							},
 							"latitude": {
-								"description": "Location latitude, expressed in the range -90° to +90°. Cardinality greater than one only if \"shape\" equals 7.",
+								"description": "Location latitude, expressed in the range -90 deg to +90 deg. Cardinality greater than one only if \"shape\" equals 7.",
 								"items": {
 									"type": "number"
 								},
@@ -74,7 +74,7 @@
 								"x-etsi-mec-origin-type": "Float"
 							},
 							"longitude": {
-								"description": "Location longitude, expressed in the range -180° to +180°. Cardinality greater than one only if \"shape\" equals 7.",
+								"description": "Location longitude, expressed in the range -180 deg to +180 deg. Cardinality greater than one only if \"shape\" equals 7.",
 								"items": {
 									"type": "number"
 								},

@@ -81,7 +81,7 @@
 									"x-etsi-mec-origin-type": "UnsignedInt"
 								},
 								"latitude": {
-									"description": "Location latitude, expressed in the range -90° to +90°. Cardinality greater than one only if \"shape\" equals 7.",
+									"description": "Location latitude, expressed in the range -90ï¿½ to +90ï¿½. Cardinality greater than one only if \"shape\" equals 7.",
 									"items": {
 										"format": "float",
 										"type": "number"
@@ -92,7 +92,7 @@
 									"x-etsi-mec-origin-type": "Float"
 								},
 								"longitude": {
-									"description": "Location longitude, expressed in the range -180° to +180°. Cardinality greater than one only if \"shape\" equals 7.",
+									"description": "Location longitude, expressed in the range -180ï¿½ to +180ï¿½. Cardinality greater than one only if \"shape\" equals 7.",
 									"items": {
 										"format": "float",
 										"type": "number"
@@ -109,7 +109,7 @@
 									"x-etsi-mec-origin-type": "UnsignedInt"
 								},
 								"orientationMajorAxis": {
-									"description": "Angle of orientation of the major axis, expressed in the range 0° to 180°, as defined in [14]. Present only if \"shape\" equals 4 or 6",
+									"description": "Angle of orientation of the major axis, expressed in the range 0ï¿½ to 180ï¿½, as defined in [14]. Present only if \"shape\" equals 4 or 6",
 									"type": "integer",
 									"x-etsi-mec-cardinality": "0..1",
 									"x-etsi-mec-origin-type": "UnsignedInt"
@@ -151,10 +151,10 @@
 									"x-etsi-mec-origin-type": "UnsignedInt"
 								},
 								"velocity": {
-									"description": "Structure with attributes relating to the target entity’s velocity, as defined in [14].",
+									"description": "Structure with attributes relating to the target entity's velocity, as defined in [14].",
 									"properties": {
 										"bearing": {
-											"description": "Bearing, expressed in the range 0° to 360°, as defined in [14].",
+											"description": "Bearing, expressed in the range 0 deg to 360 deg, as defined in [14].",
 											"type": "integer",
 											"x-etsi-mec-cardinality": "1",
 											"x-etsi-mec-origin-type": "UnsignedInt"
