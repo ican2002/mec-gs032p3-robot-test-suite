@@ -22,7 +22,7 @@ ${TOKEN}                            Basic YWxhZGRpbjpvcGVuc2VzYW1l
 ${apiRoot}      /example
 ${apiVersion}    v2
 
-${PIC_PROBLEM_DETAILS_ON_404}    0
+${PIC_PROBLEM_DETAILS_ON_4xx}    0
 
 # Notifications variables
 ${MOCK_SERVER_JAR}    ../../../bin/mockserver-netty-5.5.0-jar-with-dependencies.jar

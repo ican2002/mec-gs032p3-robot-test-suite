@@ -18,7 +18,7 @@ Request RabInfo info using wrong parameters
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/RabInfo
     Get RabInfo info using wrong parameters
     Check HTTP Response Status Code Is    400
-    Check ProblemDetails    400
+    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_4xx} == 1    Check ProblemDetails    400
 
 
 Request RabInfo info using non existing cell id
@@ -28,7 +28,7 @@ Request RabInfo info using non existing cell id
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/RabInfo
     Get RabInfo info using non existing cell id
     Check HTTP Response Status Code Is    404
-    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_404} == 1    Check ProblemDetails    404
+    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_4xx} == 1    Check ProblemDetails    404
 
 Request Plmn info using wrong parameters
     [Documentation]   TC_MEC_SRV_RNIS_017_BR
@@ -37,7 +37,7 @@ Request Plmn info using wrong parameters
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/PlmnInfo
     Get PLMN info using wrong parameters
     Check HTTP Response Status Code Is    400
-    Check ProblemDetails    400
+    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_4xx} == 1    Check ProblemDetails    400
 
 
 Request Plmn info using non existing application id
@@ -47,7 +47,7 @@ Request Plmn info using non existing application id
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/PlmnInfo
     Get PLMN info using non existing application id
     Check HTTP Response Status Code Is    404
-    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_404} == 1    Check ProblemDetails    404
+    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_4xx} == 1    Check ProblemDetails    404
 
 
 Request S1Bearer info using wrong parameters
@@ -57,7 +57,7 @@ Request S1Bearer info using wrong parameters
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/S1BearerInfo
     Get S1Bearer info using wrong parameters
     Check HTTP Response Status Code Is    400
-    Check ProblemDetails    400
+    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_4xx} == 1    Check ProblemDetails    400
 
 
 Request S1Bearer info using non existing cell id
@@ -67,7 +67,7 @@ Request S1Bearer info using non existing cell id
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/S1BearerInfo
     Get S1Bearer info using non existing cell id
     Check HTTP Response Status Code Is    404
-    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_404} == 1    Check ProblemDetails    404
+    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_4xx} == 1    Check ProblemDetails    404
 
 
 Request L2Meas info using wrong parameters
@@ -77,7 +77,7 @@ Request L2Meas info using wrong parameters
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/S1BearerInfo
     Get L2Meas info using wrong parameters
     Check HTTP Response Status Code Is    400
-    Check ProblemDetails    400
+    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_4xx} == 1    Check ProblemDetails    400
 
 
 Request L2Meas info using non existing cell id
@@ -87,7 +87,7 @@ Request L2Meas info using non existing cell id
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/S1BearerInfo
     Get L2Meas info using non existing cell id
     Check HTTP Response Status Code Is    404
-    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_404} == 1    Check ProblemDetails    404
+    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_4xx} == 1    Check ProblemDetails    404
 
 *** Keywords ***
 Get RabInfo info using wrong parameters
