@@ -43,7 +43,7 @@ Get an Individual RNIS subscription
     ...    Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
     Get Individual RNIS Subscription
     Check HTTP Response Status Code Is    200
-    Check HTTP Response Body Json Schema Is   CellChangeSubscriptionRequest
+    Check HTTP Response Body Json Schema Is   CellChangeSubscription
 
 
 Update an Individual RNIS subscription
@@ -53,7 +53,7 @@ Update an Individual RNIS subscription
     ...    Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
     Update Individual RNIS Subscription
     Check HTTP Response Status Code Is    200
-    Check HTTP Response Body Json Schema Is   CellChangeSubscriptionRequest
+    Check HTTP Response Body Json Schema Is   CellChangeSubscription
     
 Remove an Individual RNIS subscription
     [Documentation]    TC_MEC_SRV_RNIS_015_OK
