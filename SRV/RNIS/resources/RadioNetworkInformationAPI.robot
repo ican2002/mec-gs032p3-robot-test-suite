@@ -25,7 +25,6 @@ Check CellChangeSubscription
 Check RabInfo
     [Arguments]    ${received_value}
     log    ${received_value}
-    Should Be Equal As Strings   ${received_value['appInstanceId']}    ${APP_INS_ID}
     Should Not Be Empty    ${received_value['requestId']}
     Run Keyword If    'cellUserInfo' in ${received_value}    Should Be Equal As Strings    ${received_value['cellUserInfo'][0]['ecgi']['cellId']}    ${CELL_ID}
 
