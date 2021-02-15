@@ -51,7 +51,7 @@ Request L2Meas info
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/L2Meas
     Get Layer2Meas Info
     Check HTTP Response Status Code Is    200
-    Check HTTP Response Body Json Schema Is   L2MeasInfos
+    Check HTTP Response Body Json Schema Is   L2Meas
     Check L2MeasInfo    ${response['body']}
 
 
