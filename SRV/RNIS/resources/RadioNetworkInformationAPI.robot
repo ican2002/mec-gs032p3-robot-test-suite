@@ -44,4 +44,4 @@ Check S1BearerInfo
 Check L2MeasInfo
     [Arguments]    ${received_value}
     log    ${received_value}
-    Should Be Equal As Strings    ${received_value['cellInfo']['ecgi']['cellId']}    ${CELL_ID}
+    Should Be Equal As Strings    ${received_value['cellInfo'][0]['ecgi']['cellId']}    ${CELL_ID}
