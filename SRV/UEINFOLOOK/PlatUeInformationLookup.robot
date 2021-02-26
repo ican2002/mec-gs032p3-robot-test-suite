@@ -49,7 +49,8 @@ TC_MEC_SRV_UEINFOLOOK_001_NF
 
     [Tags]    PIC_MEC_PLAT    PIC_SERVICES
     Get list of users with filter    address    ${ACR_UNKNOWN_IP}
-    Check HTTP Response Status Code Is    404
+    Check HTTP Response Status Code Is    200
+    # TODO add check that list is empty
     
 *** Keywords ***
 Get list of users with filter   
