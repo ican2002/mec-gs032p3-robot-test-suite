@@ -29,9 +29,10 @@ TC_MEC_SRV_UELOCSUB_001_OK
     Create new subscription    UserTrackingSubscription
     Check HTTP Response Status Code Is    201
     Check HTTP Response Body Json Schema Is    UserTrackingSubscription
-    Check Result Contains    ${response['body']['userTrackingSubscription']}    clientCorrelator    ${USERTRACKSUB_CLIENT_ID}
-    Check Result Contains    ${response['body']['userTrackingSubscription']}    callbackReference    ${USERTRACK_NOTIF_CALLBACK_URI}
-    Check Result Contains    ${response['body']['userTrackingSubscription']}    address    ${USERTRACK_IP_ADDRESS}
+    # TODO fix related TP
+    # Check Result Contains    ${response['body']['userTrackingSubscription']}    clientCorrelator    ${USERTRACKSUB_CLIENT_ID}
+    Should Be Equal As Strings    ${response['body']['userTrackingSubscription']['callbackReference']}    ${USERTRACK_NOTIF_CALLBACK_URI}
+    Should Be Equal As Strings    ${response['body']['userTrackingSubscription']['address']}    ${USERTRACK_IP_ADDRESS}
 
     # TODO how to send this? The TP has the IUT doing this immediately. Do we want this or will it be discarded as part of the test?
     # // MEC 013, clause 7.3.4.3
