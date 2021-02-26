@@ -86,8 +86,8 @@ Request L2Meas info using non existing cell id
     ...  ETSI GS MEC 012 2.1.1, clause 7.5a.3.1
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/S1BearerInfo
     Get L2Meas info using non existing cell id
-    Check HTTP Response Status Code Is    404
-    Run Keyword If    ${PIC_PROBLEM_DETAILS_ON_4xx} == 1    Check ProblemDetails    404
+    Check HTTP Response Status Code Is    200
+    # TODO Check the returned list is empty    
 
 *** Keywords ***
 Get RabInfo info using wrong parameters
