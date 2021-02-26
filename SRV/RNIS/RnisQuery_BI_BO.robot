@@ -96,7 +96,7 @@ Get RabInfo info using wrong parameters
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     Set Headers    {"Content-Length":"0"}
-    Get    /exampleAPI/rni/v2/queries/rab_info?c_id=${C_ID}
+    Get    ${apiRoot}/rni/${apiVersion}/queries/rab_info?c_id=${C_ID}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
 
@@ -106,7 +106,7 @@ Get RabInfo info using non existing cell id
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     Set Headers    {"Content-Length":"0"}
-    Get    /exampleAPI/rni/v2/queries/rab_info?cell_id=${NOT_EXISTENT_CELL_ID}
+    Get    ${apiRoot}/rni/${apiVersion}/queries/rab_info?cell_id=${NOT_EXISTENT_CELL_ID}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
 
@@ -117,7 +117,7 @@ Get Plmn info using wrong parameters
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     Set Headers    {"Content-Length":"0"}
-    Get    /exampleAPI/rni/v2/queries/plmn_info?app_id=${APP_ID}
+    Get    ${apiRoot}/rni/${apiVersion}/queries/plmn_info?app_id=${APP_ID}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
 
@@ -128,7 +128,7 @@ Get Plmn info using non existing application id
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     Set Headers    {"Content-Length":"0"}
-    Get    /exampleAPI/rni/v2/queries/plmn_info?app_ins_id=${NOT_EXISTENT_APP_INS_ID}
+    Get    ${apiRoot}/rni/${apiVersion}/queries/plmn_info?app_ins_id=${NOT_EXISTENT_APP_INS_ID}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
 
@@ -139,7 +139,7 @@ Get S1Bearer info using wrong parameters
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     Set Headers    {"Content-Length":"0"}
-    Get    /exampleAPI/rni/v2/queries/s1_bearer_info?c_id=${C_ID}
+    Get    ${apiRoot}/rni/${apiVersion}/queries/s1_bearer_info?c_id=${C_ID}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
 
