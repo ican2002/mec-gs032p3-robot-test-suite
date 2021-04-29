@@ -21,8 +21,8 @@ TP_MEC_MEC016_MEO_UEAPPS_001_OK
     Retrieve the application contexts list
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   ApplicationList
-    FOR    ${appInfo}    IN    @{response['body']['appInfo']['appInfo']}
-        ${passed}    Run Keyword And Return Status    Should Be Equal As Strings  ${appInfo}    ${APP_NAME}    
+    FOR    ${appInfo}    IN    @{response['body']['appList']}
+        ${passed}    Run Keyword And Return Status    Should Be Equal As Strings  ${appInfo['appInfo']['appName']}    ${APP_NAME}    
         Exit For Loop If    ${passed}
     END
     Should Be True    ${passed}
@@ -48,8 +48,8 @@ TP_MEC_MEC016_MEO_UEAPPS_002_OK
     Retrieve the application contexts list using filters    ${filter} 
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   ApplicationList
-    FOR    ${appInfo}    IN    @{response['body']['appInfo']['appInfo']}
-        ${passed}    Run Keyword And Return Status    Should Be Equal As Strings  ${appInfo}    ${APP_NAME}    
+    FOR    ${appInfo}    IN    @{response['body']['appList']}
+        ${passed}    Run Keyword And Return Status    Should Be Equal As Strings  ${appInfo['appInfo']['appName']}    ${APP_NAME}    
         Exit For Loop If    ${passed}
     END
     Should Be True    ${passed}
