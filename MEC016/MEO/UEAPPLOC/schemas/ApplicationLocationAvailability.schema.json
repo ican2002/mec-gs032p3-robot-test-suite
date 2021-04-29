@@ -1,0 +1,146 @@
+{
+        "properties": {
+          "appInfo": {
+            "description": "",
+            "properties": {
+              "appDVersion": {
+                "description": "Identifies the version of the application descriptor. It is equivalent to the appDVersion defined in clause 6.2.1.2 of ETSI GS MEC 0102 [1].",
+                "type": "string",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "String"
+              },
+              "appDescription": {
+                "description": "Human readable description of the MEC application. The length of the value shall not exceed 128 characters.",
+                "type": "string",
+                "maxLength": 128,
+                "x-etsi-mec-cardinality": "0..1",
+                "x-etsi-mec-origin-type": "String"
+              },
+              "appName": {
+                "description": "Name of the MEC application. The length of the value shall not exceed 32 characters.",
+                "type": "string",
+                "maxLength": 32,
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "String"
+              },
+              "appPackageSource": {
+                "description": "URI of the application package. Shall be included in the request. The application package shall comply with the definitions in clause 6.2.1.2 of ETSI GS MEC 0102 [1].",
+                "format": "uri",
+                "type": "string",
+                "x-etsi-mec-cardinality": "0..1",
+                "x-etsi-mec-origin-type": "URI"
+              },
+              "appProvider": {
+                "description": "Provider of the MEC application. The length of the value shall not exceed 32 characters.",
+                "type": "string",
+                "maxLength": 32,
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "String"
+              },
+              "appSoftVersion": {
+                "description": "Software version of the MEC application. The length of the value shall not exceed 32 characters.",
+                "type": "string",
+                "maxLength": 32,
+                "x-etsi-mec-cardinality": "0..1",
+                "x-etsi-mec-origin-type": "String"
+              },
+              "availableLocations": {
+                "description": "MEC application location constraints. ",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "appLocation": {
+                      "properties": {
+                        "area": {
+                          "properties": {
+                            "coordinates": {
+                              "items": {
+                                "items": {
+                                  "items": {
+                                    "type": "number",
+                                    "format": "float"
+                                  },
+                                  "type": "array"
+                                },
+                                "type": "array"
+                              },
+                              "minItems": 1,
+                              "type": "array",
+                              "x-etsi-mec-cardinality": 1,
+                              "x-etsi-mec-origin-type": "array"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "civicAddressElement": {
+                          "description": "Zero or more elements comprising the civic address. Shall be absent if the \"area\" attribute is present.",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "caType": {
+                                "description": "Describe the content type of caValue. The value of caType shall comply with section 3.4 of IETF RFC 4776 [6]. ",
+                                "type": "integer",
+                                "x-etsi-mec-cardinality": "1",
+                                "x-etsi-mec-origin-type": "Integer"
+                              },
+                              "caValue": {
+                                "description": "Content of civic address element corresponding to the caType. The format caValue shall comply with section 3.4 of IETF RFC 4776 [6].",
+                                "type": "string",
+                                "x-etsi-mec-cardinality": "1",
+                                "x-etsi-mec-origin-type": "String"
+                              }
+                            }
+                          },
+                          "minItems": 0,
+                          "required": [
+                            "caType",
+                            "caValue"
+                          ],
+                          "type": "array",
+                          "x-etsi-mec-cardinality": "0..N",
+                          "x-etsi-mec-origin-type": "array (Structure inlined)"
+                        },
+                        "countryCode": {
+                          "description": "The two-letter ISO 3166 [7] country code in capital letters. Shall be present in case the \"area\" attribute is absent. May be absent if the \"area\" attribute is present (see note).",
+                          "type": "string",
+                          "maxLength": 2,
+                          "x-etsi-mec-cardinality": "0..1",
+                          "x-etsi-mec-origin-type": "String"
+                        }
+                      },
+                      "type": "object",
+                      "x-etsi-notes": "NOTE:\tIf both \"countryCode\" and \"area\" are present, no conflicts should exist between the values of these two attributes. In case of conflicts, the API producer (e.g. MEO, MEAO) shall disregard parts of the geographic area signalled by \"area\" that are outside the boundaries of the country signalled by \"countryCode\". If \"countryCode\" is absent, it is solely the \"area\" attribute that defines the location constraint.",
+                      "x-etsi-ref": "6.5.2"
+                    }
+                  }
+                },
+                "minItems": 0,
+                "type": "array",
+                "x-etsi-mec-cardinality": "0..N",
+                "x-etsi-mec-origin-type": "array (Structure (inline))"
+              }
+            },
+            "required": [
+              "appName",
+              "appProvider",
+              "appDVersion"
+            ],
+            "type": "object",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "Structure (inlined)"
+          },
+          "associateDevAppId": {
+            "description": "Uniquely identifies the device application. The length of the value shall not exceed 32 characters.",
+            "type": "string",
+            "maxLength": 32,
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "String"
+          }
+        },
+        "required": [
+          "associateDevAppId",
+          "appInfo"
+        ],
+        "type": "object",
+        "x-etsi-ref": "6.2.4"
+      }

@@ -1,0 +1,212 @@
+{
+                  "properties": {
+                    "appList": {
+                      "description": "List of user applications available to the device application. As defined below.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "appInfo": {
+                            "description": "",
+                            "properties": {
+                              "appCharcs": {
+                                "description": "Characteristics of the application. As defined below. The application characteristics relate to the system resources consumed by the application. A device application can use this information e.g. for estimating the cost of use of the application or for the expected user experience.",
+                                "properties": {
+                                  "bandwidth": {
+                                    "description": "The required connection bandwidth in kbit/s for the use of the MEC application instance. ",
+                                    "format": "uint32",
+                                    "type": "integer",
+                                    "x-etsi-mec-cardinality": "0..1",
+                                    "x-etsi-mec-origin-type": "uint32"
+                                  },
+                                  "latency": {
+                                    "description": "The target round trip time in milliseconds supported by the MEC system for the MEC application instance.",
+                                    "format": "uint32",
+                                    "type": "integer",
+                                    "x-etsi-mec-cardinality": "0..1",
+                                    "x-etsi-mec-origin-type": "uint32"
+                                  },
+                                  "memory": {
+                                    "description": "The maximum size in Mbytes of the memory resource expected to be used by the MEC application instance in the MEC system.",
+                                    "format": "uint32",
+                                    "type": "integer",
+                                    "x-etsi-mec-cardinality": "0..1",
+                                    "x-etsi-mec-origin-type": "uint32"
+                                  },
+                                  "serviceCont": {
+                                    "description": "Required service continuity mode for this application. Permitted values: 0 = SERVICE_CONTINUITY_NOT_REQUIRED. 1 = SERVICE_CONTINUITY_REQUIRED.",
+                                    "enum": [
+                                      0,
+                                      1
+                                    ],
+                                    "type": "integer",
+                                    "x-etsi-mec-cardinality": "0..1",
+                                    "x-etsi-mec-origin-type": "Enum"
+                                  },
+                                  "storage": {
+                                    "description": "The maximum size in Mbytes of the storage resource expected to be used by the MEC application instance in the MEC system.",
+                                    "format": "uint32",
+                                    "type": "integer",
+                                    "x-etsi-mec-cardinality": "0..1",
+                                    "x-etsi-mec-origin-type": "uint32"
+                                  }
+                                },
+                                "type": "object",
+                                "x-etsi-mec-cardinality": "0..1",
+                                "x-etsi-mec-origin-type": "Structure (inlined)"
+                              },
+                              "appDId": {
+                                "description": "Identifier of this MEC application descriptor. It is equivalent to the appDId defined in clause 6.2.1.2 of ETSI GS MEC 0102 [1]. This attribute shall be globally unique.",
+                                "type": "string",
+                                "x-etsi-mec-cardinality": "1",
+                                "x-etsi-mec-origin-type": "String"
+                              },
+                              "appDVersion": {
+                                "description": "Identifies the version of the application descriptor. It is equivalent to the appDVersion defined in clause 6.2.1.2 of ETSI GS MEC 0102 [1].",
+                                "type": "string",
+                                "x-etsi-mec-cardinality": "1",
+                                "x-etsi-mec-origin-type": "String"
+                              },
+                              "appDescription": {
+                                "description": "Human readable description of the MEC application (see note 2).",
+                                "type": "string",
+                                "maxLength": 128,
+                                "x-etsi-mec-cardinality": "1",
+                                "x-etsi-mec-origin-type": "String"
+                              },
+                              "appLocation": {
+                                "description": "Identifies the locations of the MEC application.",
+                                "items": {
+                                  "properties": {
+                                    "area": {
+                                      "properties": {
+                                        "coordinates": {
+                                          "items": {
+                                            "items": {
+                                              "items": {
+                                                "type": "number",
+                                                "format": "float"
+                                              },
+                                              "type": "array"
+                                            },
+                                            "type": "array"
+                                          },
+                                          "minItems": 1,
+                                          "type": "array",
+                                          "x-etsi-mec-cardinality": 1,
+                                          "x-etsi-mec-origin-type": "array"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "civicAddressElement": {
+                                      "description": "Zero or more elements comprising the civic address. Shall be absent if the \"area\" attribute is present.",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "caType": {
+                                            "description": "Describe the content type of caValue. The value of caType shall comply with section 3.4 of IETF RFC 4776 [6]. ",
+                                            "type": "integer",
+                                            "x-etsi-mec-cardinality": "1",
+                                            "x-etsi-mec-origin-type": "Integer"
+                                          },
+                                          "caValue": {
+                                            "description": "Content of civic address element corresponding to the caType. The format caValue shall comply with section 3.4 of IETF RFC 4776 [6].",
+                                            "type": "string",
+                                            "x-etsi-mec-cardinality": "1",
+                                            "x-etsi-mec-origin-type": "String"
+                                          }
+                                        }
+                                      },
+                                      "minItems": 0,
+                                      "required": [
+                                        "caType",
+                                        "caValue"
+                                      ],
+                                      "type": "array",
+                                      "x-etsi-mec-cardinality": "0..N",
+                                      "x-etsi-mec-origin-type": "array (Structure inlined)"
+                                    },
+                                    "countryCode": {
+                                      "description": "The two-letter ISO 3166 [7] country code in capital letters. Shall be present in case the \"area\" attribute is absent. May be absent if the \"area\" attribute is present (see note).",
+                                      "type": "string",
+                                      "maxLength": 2,
+                                      "x-etsi-mec-cardinality": "0..1",
+                                      "x-etsi-mec-origin-type": "String"
+                                    }
+                                  },
+                                  "type": "object",
+                                  "x-etsi-notes": "NOTE:\tIf both \"countryCode\" and \"area\" are present, no conflicts should exist between the values of these two attributes. In case of conflicts, the API producer (e.g. MEO, MEAO) shall disregard parts of the geographic area signalled by \"area\" that are outside the boundaries of the country signalled by \"countryCode\". If \"countryCode\" is absent, it is solely the \"area\" attribute that defines the location constraint.",
+                                  "x-etsi-ref": "6.5.2"
+                                },
+                                "minItems": 0,
+                                "type": "array",
+                                "x-etsi-mec-cardinality": "0..N",
+                                "x-etsi-mec-origin-type": "LocationConstraints"
+                              },
+                              "appName": {
+                                "description": "Name of the MEC application. The length of the value shall not exceed 32 characters.",
+                                "type": "string",
+                                "maxLength": 32,
+                                "x-etsi-mec-cardinality": "1",
+                                "x-etsi-mec-origin-type": "String"
+                              },
+                              "appProvider": {
+                                "description": "Provider of the MEC application. The length of the value shall not exceed 32 characters.",
+                                "type": "string",
+                                "maxLength": 32,
+                                "x-etsi-mec-cardinality": "1",
+                                "x-etsi-mec-origin-type": "String"
+                              },
+                              "appSoftVersion": {
+                                "description": "Software version of the MEC application. The length of the value shall not exceed 32 characters.",
+                                "type": "string",
+                                "maxLength": 32,
+                                "x-etsi-mec-cardinality": "1",
+                                "x-etsi-mec-origin-type": "String"
+                              }
+                            },
+                            "required": [
+                              "appDId",
+                              "appName",
+                              "appProvider",
+                              "appSoftVersion",
+                              "appDVersion",
+                              "appDescription"
+                            ],
+                            "type": "object",
+                            "x-etsi-mec-cardinality": "1",
+                            "x-etsi-mec-origin-type": "Structure (inlined)"
+                          },
+                          "vendorSpecificExt": {
+                            "description": "Extension for vendor specific information (see note 1).",
+                            "properties": {
+                              "vendorId": {
+                                "description": "Vendor identifier. The length of the value shall not exceed 32 characters. The rest of the structure of vendor specific extension is not defined.",
+                                "type": "string",
+                                "maxLength": 32,
+                                "x-etsi-mec-cardinality": "1",
+                                "x-etsi-mec-origin-type": "String"
+                              }
+                            },
+                            "required": [
+                              "vendorId"
+                            ],
+                            "type": "object",
+                            "x-etsi-mec-cardinality": "0..1",
+                            "x-etsi-mec-origin-type": "Structure (inlined)"
+                          }
+                        }
+                      },
+                      "minItems": 0,
+                      "required": [
+                        "appInfo"
+                      ],
+                      "type": "array",
+                      "x-etsi-mec-cardinality": "0..N",
+                      "x-etsi-mec-origin-type": "Array (Structure (inlined))"
+                    }
+                  },
+                  "type": "object",
+                  "x-etsi-notes": "NOTE 1:\tThe vendor specific extension allows submitting information on the application lists that have been made available to the device application of the corresponding vendor.\nNOTE 2:\tThe language support may be limited. The length of the value shall not exceed 128 characters.",
+                  "x-etsi-ref": "6.2.2"
+                }

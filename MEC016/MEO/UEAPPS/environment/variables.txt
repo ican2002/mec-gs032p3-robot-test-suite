@@ -1,0 +1,14 @@
+*** Variables ***
+${apiRoot}        
+${apiName}        dev_app
+${apiVersion}     v1
+
+${MEC-APP_SCHEMA}                   http
+${MEC-APP_HOST}                     192.168.56.1
+${MEC-APP_PORT}                     8081
+
+${TOKEN}                            Basic YWxhZGRpbjpvcGVuc2VzYW1l
+
+${APP_NAME}                         MyWornderfulApp
+${filter}                           appName=${APP_NAME}
+${bad_filter}                       app=${APP_NAME}

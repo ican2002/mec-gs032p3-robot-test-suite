@@ -1,0 +1,193 @@
+{
+                "properties": {
+                  "appAutoInstantiation": {
+                    "description": "Provides indication to the MEC system that instantiation of the requested application is desired should a requested appLocation become available that was not at the time of the request.",
+                    "type": "boolean",
+                    "x-etsi-mec-cardinality": "0..1",
+                    "x-etsi-mec-origin-type": "Boolean"
+                  },
+                  "appInfo": {
+                    "description": "",
+                    "properties": {
+                      "appDId": {
+                        "description": "Identifier of this MEC application descriptor. This attribute shall be globally unique. It is equivalent to the appDId defined in clause 6.2.1.2 of ETSI GS MEC 0102 [1]. It shall be present if the application is one in the ApplicationList.",
+                        "type": "string",
+                        "x-etsi-mec-cardinality": "0..1",
+                        "x-etsi-mec-origin-type": "String"
+                      },
+                      "appDVersion": {
+                        "description": "Identifies the version of the application descriptor. It is equivalent to the appDVersion defined in clause 6.2.1.2 of ETSI GS MEC 0102 [1].",
+                        "type": "string",
+                        "x-etsi-mec-cardinality": "1",
+                        "x-etsi-mec-origin-type": "String"
+                      },
+                      "appDescription": {
+                        "description": "Human readable description of the MEC application. The length of the value shall not exceed 128 characters.",
+                        "type": "string",
+                        "maxLength": 128,
+                        "x-etsi-mec-cardinality": "0..1",
+                        "x-etsi-mec-origin-type": "String"
+                      },
+                      "appName": {
+                        "description": "Name of the MEC application. The length of the value shall not exceed 32 characters.",
+                        "type": "string",
+                        "maxLength": 32,
+                        "x-etsi-mec-cardinality": "1",
+                        "x-etsi-mec-origin-type": "String"
+                      },
+                      "appProvider": {
+                        "description": "Provider of the MEC application.\nThe length of the value shall not exceed 32 characters.",
+                        "type": "string",
+                        "maxLength": 32,
+                        "x-etsi-mec-cardinality": "1",
+                        "x-etsi-mec-origin-type": "String"
+                      },
+                      "appSoftVersion": {
+                        "description": "Software version of the MEC application. The length of the value shall not exceed 32 characters.",
+                        "type": "string",
+                        "maxLength": 32,
+                        "x-etsi-mec-cardinality": "0..1",
+                        "x-etsi-mec-origin-type": "String"
+                      },
+                      "appPackageSource": {
+                        "description": "URI of the application package.\nIncluded in the request if the application is not one in the ApplicationList. appPackageSource enables on-boarding of the application package into the MEC system. The application package shall comply with the definitions in clause 6.2.1.2 of ETSI GS MEC 0102 [1].",
+                        "format": "uri",
+                        "type": "string",
+                        "x-etsi-mec-cardinality": "0..1",
+                        "x-etsi-mec-origin-type": "URI"
+                      },
+                      "userAppInstanceInfo": {
+                        "description": "List of user application instance information.",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "appInstanceId": {
+                              "description": "Identifier of the user application instance. It shall only be included in the response.",
+                              "type": "string",
+                              "x-etsi-mec-cardinality": "0..1",
+                              "x-etsi-mec-origin-type": "String"
+                            },
+                            "appLocation": {
+                              "properties": {
+                                "area": {
+                                  "properties": {
+                                    "coordinates": {
+                                      "items": {
+                                        "items": {
+                                          "items": {
+                                            "type": "number",
+                                            "format": "float"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "type": "array"
+                                      },
+                                      "minItems": 1,
+                                      "type": "array",
+                                      "x-etsi-mec-cardinality": 1,
+                                      "x-etsi-mec-origin-type": "array"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "civicAddressElement": {
+                                  "description": "Zero or more elements comprising the civic address. Shall be absent if the \"area\" attribute is present.",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "caType": {
+                                        "description": "Describe the content type of caValue. The value of caType shall comply with section 3.4 of IETF RFC 4776 [6]. ",
+                                        "type": "integer",
+                                        "x-etsi-mec-cardinality": "1",
+                                        "x-etsi-mec-origin-type": "Integer"
+                                      },
+                                      "caValue": {
+                                        "description": "Content of civic address element corresponding to the caType. The format caValue shall comply with section 3.4 of IETF RFC 4776 [6].",
+                                        "type": "string",
+                                        "x-etsi-mec-cardinality": "1",
+                                        "x-etsi-mec-origin-type": "String"
+                                      }
+                                    }
+                                  },
+                                  "minItems": 0,
+                                  "required": [
+                                    "caType",
+                                    "caValue"
+                                  ],
+                                  "type": "array",
+                                  "x-etsi-mec-cardinality": "0..N",
+                                  "x-etsi-mec-origin-type": "array (Structure inlined)"
+                                },
+                                "countryCode": {
+                                  "description": "The two-letter ISO 3166 [7] country code in capital letters. Shall be present in case the \"area\" attribute is absent. May be absent if the \"area\" attribute is present (see note).",
+                                  "type": "string",
+                                  "maxLength": 2,
+                                  "x-etsi-mec-cardinality": "0..1",
+                                  "x-etsi-mec-origin-type": "String"
+                                }
+                              },
+                              "type": "object",
+                              "x-etsi-notes": "NOTE:\tIf both \"countryCode\" and \"area\" are present, no conflicts should exist between the values of these two attributes. In case of conflicts, the API producer (e.g. MEO, MEAO) shall disregard parts of the geographic area signalled by \"area\" that are outside the boundaries of the country signalled by \"countryCode\". If \"countryCode\" is absent, it is solely the \"area\" attribute that defines the location constraint.",
+                              "x-etsi-ref": "6.5.2"
+                            },
+                            "referenceURI": {
+                              "description": "Address of the user application instance. It shall only be included in the response.",
+                              "format": "uri",
+                              "type": "string",
+                              "x-etsi-mec-cardinality": "0..1",
+                              "x-etsi-mec-origin-type": "URI"
+                            }
+                          }
+                        },
+                        "minItems": 1,
+                        "type": "array",
+                        "x-etsi-mec-cardinality": "1..N",
+                        "x-etsi-mec-origin-type": "array (Structure inlined)"
+                      }
+                    },
+                    "required": [
+                      "appName",
+                      "appProvider",
+                      "appDVersion",
+                      "userAppInstanceInfo"
+                    ],
+                    "type": "object",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "Structure (inlined)"
+                  },
+                  "appLocationUpdates": {
+                    "description": "Used by the device application to request to receive notifications at the callbackReference URI relating to location availability for user application instantiation.",
+                    "type": "boolean",
+                    "x-etsi-mec-cardinality": "0..1",
+                    "x-etsi-mec-origin-type": "Boolean"
+                  },
+                  "associateDevAppId": {
+                    "description": "Uniquely identifies the device application. The length of the value shall not exceed 32 characters.",
+                    "type": "string",
+                    "maxLength": 32,
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  },
+                  "callbackReference": {
+                    "description": "URI assigned by the device application to receive application lifecycle related notifications. Inclusion in the request implies the client supports the pub/sub mechanism and is capable of receiving notifications. This endpoint shall be maintained for the lifetime of the application context.",
+                    "format": "uri",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "0..1",
+                    "x-etsi-mec-origin-type": "URI"
+                  },
+                  "contextId": {
+                    "description": "Uniquely identifies the application context in the MEC system. Assigned by the MEC system and shall be present other than in a create request. The length of the value shall not exceed 32 characters.",
+                    "type": "string",
+                    "maxLength": 32,
+                    "x-etsi-mec-cardinality": "0..1",
+                    "x-etsi-mec-origin-type": "String"
+                  }
+                },
+                "required": [
+                  "associateDevAppId",
+                  "appInfo"
+                ],
+                "type": "object",
+                "x-etsi-notes": "NOTE 1:\tIf a value of the attribute is included in the request, the same value shall be included in the response.\nNOTE 2:\tThe design of the current operation with callback reference assumes no web proxy between the entity that originates the notification and the entity that receives it.\nNOTE 3:\tThe language support for the application description may be limited.\nNOTE 4:\tAttribute appLocationUpdates and appAutoInstantiation shall not both be set to TRUE.",
+                "x-etsi-ref": "6.2.3"
+              }
