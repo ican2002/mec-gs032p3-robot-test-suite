@@ -52,7 +52,7 @@ Obtain Application Location Availability Task
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     ${path}=    Catenate    SEPARATOR=      jsons/     ${content}
-    ${body}    Get Binary File    ${path}
+    ${body}    Get File    ${path}
     Post    ${apiRoot}/${apiName}/${apiVersion}/obtain_app_loc_availability    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
@@ -64,7 +64,7 @@ Obtain Application Location Availability Task using wrong endpoint
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     ${path}=    Catenate    SEPARATOR=      jsons/     ${content}
-    ${body}    Get Binary File    ${path}
+    ${body}    Get File    ${path}
     Post    ${apiRoot}/${apiName}/${apiVersion}/obtain_app_loc_availability_error    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}

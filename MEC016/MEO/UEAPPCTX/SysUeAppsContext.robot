@@ -113,7 +113,7 @@ Create application context
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     ${path}    Catenate    SEPARATOR=      jsons/     ${content}
-    ${body}    Get Binary File    ${path}
+    ${body}    Get File    ${path}
     Post    ${apiRoot}/${apiName}/${apiVersion}/app_contexts    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
@@ -125,7 +125,7 @@ Create application context using wrong endpoint
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     ${path}    Catenate    SEPARATOR=      jsons/     ${content}
-    ${body}    Get Binary File    ${path}
+    ${body}    Get File    ${path}
     Post    ${apiRoot}/${apiName}/${apiVersion}/app_contexts_error    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
@@ -136,7 +136,9 @@ Update application context
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Put    ${apiRoot}/${apiName}/${apiVersion}/app_contexts/${context_id}    ${content}
+    ${path}    Catenate    SEPARATOR=      jsons/     ${content}
+    ${body}    Get File    ${path}
+    Put    ${apiRoot}/${apiName}/${apiVersion}/app_contexts/${context_id}    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
 
@@ -146,7 +148,9 @@ Update application context using wrong endpoint
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Put    ${apiRoot}/${apiName}/${apiVersion}/app_contexts_error/${context_id}    ${content}
+    ${path}    Catenate    SEPARATOR=      jsons/     ${content}
+    ${body}    Get File    ${path}
+    Put    ${apiRoot}/${apiName}/${apiVersion}/app_contexts_error/${context_id}    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
 
