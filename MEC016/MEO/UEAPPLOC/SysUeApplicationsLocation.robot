@@ -43,8 +43,6 @@ TP_MEC_MEC016_MEO_UEAPPCTX_001_NF
     Should Be True    ${PIC_SERVICES} == 1
     Obtain Application Location Availability Task using wrong endpoint    AppLocationAvailability.json
     Check HTTP Response Status Code Is    404
-    
-
 
 
 *** Keywords ***
@@ -53,9 +51,9 @@ Obtain Application Location Availability Task
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    ${path}    Catenate    SEPATATOR=      jsons/     ${content}
+    ${path}=    Catenate    SEPARATOR=      jsons/     ${content}
     ${body}    Get Binary File    ${path}
-    Post    ${apiRoot}/${apiName}/${apiVersion}/obtain_app_loc_availability    ${content}
+    Post    ${apiRoot}/${apiName}/${apiVersion}/obtain_app_loc_availability    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
     
@@ -65,8 +63,8 @@ Obtain Application Location Availability Task using wrong endpoint
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    ${path}    Catenate    SEPATATOR=      jsons/     ${content}
+    ${path}=    Catenate    SEPARATOR=      jsons/     ${content}
     ${body}    Get Binary File    ${path}
-    Post    ${apiRoot}/${apiName}/${apiVersion}/obtain_app_loc_availability_error    ${content}
+    Post    ${apiRoot}/${apiName}/${apiVersion}/obtain_app_loc_availability_error    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}

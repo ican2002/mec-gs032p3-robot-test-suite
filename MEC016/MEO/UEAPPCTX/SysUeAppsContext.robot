@@ -21,6 +21,7 @@ TP_MEC_MEC016_MEO_UEAPPCTX_001_OK
     Create application context    AppContext.json
     Check HTTP Response Status Code Is    201
     Check HTTP Response Body Json Schema Is   AppContext
+    Check HTTP Response Header Contains    Location
     Should Be Equal As Strings   ${response['body']['appInfo']['appName']}    MyNewWornderfulApp
     Set Suite Variable    ${contextId}    ${response['body']['contextId']}
 
@@ -57,8 +58,6 @@ TP_MEC_MEC016_MEO_UEAPPCTX_002_OK
     # Test Body
     Update application context        ${contextId}    UpdateAppContext.json
     Check HTTP Response Status Code Is    204
-    Check HTTP Response Body Json Schema Is   AppContext
-    Should Be Equal As Strings    ${response['body']['callbackReference']}    http://127.0.0.1/callbackuri 
 
 TP_MEC_MEC016_MEO_UEAPPCTX_002_BR
     [Documentation]   
@@ -105,7 +104,6 @@ TP_MEC_MEC016_MEO_UEAPPCTX_003_NF
     Should Be True    ${PIC_SERVICES} == 1
     Delete application context    ${NON_EXISTING_CONTEXT_ID}
     Check HTTP Response Status Code Is    404
-    Check ProblemDetails    404
 
 
 *** Keywords ***
@@ -114,9 +112,9 @@ Create application context
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    ${path}    Catenate    SEPATATOR=      jsons/     ${content}
+    ${path}    Catenate    SEPARATOR=      jsons/     ${content}
     ${body}    Get Binary File    ${path}
-    Post    ${apiRoot}/${apiName}/${apiVersion}/app_contexts    ${content}
+    Post    ${apiRoot}/${apiName}/${apiVersion}/app_contexts    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
     
@@ -126,9 +124,9 @@ Create application context using wrong endpoint
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    ${path}    Catenate    SEPATATOR=      jsons/     ${content}
+    ${path}    Catenate    SEPARATOR=      jsons/     ${content}
     ${body}    Get Binary File    ${path}
-    Post    ${apiRoot}/${apiName}/${apiVersion}/app_contexts_error    ${content}
+    Post    ${apiRoot}/${apiName}/${apiVersion}/app_contexts_error    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
 

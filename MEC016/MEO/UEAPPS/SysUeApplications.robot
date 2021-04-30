@@ -21,6 +21,7 @@ TP_MEC_MEC016_MEO_UEAPPS_001_OK
     Retrieve the application contexts list
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   ApplicationList
+    ## Post condition
     FOR    ${appInfo}    IN    @{response['body']['appList']}
         ${passed}    Run Keyword And Return Status    Should Be Equal As Strings  ${appInfo['appInfo']['appName']}    ${APP_NAME}    
         Exit For Loop If    ${passed}
@@ -73,7 +74,6 @@ Retrieve the application contexts list
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Set Headers    {"Content-Length":"0"}
     GET     ${apiRoot}/${apiName}/${apiVersion}/app_list
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
@@ -84,7 +84,6 @@ Retrieve the application contexts list using wrong endpoint
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Set Headers    {"Content-Length":"0"}
     GET     ${apiRoot}/${apiName}/${apiVersion}/app_list_error
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
@@ -96,7 +95,6 @@ Retrieve the application contexts list using filters
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Set Headers    {"Content-Length":"0"}
     GET     ${apiRoot}/${apiName}/${apiVersion}/app_list?${filter}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}

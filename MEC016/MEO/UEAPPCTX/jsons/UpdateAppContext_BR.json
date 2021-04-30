@@ -1,10 +1,10 @@
 {
 	"associateUeAppId":"MyNewWornderfulDevAppId",
-	"contextId": "MyNewWornderfulDevAppId",
+	"contextId": "1",
 	"callbackReference": "http://127.0.0.1/callbackuri",
 	"appInfo":{
 		"appName":"MyNewWornderfulApp",
-		"appProvider":"TF012",
+		"appProvider":"TTF012",
 		"appDVersion":"v0.0.1",
 		"userAppInstanceInfo":[
 			{
