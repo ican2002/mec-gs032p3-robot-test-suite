@@ -121,7 +121,6 @@ Create application context
 
 Create application context using wrong endpoint
     [Arguments]    ${content}
-    Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     ${path}    Catenate    SEPARATOR=      jsons/     ${content}
@@ -133,7 +132,6 @@ Create application context using wrong endpoint
 
 Update application context
     [Arguments]    ${context_id}    ${content}
-    Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     ${path}    Catenate    SEPARATOR=      jsons/     ${content}
@@ -145,7 +143,6 @@ Update application context
 
 Update application context using wrong endpoint
     [Arguments]    ${context_id}    ${content}
-    Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     ${path}    Catenate    SEPARATOR=      jsons/     ${content}
@@ -156,7 +153,6 @@ Update application context using wrong endpoint
 
 Delete application context
     [Arguments]    ${context_id}
-    Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     Set Headers    {"Content-Length":"0"}
@@ -166,7 +162,6 @@ Delete application context
     
 Delete application context using wrong endpoint
     [Arguments]    ${context_id}
-    Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     Set Headers    {"Content-Length":"0"}

@@ -60,7 +60,6 @@ Obtain Application Location Availability Task
 
 Obtain Application Location Availability Task using wrong endpoint
     [Arguments]    ${content}
-    Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     ${path}=    Catenate    SEPARATOR=      jsons/     ${content}
