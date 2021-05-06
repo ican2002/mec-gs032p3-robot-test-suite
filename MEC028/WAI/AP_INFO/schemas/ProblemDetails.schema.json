@@ -1,0 +1,40 @@
+{
+	"ProblemDetails": {
+		"properties": {
+			"detail": {
+				"description": "A human-readable explanation specific to this occurrence of the problem",
+				"type": "string",
+				"x-etsi-mec-cardinality": "0..1",
+				"x-etsi-mec-origin-type": "String"
+			},
+			"instance": {
+				"description": "A URI reference that identifies the specific occurrence of the problem",
+				"format": "uri",
+				"type": "string",
+				"x-etsi-mec-cardinality": "0..1",
+				"x-etsi-mec-origin-type": "URI"
+			},
+			"status": {
+				"description": "The HTTP status code for this occurrence of the problem",
+				"format": "uint32",
+				"type": "integer",
+				"x-etsi-mec-cardinality": "0..1",
+				"x-etsi-mec-origin-type": "Uint32"
+			},
+			"title": {
+				"description": "A short, human-readable summary of the problem type",
+				"type": "string",
+				"x-etsi-mec-cardinality": "0..1",
+				"x-etsi-mec-origin-type": "String"
+			},
+			"type": {
+				"description": "A URI reference according to IETF RFC 3986 that identifies the problem type",
+				"format": "uri",
+				"type": "string",
+				"x-etsi-mec-cardinality": "0..1",
+				"x-etsi-mec-origin-type": "URI"
+			}
+		},
+		"type": "object"
+	}
+}

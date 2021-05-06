@@ -1,0 +1,11 @@
+{
+  "_links":{
+  	"href":""
+  	},
+      
+	"apId": {
+		"macId": "macId01"
+	},
+	"callbackReference": "http://callback.uri/1",
+	"subscriptionType": "INVALID_VALUE"
+}

@@ -1,0 +1,18 @@
+*** Variables ***
+${apiRoot}        
+${apiName}        wai
+${apiVersion}     v1
+
+${MEC-APP_SCHEMA}                   http
+${MEC-APP_HOST}                     127.0.0.1
+${MEC-APP_PORT}                     8082
+
+${TOKEN}                            Basic YWxhZGRpbjpvcGVuc2VzYW1l
+ 
+${SUB_TYPE}          AssocStaSubscription
+
+${SUB_FILTER}          assoc_sta
+${INVALID_SUB_FILTER}          assocStaSub
+
+${HREF}          /wai/v1/subscriptions/1
+${CALLBACK_URI}          http://callback.uri/1
