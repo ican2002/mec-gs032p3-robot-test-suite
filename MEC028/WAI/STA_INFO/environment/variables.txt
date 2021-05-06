@@ -1,0 +1,14 @@
+*** Variables ***
+${apiRoot}        
+${apiName}        wai
+${apiVersion}     v1
+
+${MEC-APP_SCHEMA}                   http
+${MEC-APP_HOST}                     127.0.0.1
+${MEC-APP_PORT}                     8082
+
+${TOKEN}                            Basic YWxhZGRpbjpvcGVuc2VzYW1l
+ 
+${MAC_ID}          macId01
+${filter}                           (eq,staId/macId,macId01)
+${bad_filter}                           (eq,staId/mac,macId01)

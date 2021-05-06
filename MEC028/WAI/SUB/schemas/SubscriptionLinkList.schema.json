@@ -1,0 +1,272 @@
+{
+  "properties": {
+    "_links": {
+      "description": "Hyperlink related to the resource. This shall be only included in the HTTP responses and in HTTP PUT requests.",
+      "properties": {
+        "self": {
+          "properties": {
+            "href": {
+              "description": "URI referring to a resource",
+              "type": "string",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "String"
+            }
+          },
+          "required": [
+            "href"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.23"
+        }
+      },
+      "type": "object",
+      "x-etsi-mec-cardinality": "0..1",
+      "x-etsi-mec-origin-type": "Structure (inlined)"
+    },
+    "assocStaSubscription": {
+      "items": {
+        "properties": {
+          "_links": {
+            "description": "Hyperlink related to the resource. This shall be only included in the HTTP responses and in HTTP PUT requests.",
+            "properties": {
+              "self": {
+                "properties": {
+                  "href": {
+                    "description": "URI referring to a resource",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  }
+                },
+                "required": [
+                  "href"
+                ],
+                "type": "object",
+                "x-etsi-ref": "6.5.23"
+              }
+            },
+            "required": [
+              "self"
+            ],
+            "type": "object",
+            "x-etsi-mec-cardinality": "0..1",
+            "x-etsi-mec-origin-type": "Structure (inlined)"
+          },
+          "apId": {
+            "properties": {
+              "ipAddress": {
+                "description": "IPv4 or IPv6 address allocated for the Access Point.",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 0,
+                "type": "array",
+                "x-etsi-mec-cardinality": "0..N",
+                "x-etsi-mec-origin-type": "String"
+              },
+              "macId": {
+                "description": "Unique Identifier assigned to an Access Point (as network interface controller) for communications at the data link layer of a network segment.",
+                "type": "string",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "String"
+              },
+              "ssid": {
+                "description": "Service Set Identifier to identify logical networks including Basic Service Set and Extended Service Set.",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 0,
+                "type": "array",
+                "x-etsi-mec-cardinality": "0..N",
+                "x-etsi-mec-origin-type": "String"
+              }
+            },
+            "required": [
+              "macId"
+            ],
+            "type": "object",
+            "x-etsi-ref": "6.5.3"
+          },
+          "callbackReference": {
+            "description": "URI selected by the service consumer to receive notifications on the subscribed WLAN information. This shall be included both in the request and in response.",
+            "format": "uri",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "URI"
+          },
+          "expiryDeadline": {
+            "properties": {
+              "nanoSeconds": {
+                "description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+                "format": "uint32",
+                "type": "integer",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "Uint32"
+              },
+              "seconds": {
+                "description": "The seconds part of the time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC.",
+                "format": "uint32",
+                "type": "integer",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "Uint32"
+              }
+            },
+            "required": [
+              "seconds",
+              "nanoSeconds"
+            ],
+            "type": "object",
+            "x-etsi-ref": "6.5.2"
+          },
+          "subscriptionType": {
+            "description": "Shall be set to \"AssocStaSubscription\".",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "String"
+          }
+        },
+        "required": [
+          "subscriptionType",
+          "callbackReference",
+          "apId"
+        ],
+        "type": "object",
+        "x-etsi-ref": "6.3.2"
+      },
+      "type": "array",
+      "x-etsi-mec-cardinality": "0..N",
+      "x-etsi-mec-origin-type": "AssocStaSubscription"
+    },
+    "staDataRateSubscription": {
+      "items": {
+        "properties": {
+          "_links": {
+            "description": "Hyperlink related to the resource. This shall be only included in the HTTP responses and in HTTP PUT requests.",
+            "properties": {
+              "self": {
+                "properties": {
+                  "href": {
+                    "description": "URI referring to a resource",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  }
+                },
+                "required": [
+                  "href"
+                ],
+                "type": "object",
+                "x-etsi-ref": "6.5.23"
+              }
+            },
+            "required": [
+              "self"
+            ],
+            "type": "object",
+            "x-etsi-mec-cardinality": "0..1",
+            "x-etsi-mec-origin-type": "Structure (inlined)"
+          },
+          "callbackReference": {
+            "description": "URI selected by the service consumer to receive notifications on the subscribed WLAN Access Information Service. This shall be included both in the request and in response.",
+            "format": "uri",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "URI"
+          },
+          "expiryDeadline": {
+            "properties": {
+              "nanoSeconds": {
+                "description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+                "format": "uint32",
+                "type": "integer",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "Uint32"
+              },
+              "seconds": {
+                "description": "The seconds part of the time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC.",
+                "format": "uint32",
+                "type": "integer",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "Uint32"
+              }
+            },
+            "required": [
+              "seconds",
+              "nanoSeconds"
+            ],
+            "type": "object",
+            "x-etsi-ref": "6.5.2"
+          },
+          "staId": {
+            "description": "Identifier(s) to uniquely specify the target client station(s) for the subscription",
+            "items": {
+              "properties": {
+                "aid": {
+                  "description": "Number which identifies a particular association between a station and an Access Point ",
+                  "type": "string",
+                  "x-etsi-mec-cardinality": "0..1",
+                  "x-etsi-mec-origin-type": "String"
+                },
+                "ipAddress": {
+                  "description": "IPv4 or IPv6 address allocated for the station.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 0,
+                  "type": "array",
+                  "x-etsi-mec-cardinality": "0..N",
+                  "x-etsi-mec-origin-type": "String"
+                },
+                "macId": {
+                  "description": "Unique identifier assigned to station (as network interface controller) for communications at the data link layer of a network segment.",
+                  "type": "string",
+                  "x-etsi-mec-cardinality": "1",
+                  "x-etsi-mec-origin-type": "String"
+                },
+                "ssid": {
+                  "description": "Service Set Identifier to identify logical networks.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 0,
+                  "type": "array",
+                  "x-etsi-mec-cardinality": "0..N",
+                  "x-etsi-mec-origin-type": "String"
+                }
+              },
+              "required": [
+                "macId"
+              ],
+              "type": "object",
+              "x-etsi-ref": "6.5.11"
+            },
+            "minItems": 1,
+            "type": "array",
+            "x-etsi-mec-cardinality": "1..N",
+            "x-etsi-mec-origin-type": "StaIdentity"
+          },
+          "subscriptionType": {
+            "description": "Shall be set to \"StaDataRateSubscription\".",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "String"
+          }
+        },
+        "required": [
+          "subscriptionType",
+          "callbackReference",
+          "staId"
+        ],
+        "type": "object",
+        "x-etsi-ref": "6.3.3"
+      },
+      "type": "array",
+      "x-etsi-mec-cardinality": "0..N",
+      "x-etsi-mec-origin-type": "StaDataRateSubscription"
+    }
+  },
+  "required": [
+    "_links"
+  ],
+  "type": "object"
+}

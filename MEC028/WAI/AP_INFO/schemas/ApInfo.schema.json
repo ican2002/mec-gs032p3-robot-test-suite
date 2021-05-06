@@ -1,0 +1,777 @@
+{
+ "items": {
+  "properties": {
+    "apId": {
+      "properties": {
+        "ipAddress": {
+          "description": "IPv4 or IPv6 address allocated for the Access Point.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "x-etsi-mec-cardinality": "0..N",
+          "x-etsi-mec-origin-type": "String"
+        },
+        "macId": {
+          "description": "Unique Identifier assigned to an Access Point (as network interface controller) for communications at the data link layer of a network segment.",
+          "type": "string",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "String"
+        },
+        "ssid": {
+          "description": "Service Set Identifier to identify logical networks including Basic Service Set and Extended Service Set.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "x-etsi-mec-cardinality": "0..N",
+          "x-etsi-mec-origin-type": "String"
+        }
+      },
+      "required": [
+        "macId"
+      ],
+      "type": "object",
+      "x-etsi-ref": "6.5.3"
+    },
+    "apLocation": {
+      "properties": {
+        "civicLocation": {
+          "properties": {
+            "ca0": {
+              "description": "Language",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca1": {
+              "description": "National subdivisions (state, canton, region,province, prefecture) ",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca128": {
+              "description": "Script",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca16": {
+              "description": "Leading street direction",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca17": {
+              "description": "Trailing street suffix",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca18": {
+              "description": "Street suffix or type",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca19": {
+              "description": "House number",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca2": {
+              "description": "County, parish, gun (JP), district (IN)",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca20": {
+              "description": "House number suffix",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca21": {
+              "description": "Landmark of vanity address",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca22": {
+              "description": "Additional location information",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca23": {
+              "description": "Name (residence and office occupant)",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca24": {
+              "description": "Postal/zip code",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca25": {
+              "description": "Building (structure)",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca26": {
+              "description": "Unit (apartment/suite)",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca27": {
+              "description": "Floor",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca28": {
+              "description": "Room",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca29": {
+              "description": "Type of place",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca3": {
+              "description": "City, township, shi (JP)",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca30": {
+              "description": "Postal community name",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca31": {
+              "description": "Post office box",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca32": {
+              "description": "Additional code",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca33": {
+              "description": "Seat (desk.cubicle, workstation)",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca34": {
+              "description": "Primary road name",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca35": {
+              "description": "Road section",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca36": {
+              "description": "Branch road name",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca37": {
+              "description": "Sub-branch road name",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca38": {
+              "description": "Street name pre-modifier",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca39": {
+              "description": "Street name post-modifier",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca4": {
+              "description": "City division, borough, city district, ward, chou (JP)",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca5": {
+              "description": "Neighborhood, block",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "ca6": {
+              "description": "Group of streets below the neighborhood level ",
+              "type": "string",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "country": {
+              "description": "The two-letter ISO 3166 [i.9] country code in capital ASCII letters, e.g. DE or US, as per ISO 3166 [i.9]",
+              "type": "string",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "String"
+            }
+          },
+          "required": [
+            "country"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.20"
+        },
+        "geolocation": {
+          "properties": {
+            "altitude": {
+              "description": "The altitude value of location as defined in IETF RFC 6225 [6]",
+              "format": "uint32",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "Uint32"
+            },
+            "altitudeType": {
+              "description": "The type description for altitude information e.g. floors or meters as defined in IETF RFC 6225 [6]",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "altitudeUncertainty": {
+              "description": "The uncertainty for altitude information as defined in IETF RFC 6225 [6]",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "datum": {
+              "description": "The datum value to express how coordinates are organized and related to real world as defined in IETF RFC 6225 [6]",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "lat": {
+              "description": "The latitude value of location as defined in IETF RFC 6225 [6]",
+              "format": "int64",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint64"
+            },
+            "latUncertainty": {
+              "description": "The uncertainty for Latitude information as defined in IETF RFC 6225 [6]",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "long": {
+              "description": "The longitude value of location as defined in IETF RFC 6225 [6]",
+              "format": "int64",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint64"
+            },
+            "longUncertainty": {
+              "description": "The uncertainty for Longitude information as defined in IETF RFC 6225 [6]",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            }
+          },
+          "required": [
+            "latUncertainty",
+            "lat",
+            "longUncertainty",
+            "long",
+            "datum"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.19"
+        }
+      },
+      "type": "object",
+      "x-etsi-ref": "6.5.9"
+    },
+    "apNeighbor": {
+      "properties": {
+        "bssid": {
+          "description": "BSS Id of the Access Point that is being reported.",
+          "type": "string",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "String"
+        },
+        "bssidInfo": {
+          "description": "Additional information related to Access Point that is being reported such as AP reachability, security, key scope, Mobility Domain, HT/VHT capability and Fine Time Measurements.",
+          "format": "uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "UInt32"
+        },
+        "channel": {
+          "description": "The channel currently used by this Access Point.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint8"
+        },
+        "operatingClass": {
+          "description": "The channel set of the AP indicated by this BSSID.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint8"
+        },
+        "phyType": {
+          "description": "PHY type of the AP indicated by this BSSID. It is an integer value coded according to the value of the dot11PHYType.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint8"
+        }
+      },
+      "required": [
+        "bssid",
+        "bssidInfo",
+        "operatingClass",
+        "channel",
+        "phyType"
+      ],
+      "type": "object",
+      "x-etsi-ref": "6.5.10"
+    },
+    "bssLoad": {
+      "properties": {
+        "availAdmCap": {
+          "description": "Available Admission Capacity that specifies the remaining amount of medium time available via explicit admission control, in units of 32 s/s.",
+          "format": "uint16",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint16"
+        },
+        "channelUtilization": {
+          "description": "The percentage of time, linearly scaled with 255 representing 100 %, that the AP sensed the medium was busy, as indicated by either the physical or virtual Carrier Sense (CS) mechanism.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "UInt8"
+        },
+        "staCount": {
+          "description": "An unsigned integer that indicates the total number of STAs currently associated with this BSS.",
+          "format": "uint16",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "UInt16"
+        }
+      },
+      "required": [
+        "staCount",
+        "channelUtilization",
+        "availAdmCap"
+      ],
+      "type": "object",
+      "x-etsi-ref": "6.5.7"
+    },
+    "channel": {
+      "description": "Channel configured for the Access Point.",
+      "format": "uint32",
+      "type": "integer",
+      "x-etsi-mec-cardinality": "0..1",
+      "x-etsi-mec-origin-type": "Uint32"
+    },
+    "extBssLoad": {
+      "properties": {
+        "muMimoStaCount": {
+          "description": "Indicates the total number of STAs currently associated with this BSS that have a 1 in the MU Beamformee Capable field of their VHT Capabilities element.",
+          "format": "uint16",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "UInt16"
+        },
+        "obsSec20MhzUtil": {
+          "description": "Observable loading on each of the secondary 20 MHz channel.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint8"
+        },
+        "obsSec40MhzUtil": {
+          "description": "Observable loading on each of the secondary 40 MHz channel.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint8"
+        },
+        "obsSec80MhzUtil": {
+          "description": "Observable loading on each of the secondary 80 MHz channel.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint8"
+        },
+        "spatStreamUnderUtil": {
+          "description": "The percentage of time, linearly scaled with 255 representing 100 %, that the AP has underutilized spatial domain resources for given busy time of the medium.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "UInt8"
+        }
+      },
+      "required": [
+        "muMimoStaCount",
+        "spatStreamUnderUtil",
+        "obsSec20MhzUtil",
+        "obsSec40MhzUtil",
+        "obsSec80MhzUtil"
+      ],
+      "type": "object",
+      "x-etsi-ref": "6.5.8"
+    },
+    "timeStamp": {
+      "properties": {
+        "nanoSeconds": {
+          "description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+          "format": "uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint32"
+        },
+        "seconds": {
+          "description": "The seconds part of the time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC.",
+          "format": "uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint32"
+        }
+      },
+      "required": [
+        "seconds",
+        "nanoSeconds"
+      ],
+      "type": "object",
+      "x-etsi-ref": "6.5.2"
+    },
+    "wanMetrics": {
+      "properties": {
+        "downlinkLoad": {
+          "description": "1-octet positive integer representing the current percentage loading of the downlink WAN connection, scaled linearly with 255 representing 100 %, as measured over an interval the duration of which is reported in Load Measurement Duration. In cases where the downlink load is unknown to the AP, the value is set to zero.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "UInt8"
+        },
+        "downlinkSpeed": {
+          "description": "4-octet positive integer whose value is an estimate of the WAN Backhaul link current downlink speed in kilobits per second.",
+          "format": "uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint32"
+        },
+        "lmd": {
+          "description": "The LMD (Load Measurement Duration) field is a 2-octet positive integer representing the duration over which the Downlink Load and Uplink Load have been measured, in tenths of a second. When the actual load measurement duration is greater than the maximum value, the maximum value will be reported. The value of the LMD field is set to 0 when neither the uplink nor downlink load can be computed. When the uplink and downlink loads are computed over different intervals, the maximum interval is reported.",
+          "format": "uint16",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint16"
+        },
+        "uplinkLoad": {
+          "description": "1-octet positive integer representing the current percentage loading of the uplink WAN connection, scaled linearly with 255 representing 100 %, as measured over an interval, the duration of which is reported in Load Measurement Duration. In cases where the uplink load is unknown to the AP, the value is set to zero.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint8"
+        },
+        "uplinkSpeed": {
+          "description": "4-octet positive integer whose value is an estimate of the WAN Backhaul link's current uplink speed in kilobits per second.",
+          "format": "uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "UInt32"
+        },
+        "wanInfo": {
+          "description": "Info about WAN link status, link symmetricity and capacity currently used.",
+          "format": "uint8",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint8"
+        }
+      },
+      "required": [
+        "wanInfo",
+        "downlinkSpeed",
+        "uplinkSpeed",
+        "downlinkLoad",
+        "uplinkLoad",
+        "lmd"
+      ],
+      "type": "object",
+      "x-etsi-ref": "6.5.6"
+    },
+    "wlanCap": {
+      "properties": {
+        "dmg": {
+          "properties": {
+            "ExtScMcsCap": {
+              "description": "Extended SC MCS capabilities as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "dmgApOrPcpCapInfo": {
+              "description": "DMG AP or PCP capabilities information as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "uint16",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint16"
+            },
+            "dmgStaBeamTrackTimeLimit": {
+              "description": "DMG station beam tracking time limit as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "uint16",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint16"
+            },
+            "dmgStaCapInfo": {
+              "description": "DMG station capabilities information as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "int64",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint64"
+            },
+            "maxNrBasicAmsduSubframes": {
+              "description": "Number of basic A-MSDU subframes in A-MSDU as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "maxNrShortAmsduSubframes": {
+              "description": "Number of short A-MSDU subframes in A-MSDU as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "sarCap": {
+              "description": "SAR capabilities as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "tddCap": {
+              "description": "TDD capabilities as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "uint16",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint16"
+            }
+          },
+          "required": [
+            "dmgStaCapInfo",
+            "dmgApOrPcpCapInfo",
+            "dmgStaBeamTrackTimeLimit",
+            "ExtScMcsCap",
+            "maxNrBasicAmsduSubframes",
+            "maxNrShortAmsduSubframes",
+            "tddCap",
+            "sarCap"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.17"
+        },
+        "edmg": {
+          "properties": {
+            "ampduParameters": {
+              "description": "A-MPDU parameters as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "reserved": {
+              "description": "",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "supportedMcs": {
+              "description": "Supported MCS as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "uint32",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint32"
+            },
+            "trnParameters": {
+              "description": "Training parameters as defined in draft IEEE P802.11/D4.0 [i.11]",
+              "format": "uint16",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint16"
+            }
+          },
+          "required": [
+            "ampduParameters",
+            "trnParameters",
+            "supportedMcs"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.18"
+        },
+        "he": {
+          "properties": {
+            "heMacCapInfo": {
+              "description": "MAC capabilities of an Access Point.",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "hePhyCapinfo": {
+              "description": "PHY capabilities of an Access Point.",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            },
+            "ppeThresholds": {
+              "description": "PPE Threshold determines the nominal packet padding value for a HE PPDU.",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "0..1",
+              "x-etsi-mec-origin-type": "not defined"
+            },
+            "supportedHeMcsNssSet": {
+              "description": "Supported MCS and NSS Set.",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint8"
+            }
+          },
+          "required": [
+            "heMacCapInfo",
+            "hePhyCapinfo",
+            "supportedHeMcsNssSet"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.16"
+        },
+        "ht": {
+          "properties": {
+            "ampduParameters": {
+              "description": "A-MPDU parameters as defined in IEEE 802.11-2016 [8].",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "UInt8"
+            },
+            "aselCap": {
+              "description": "ASEL capabilities as defined in IEEE 802.11-2016 [8].",
+              "format": "uint8",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "UInt8"
+            },
+            "htCapabilityInfo": {
+              "description": "HT Capability Information as defined in IEEE 802.11-2016 [8].",
+              "format": "uint16",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "UInt16"
+            },
+            "htExtendedCap": {
+              "description": "Extended HT Capabilities as defined in IEEE 802.11-2016 [8].",
+              "format": "uint16",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "UInt16"
+            },
+            "supportedMcsSet": {
+              "description": "Supported MCS set as defined in IEEE 802.11-2016 [8].",
+              "format": "uint128",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Uint128"
+            },
+            "txBeamFormCap": {
+              "description": "Transmit Beamforming Capabilities as defined in IEEE 802.11-2016 [8].",
+              "format": "uint32",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "UInt32"
+            }
+          },
+          "required": [
+            "htCapabilityInfo",
+            "ampduParameters",
+            "supportedMcsSet",
+            "htExtendedCap",
+            "txBeamFormCap",
+            "aselCap"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.14"
+        },
+        "vht": {
+          "properties": {
+            "vhtCapInfo": {
+              "description": "VHT capabilities Info as defined in IEEE 802.11-2016 [8].",
+              "format": "uint32",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "UInt32"
+            },
+            "vhtMcsNss": {
+              "description": "Supported VHT-MCS and NSS Set as defined in IEEE 802.11-2016 [8].",
+              "format": "int64",
+              "type": "integer",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "UInt64"
+            }
+          },
+          "required": [
+            "vhtCapInfo",
+            "vhtMcsNss"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.15"
+        }
+      },
+      "type": "object",
+      "x-etsi-ref": "6.5.4"
+    }
+  },
+  "required": [
+    "apId"
+  ],
+  "type": "object",
+  "x-etsi-ref": "6.2.2"
+}
+}
