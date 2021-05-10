@@ -63,7 +63,7 @@ Retrieve the access point information
     Should Be True    ${PIC_MEC_SYSTEM} == 1
     Should Be True    ${PIC_SERVICES} == 1
     Set Headers    {"Accept":"application/json"}
-    Set Headers    {"Content-Type":"application/json"}
+    Set Headers    {"Content-Type":"*/*"}
     Set Headers    {"Authorization":"${TOKEN}"}
     GET     ${apiRoot}/${apiName}/${apiVersion}/queries/ap/ap_information
     ${output}=    Output    response
@@ -74,7 +74,7 @@ Retrieve the access point information using filters
     Should Be True    ${PIC_MEC_SYSTEM} == 1
     Should Be True    ${PIC_SERVICES} == 1
     Set Headers    {"Accept":"application/json"}
-    Set Headers    {"Content-Type":"application/json"}
+    Set Headers    {"Content-Type":"*/*"}
     Set Headers    {"Authorization":"${TOKEN}"}
     GET     ${apiRoot}/${apiName}/${apiVersion}/queries/ap/ap_information?filter=${filter}
     ${output}=    Output    response

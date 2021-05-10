@@ -123,7 +123,7 @@ Retrieve the subscription information
     Should Be True    ${PIC_MEC_SYSTEM} == 1
     Should Be True    ${PIC_SERVICES} == 1
     #Set Headers    {"Accept":"application/json"}
-    Set Headers    {"Content-Type":"application/json"}
+    Set Headers    {"Content-Type":"*/*"}
     Set Headers    {"Authorization":"${TOKEN}"}
     GET     ${apiRoot}/${apiName}/${apiVersion}/subscriptions?subscription_type=${subscription_type}
     ${output}=    Output    response
@@ -133,7 +133,7 @@ Retrieve the subscription information using wrong endpoint
     Should Be True    ${PIC_MEC_SYSTEM} == 1
     Should Be True    ${PIC_SERVICES} == 1
     #Set Headers    {"Accept":"application/json"}
-    Set Headers    {"Content-Type":"application/json"}
+    Set Headers    {"Content-Type":"*/*"}
     Set Headers    {"Authorization":"${TOKEN}"}
     GET     ${apiRoot}/${apiName}/${apiVersion}/subscriptions_INVALID_URI
     ${output}=    Output    response
