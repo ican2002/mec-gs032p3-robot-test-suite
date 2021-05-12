@@ -1,0 +1,182 @@
+{
+  "items":{
+        "properties": {
+          "appInsId": {
+            "description": "Application instance identifier",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "String"
+          },
+          "flowFilter": {
+            "description": "Traffic flow filtering criteria, applicable only if when requestType is set as FLOW_SPECIFIC_MTS_SESSION. Any filtering criteria shall define a single session only. In case multiple sessions match flowFilter the request shall be rejected. If the flowFilter field is included, at least one of its subfields shall be included. Any flowFilter subfield that is not included shall be ignored in traffic flow filtering",
+            "items": {
+              "type": "object",
+              "properties": {
+                "dscp": {
+                  "format": "uint32",
+                  "type": "integer",
+                  "description": "DSCP in the IPv4 header or Traffic Class in the IPv6 header",
+                  "x-etsi-mec-cardinality": "0..1",
+                  "x-etsi-mec-origin-type": "Uint32"
+                },
+                "dstIp": {
+                  "description": "Destination address identity of session (including range)",
+                  "type": "string",
+                  "x-etsi-mec-cardinality": "0..1",
+                  "x-etsi-mec-origin-type": "String"
+                },
+                "dstPort": {
+                  "description": "Destination port identity of session",
+                  "items": {
+                    "type": "integer",
+                    "format": "uint32"
+                  },
+                  "minItems": 0,
+                  "type": "array",
+                  "x-etsi-mec-cardinality": "0..N",
+                  "x-etsi-mec-origin-type": "Uint32"
+                },
+                "flowlabel": {
+                  "format": "uint32",
+                  "type": "integer",
+                  "description": "Flow Label in the IPv6 header, applicable only if the flow is IPv6",
+                  "x-etsi-mec-cardinality": "0..1",
+                  "x-etsi-mec-origin-type": "Uint32"
+                },
+                "protocol": {
+                  "format": "uint32",
+                  "type": "integer",
+                  "description": "Protocol number",
+                  "x-etsi-mec-cardinality": "0..1",
+                  "x-etsi-mec-origin-type": "Uint32"
+                },
+                "sourceIp": {
+                  "description": "Source address identity of session (including range)",
+                  "type": "string",
+                  "x-etsi-mec-cardinality": "0..1",
+                  "x-etsi-mec-origin-type": "String"
+                },
+                "sourcePort": {
+                  "description": "Source port identity of session",
+                  "items": {
+                    "type": "integer",
+                    "format": "uint32"
+                  },
+                  "minItems": 0,
+                  "type": "array",
+                  "x-etsi-mec-cardinality": "0..N",
+                  "x-etsi-mec-origin-type": "Uint32"
+                }
+              }
+            },
+            "minItems": 1,
+            "type": "array",
+            "x-etsi-mec-cardinality": "1..N",
+            "x-etsi-mec-origin-type": "Structure (inlined)"
+          },
+          "mtsMode": {
+            "format": "uint32",
+            "type": "integer",
+            "description": "Numeric value (0 - 255) corresponding to a specific MTS mode of the MTS session: 0 = low cost, i.e. using the unmetered access network connection whenever it is available 1 = low latency, i.e. using the access network connection with lower latency 2 = high throughput, i.e. using the access network connection with higher throughput, or multiple access network connection simultaneously 3 = redundancy, i.e. sending duplicated (redundancy) packets over multiple access network connections for high-reliability and low-latency applications 4 = QoS, i.e. performing MTS based on the QoS requirement (qosD)",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "Uint32"
+          },
+          "qosD": {
+            "description": "QoS requirement description of the MTS session, applicable only if mtsMode = 4 (QoS). If the qosD field is included, at least one of its subfields shall be included. Any qosD subfield that is not included shall be ignored in Multi-access Traffic Steering (MTS)",
+            "properties": {
+              "maxJitter": {
+                "description": "tolerable jitter in [10 nanoseconds]",
+                "type": "integer",
+                "format": "uint32",
+                "x-etsi-mec-cardinality": "0..1",
+                "x-etsi-mec-origin-type": "Uint32"
+              },
+              "maxLatency": {
+                "description": "tolerable (one-way) delay in [10 nanoseconds]",
+                "type": "integer",
+                "format": "uint32",
+                "x-etsi-mec-cardinality": "0..1",
+                "x-etsi-mec-origin-type": "Uint32"
+              },
+              "maxLoss": {
+                "description": "tolerable packet loss rate in [1/10^x]",
+                "type": "integer",
+                "format": "uint32",
+                "x-etsi-mec-cardinality": "0..1",
+                "x-etsi-mec-origin-type": "Uint32"
+              },
+              "minTpt": {
+                "description": "minimal throughput in [kbps]",
+                "type": "integer",
+                "format": "uint32",
+                "x-etsi-mec-cardinality": "0..1",
+                "x-etsi-mec-origin-type": "Uint32"
+              },
+              "priority": {
+                "description": "numeric value (0 - 255) corresponding to the traffic priority 0: low; 1: medium; 2: high; 3: critical",
+                "type": "integer",
+                "format": "uint32",
+                "x-etsi-mec-cardinality": "0..1",
+                "x-etsi-mec-origin-type": "Uint32"
+              }
+            },
+            "type": "object",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "Structure"
+          },
+          "requestType": {
+            "description": "Numeric value (0 - 255) corresponding to specific type of consumer as following: 0 = APPLICATION_SPECIFIC_MTS_SESSION 1 = FLOW_SPECIFIC_MTS_SESSION",
+            "enum": [
+              0,
+              1
+            ],
+            "type": "integer",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "Enum_inlined"
+          },
+          "timeStamp": {
+            "description": "Time stamp to indicate when the corresponding information elements are sent ",
+            "properties": {
+              "nanoSeconds": {
+                "format": "uint32",
+                "type": "integer",
+                "description": "The nanoseconds part of the Time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "Uint32"
+              },
+              "seconds": {
+                "format": "uint32",
+                "type": "integer",
+                "description": "The seconds part of the Time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "Uint32"
+              }
+            },
+            "required": [
+              "seconds",
+              "nanoSeconds"
+            ],
+            "type": "object",
+            "x-etsi-mec-cardinality": "0..1",
+            "x-etsi-mec-origin-type": "Structure (inlined)"
+          },
+          "trafficDirection": {
+            "description": "The direction of the requested MTS session: 00 = Downlink (towards the UE) 01 = Uplink (towards the application/session) 10 = Symmetrical (see note) ",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "String"
+          }
+        },
+        "required": [
+          "appInsId",
+          "requestType",
+          "flowFilter",
+          "qosD",
+          "mtsMode",
+          "trafficDirection"
+        ],
+        "type": "object",
+        "x-etsi-notes": "NOTE:\tFor the downlink direction of a symmetrical flow, \"sourceIp\" and \"sourcePort\" in the \"flowFilter\" structure are used for source address and port, respectively; \"dstIp\" and \"dstPort\" are used for destination address and port, respectively. For the uplink direction of a symmetrical flow, \"sourceIp\" and \"sourcePort\" are used for destination address and port, respectively; \"dstIp\" and \"dstPort\" are used for source address and port, respectively.",
+        "x-etsi-ref": "7.2.5"
+      }
+}

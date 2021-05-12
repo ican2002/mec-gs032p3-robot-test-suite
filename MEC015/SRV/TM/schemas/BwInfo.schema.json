@@ -1,0 +1,127 @@
+{
+ "items": {
+	"properties": {
+		"allocationDirection": {
+			"description": "The direction of the requested BW allocation: 00 = Downlink (towards the UE) 01 = Uplink (towards the application/session) 10 = Symmetrical",
+			"type": "string",
+			"x-etsi-mec-cardinality": "1",
+			"x-etsi-mec-origin-type": "String"
+		},
+		"appInsId": {
+			"description": "Application instance identifier",
+			"type": "string",
+			"x-etsi-mec-cardinality": "1",
+			"x-etsi-mec-origin-type": "String"
+		},
+		"fixedAllocation": {
+			"description": "Size of requested fixed BW allocation in [bps]",
+			"type": "string",
+			"x-etsi-mec-cardinality": "1",
+			"x-etsi-mec-origin-type": "String"
+		},
+		"fixedBWPriority": {
+			"description": "Indicates the allocation priority when dealing with several applications or sessions in parallel. Values are not defined in the present document",
+			"enum": [
+				"SEE_DESCRIPTION"
+			],
+			"type": "string",
+			"x-etsi-mec-cardinality": "0..1",
+			"x-etsi-mec-origin-type": "Enum"
+		},
+		"requestType": {
+			"description": "Numeric value (0 - 255) corresponding to specific type of consumer as following: 0 = APPLICATION_SPECIFIC_BW_ALLOCATION 1 = SESSION_SPECIFIC_BW_ALLOCATION",
+			"type": "integer",
+			"enum": [
+				0,
+				1
+			],
+			"x-etsi-mec-cardinality": "1",
+			"x-etsi-mec-origin-type": "Enum_inlined"
+		},
+		"sessionFilter": {
+			"description": "Session filtering criteria, applicable when requestType is set as SESSION_SPECIFIC_BW_ALLOCATION. Any filtering criteria shall define a single session only. In case multiple sessions match sessionFilter the request shall be rejected",
+			"items": {
+				"type": "object",
+				"properties": {
+					"dstAddress": {
+						"description": "Destination address identity of session (including range)",
+						"type": "string",
+						"x-etsi-mec-cardinality": "0..1",
+						"x-etsi-mec-origin-type": "String"
+					},
+					"dstPort": {
+						"description": "Destination port identity of session",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 0,
+						"type": "array",
+						"x-etsi-mec-cardinality": "0..N",
+						"x-etsi-mec-origin-type": "String"
+					},
+					"protocol": {
+						"description": "Protocol number",
+						"type": "string",
+						"x-etsi-mec-cardinality": "0..1",
+						"x-etsi-mec-origin-type": "String"
+					},
+					"sourceIp": {
+						"description": "Source address identity of session (including range)",
+						"type": "string",
+						"x-etsi-mec-cardinality": "0..1",
+						"x-etsi-mec-origin-type": "String"
+					},
+					"sourcePort": {
+						"description": "Source port identity of session",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 0,
+						"type": "array",
+						"x-etsi-mec-cardinality": "0..N",
+						"x-etsi-mec-origin-type": "String"
+					}
+				}
+			},
+			"minItems": 0,
+			"type": "array",
+			"x-etsi-mec-cardinality": "0..N",
+			"x-etsi-mec-origin-type": "Structure (inlined)"
+		},
+		"timeStamp": {
+			"description": "Time stamp to indicate when the corresponding information elements are sent",
+			"properties": {
+				"nanoSeconds": {
+					"description": "The nanoseconds part of the Time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC",
+					"format": "uint32",
+					"type": "integer",
+					"x-etsi-mec-cardinality": "1",
+					"x-etsi-mec-origin-type": "Uint32"
+				},
+				"seconds": {
+					"format": "uint32",
+					"type": "integer",
+					"description": "The seconds part of the Time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC",
+					"x-etsi-mec-cardinality": "1",
+					"x-etsi-mec-origin-type": "Uint32"
+				}
+			},
+			"required": [
+				"seconds",
+				"nanoSeconds"
+			],
+			"type": "object",
+			"x-etsi-mec-cardinality": "0..1",
+			"x-etsi-mec-origin-type": "Structure (inlined)"
+		}
+	},
+	"required": [
+		"appInsId",
+		"requestType",
+		"fixedAllocation",
+		"allocationDirection"
+	],
+	"type": "object",
+	"x-etsi-ref": "7.2.2"
+}
+}

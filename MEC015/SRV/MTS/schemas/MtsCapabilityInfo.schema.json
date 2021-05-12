@@ -1,0 +1,86 @@
+{
+	"properties": {
+		"mtsAccessInfo": {
+			"description": "The information on access network connection as defined below",
+			"items": {
+				"type": "object",
+				"properties": {
+					"accessId": {
+						"format": "uint32",
+						"type": "integer",
+						"description": "Unique identifier for the access network connection",
+						"x-etsi-mec-cardinality": "1",
+						"x-etsi-mec-origin-type": "Uint32"
+					},
+					"accessType": {
+						"format": "uint32",
+						"type": "integer",
+						"description": "Numeric value (0-255) corresponding to specific type of access network as following: 0 = Unknown 1 = Any IEEE802.11-based WLAN technology 2 = Any 3GPP-based Cellular technology 3 = Any Fixed Access 11 = IEEE802.11 a/b/g WLAN 12 = IEEE 802.11 a/b/g/n WLAN 13 = IEEE 802.11 a/b/g/n/ac WLAN 14 = IEEE 802.11 a/b/g/n/ac/ax WLAN (Wi-Fi 6) 15 = IEEE 802.11 b/g/n WLAN 31 = 3GPP GERAN/UTRA (2G/3G) 32 = 3GPP E-UTRA (4G/LTE) 33 = 3GPP NR (5G)",
+						"x-etsi-mec-cardinality": "1",
+						"x-etsi-mec-origin-type": "Uint32"
+					},
+					"metered": {
+						"format": "uint32",
+						"type": "integer",
+						"description": "Numeric value (0-255) corresponding to the following: 0: the connection is not metered (see note) 1: the connection is metered 2: unknown ",
+						"x-etsi-mec-cardinality": "1",
+						"x-etsi-mec-origin-type": "Uint32"
+					}
+				}
+			},
+			"required": [
+				"accessId",
+				"accessType",
+				"metered"
+			],
+			"minItems": 1,
+			"type": "array",
+			"x-etsi-mec-cardinality": "1..N",
+			"x-etsi-mec-origin-type": "Structure (inlined)"
+		},
+		"mtsMode": {
+			"description": "Numeric value corresponding to a specific MTS operation supported by the TMS 0 = low cost, i.e. using the unmetered access network connection whenever it is available 1 = low latency, i.e. using the access network connection with lower latency 2 = high throughput, i.e. using the access network connection with higher throughput, or/and multiple access network connection simultaneously if supported 3 = redundancy, i.e. sending duplicated (redundancy) packets over multiple access network connections for highreliability and low-latency applications 4 = QoS, i.e. performing MTS based on the specific QoS requirements from the app",
+			"items": {
+				"type": "integer",
+				"format": "uint32"
+			},
+			"minItems": 1,
+			"type": "array",
+			"x-etsi-mec-cardinality": "1..N",
+			"x-etsi-mec-origin-type": "Uint32"
+		},
+		"timeStamp": {
+			"description": "Time stamp to indicate when the corresponding information elements are sent",
+			"properties": {
+				"nanoSeconds": {
+					"format": "uint32",
+					"type": "integer",
+					"description": "Time in nanoseconds in Unix-time since January 1, 1970, 00:00:00 UTC",
+					"x-etsi-mec-cardinality": "1",
+					"x-etsi-mec-origin-type": "Uint32"
+				},
+				"seconds": {
+					"description": "Time in seconds in Unix-time since January 1, 1970, 00:00:00 UTC",
+					"format": "uint32",
+					"type": "integer",
+					"x-etsi-mec-cardinality": "1",
+					"x-etsi-mec-origin-type": "Uint32"
+				}
+			},
+			"required": [
+				"seconds",
+				"nanoSeconds"
+			],
+			"type": "object",
+			"x-etsi-mec-cardinality": "0..1",
+			"x-etsi-mec-origin-type": "Structure (inlined)"
+		}
+	},
+	"required": [
+		"mtsAccessInfo",
+		"mtsMode"
+	],
+	"type": "object",
+	"x-etsi-notes": "NOTE:\tA metered connection is a network connection that has a maximum data usage in a specific period, e.g. per hour/day/week/month. The user may get billed extra charges if they go over the allotted amount.",
+	"x-etsi-ref": "7.2.4"
+}

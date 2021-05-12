@@ -1,0 +1,16 @@
+*** Variables ***
+# Generic variables
+${SCHEMA}                   http
+${HOST}                     127.0.0.1
+${PORT}                     8082
+${response}                         {}
+${TOKEN}                            Basic YWxhZGRpbjpvcGVuc2VzYW1l
+${apiRoot}        
+${apiName}        mts
+${apiVersion}     v1
+
+# Specific variables
+${APP_INSTANCE_ID}					appInstId01
+${NOT_EXISTING_APP_INSTANCE_ID}		NOT_EXISTING_APP_INS_ID
+${CORRECT_FILTER}					app_instance_id
+${BAD_FILTER}						app_id
