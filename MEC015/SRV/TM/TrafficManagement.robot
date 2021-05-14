@@ -1,4 +1,4 @@
-''[Documentation]   robot --outputdir ../../../outputs ./PlatBandwidthManager.robot
+''[Documentation]   robot --outputdir ../../../outputs ./TrafficManagement.robot
 ...    Test Suite to validate Bandwidth Management API (BWA) operations.
 
 *** Settings ***
@@ -64,14 +64,15 @@ TP_MEC_MEC015_SRV_TM_003_OK_01
     ...  Check that the IUT responds with a registration and initialisation approval for the requested bandwidth requirements sent by a MEC Application
     ...  ETSI GS MEC 015 V2.1.1, clause 8.4.3.4
     ...  Reference https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.json
-    Register Bandwidth Management Service  BwInfoApplicationSpecific  ${REQUEST_TYPE_APPLICATION}
+    Register Bandwidth Management Service Application specific  BwInfoApplicationSpecific
 
 TP_MEC_MEC015_SRV_TM_003_OK_02
     [Documentation]
     ...  Check that the IUT responds with a registration and initialisation approval for the requested bandwidth requirements sent by a MEC Application
     ...  ETSI GS MEC 015 V2.1.1, clause 8.4.3.4
     ...  Reference https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.json
-    Register Bandwidth Management Service  BwInfoSessionSpecific  ${REQUEST_TYPE_SESSION}
+    Register Bandwidth Management Service Session specific   BwInfoSessionSpecific
+    
 
 
 TP_MEC_MEC015_SRV_TM_003_BR_01
@@ -79,21 +80,21 @@ TP_MEC_MEC015_SRV_TM_003_BR_01
     ...  Check that the IUT responds with an error when a request with incorrect parameters is sent by a MEC Application
     ...  ETSI GS MEC 015 V2.1.1, clause 8.4.3.4
     ...  Reference https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.json
-    Register Bandwidth Management Service with incorrect parameters  BwInfo_BR  ${REQUEST_TYPE_APPLICATION}
+    Register Bandwidth Management Service with incorrect parameters  BwInfo_BR 
  
 TP_MEC_MEC015_SRV_TM_003_BR_02
     [Documentation]
     ...  Check that the IUT responds with an error when a request with incorrect parameters is sent by a MEC Application
     ...  ETSI GS MEC 015 V2.1.1, clause 8.4.3.4
     ...  Reference https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.json
-    Register Bandwidth Management Service with incorrect parameters  BwInfo_BR2  ${REQUEST_TYPE_APPLICATION}
+    Register Bandwidth Management Service with incorrect parameters  BwInfo_BR2
    
 TP_MEC_MEC015_SRV_TM_003_BR_03
     [Documentation]
     ...  Check that the IUT responds with an error when a request with incorrect parameters is sent by a MEC Application
     ...  ETSI GS MEC 015 V2.1.1, clause 8.4.3.4
     ...  Reference https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.json
-    Register Bandwidth Management Service with incorrect parameters  BwInfo_BR3  ${REQUEST_TYPE_APPLICATION}
+    Register Bandwidth Management Service with incorrect parameters  BwInfo_BR3
    
 
 
@@ -125,12 +126,15 @@ TP_MEC_MEC015_SRV_TM_005_OK
     ...  Check that the IUT updates the requested bandwidth requirements when commanded by a MEC Application
     ...  ETSI GS MEC 015 V2.1.1, clause 8.3.3.2
     ...  Reference https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.json
-    Update a bandwidth allocation   ${ALLOCATION_ID}    BwInfoUpdate
+    ${path}    Catenate    SEPARATOR=      jsons/     BwInfoUpdate.json
+    ${body}    Get File    ${path}
+    ${json_object}=	Evaluate  json.loads('''${body}''')  json
+    Update a bandwidth allocation   ${ALLOCATION_ID}    ${body}
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   BwInfo
-    Should Be Equal As Strings  ${response['body']['appInsId']}    ${APP_INSTANCE_ID}  
-    Should Be Equal As Strings  ${response['body']['fixedAllocation']}    ${FIXED_ALLOCATION}
-    Should Be Equal As Strings  ${response['body']['allocationDirection']}    ${ALLOCATION_DIRECTION}  
+    Should Be Equal As Strings  ${response['body']['appInsId']}    ${json_object['appInsId']}  
+    Should Be Equal As Strings  ${response['body']['fixedAllocation']}    ${json_object['fixedAllocation']}  
+    Should Be Equal As Strings  ${response['body']['allocationDirection']}    ${json_object['allocationDirection']}   
 
 
 TP_MEC_MEC015_SRV_TM_005_BR
@@ -138,26 +142,24 @@ TP_MEC_MEC015_SRV_TM_005_BR
     ...  Check that the IUT responds with an error when a request with incorrect parameters is sent by a MEC Application
     ...  ETSI GS MEC 015 V2.1.1, clause 8.3.3.2
     ...  Reference https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.json
-    Update a bandwidth allocation   ${ALLOCATION_ID}    BwInfoUpdate_BR
+    ${path}    Catenate    SEPARATOR=      jsons/     BwInfoUpdate_BR.json
+    ${body}    Get File    ${path}
+    ${json_object}=	Evaluate  json.loads('''${body}''')  json
+    Update a bandwidth allocation   ${ALLOCATION_ID}    ${body}
     Check HTTP Response Status Code Is    400
+
 
 TP_MEC_MEC015_SRV_TM_005_NF
     [Documentation]
     ...  Check that the IUT responds with an error when a request sent by a MEC Application doesn't comply with a required condition
     ...  ETSI GS MEC 015 V2.1.1, clause 8.3.3.2
     ...  Reference https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.json
+    ${path}    Catenate    SEPARATOR=      jsons/     BwInfoUpdate.json
+    ${body}    Get File    ${path}
+    ${json_object}=	Evaluate  json.loads('''${body}''')  json
     Update a bandwidth allocation   ${NON_EXISTENT_ALLOCATION_ID}    BwInfoUpdate
     Check HTTP Response Status Code Is    404
 
-
-
-TP_MEC_MEC015_SRV_TM_005_PF
-    [Documentation]
-    ...  Check that the IUT updates the requested bandwidth requirements when commanded by a MEC Application
-    ...  ETSI GS MEC 015 V2.1.1, clause 8.3.3.2
-    ...  Reference https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.json
-    Update a bandwidth allocation with invalid ETAG   ${ALLOCATION_ID}    BwInfoUpdate
-    Check HTTP Response Status Code Is    412
 
 ##PATCH on ${apiRoot}/${apiName}/${apiVersion}/bw_allocations/{ALLOCATION_ID}
 TP_MEC_MEC015_SRV_TM_006_OK
@@ -166,14 +168,17 @@ TP_MEC_MEC015_SRV_TM_006_OK
     ...  ETSI GS MEC 015 V2.1.1, clause 8.3.3.3
     ...  https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.yaml
     # Preamble
-    Register Bandwidth Management Service    BwInfoApplicationSpecific   ${REQUEST_TYPE_APPLICATION} 
+    Register Bandwidth Management Service Application specific   BwInfoApplicationSpecific
     # Test body
-    Request a deltas changes    ${ALLOCATION_ID}    BwInfoDeltas
+    ${path}    Catenate    SEPARATOR=      jsons/     BwInfoUpdate.json
+    ${body}    Get File    ${path}
+    ${json_object}=	Evaluate  json.loads('''${body}''')  json
+    Request a deltas changes    ${ALLOCATION_ID}    ${body}
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   BwInfo
-    Should be Equal    ${response['body']['appInsId']}    ${APP_INSTANCE_ID}
-    # Postamble
-    #Unregister Bandwidth Management Service    ${ALLOCATION_ID}
+        Should Be Equal As Strings  ${response['body']['appInsId']}    ${json_object['appInsId']}  
+    Should Be Equal As Strings  ${response['body']['fixedAllocation']}    ${json_object['fixedAllocation']}  
+    Should Be Equal As Strings  ${response['body']['allocationDirection']}    ${json_object['allocationDirection']}   
 
 TP_MEC_MEC015_SRV_TM_006_BR
     [Documentation]
@@ -181,38 +186,25 @@ TP_MEC_MEC015_SRV_TM_006_BR
     ...  ETSI GS MEC 015 V2.1.1, clause 8.3.3.3
     ...  https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.yaml
     # Preamble
-    Register Bandwidth Management Service    BwInfoApplicationSpecific   ${REQUEST_TYPE_APPLICATION} 
+    Register Bandwidth Management Service Application specific   BwInfoApplicationSpecific
     # Test body
-    Request a deltas changes    ${ALLOCATION_ID}    BwInfoDeltas_BR
+    ${path}    Catenate    SEPARATOR=      jsons/     BwInfoDeltas_BR.json
+    ${body}    Get File    ${path}
+    Request a deltas changes    ${ALLOCATION_ID}    ${body}
     Check HTTP Response Status Code Is    400
-    # Postamble
-    #Unregister Bandwidth Management Service    ${ALLOCATION_ID}
+
     
 TP_MEC_MEC015_SRV_TM_006_NF
     [Documentation]
     ...  Check that the IUT responds with an error when a request for an unknown URI is sent by a MEC Application
     ...  ETSI GS MEC 015 V2.1.1, clause 8.3.3.3
     ...  https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.yaml
-    Request a deltas changes    ${NON_EXISTENT_ALLOCATION_ID}    BwInfoDeltas_BR
+    ${path}    Catenate    SEPARATOR=      jsons/     BwInfoDeltas_BR.json
+    ${body}    Get File    ${path}
+    Request a deltas changes    ${NON_EXISTENT_ALLOCATION_ID}    ${body}
     Check HTTP Response Status Code Is    400
-    # Postamble
-    #Unregister Bandwidth Management Service    ${ALLOCATION_ID}
-    
 
-
-TP_MEC_MEC015_SRV_TM_006_PF
-    [Documentation]
-    ...  Check that the IUT responds with an error when a request sent by a MEC Application doesn't comply with a required condition
-    ...  ETSI GS MEC 015 V2.1.1, clause 8.3.3.3
-    ...  https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.yaml
-    # Preamble
-    Register Bandwidth Management Service    BwInfoApplicationSpecific   ${REQUEST_TYPE_APPLICATION} 
-    # Test body
-    Request a deltas changes with invalid ETAG    ${ALLOCATION_ID}    BwInfoDeltas
-    Check HTTP Response Status Code Is    412
-    # Postamble
-    #Unregister Bandwidth Management Service    ${ALLOCATION_ID}
-         
+  
 ##DELETE on ${apiRoot}/${apiName}/${apiVersion}/bw_allocations/{ALLOCATION_ID}
 TP_MEC_MEC015_SRV_TM_007_OK
     [Documentation]
@@ -296,45 +288,24 @@ Get a bandwidth allocation
 
 
 Update a bandwidth allocation
-    [Arguments]    ${allocation_id}    ${content}
+    [Arguments]    ${allocation_id}    ${body}
     Should Be True    ${PIC_MEC_PLAT} == 1
     Should Be True    ${PIC_SERVICES} == 1
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Set Headers    {"If-Match":"${ETAG_VALUE}"}
-    ${file}=    Catenate    SEPARATOR=    jsons/    ${content}    .json
-    ${body}=    Get File    ${file}
-    Put    ${apiRoot}/${apiName}/${apiVersion}/bw_allocations/${allocation_id}    ${body}
-    ${output}=    Output    response
-    Set Suite Variable    ${response}    ${output}
-
-
-Update a bandwidth allocation with invalid ETAG
-    [Arguments]    ${allocation_id}    ${content}
-    Should Be True    ${PIC_MEC_PLAT} == 1
-    Should Be True    ${PIC_SERVICES} == 1
-    Set Headers    {"Accept":"application/json"}
-    Set Headers    {"Content-Type":"application/json"}
-    Set Headers    {"Authorization":"${TOKEN}"}
-    Set Headers    {"If-Match":"${INVALID_ETAG}"}
-    ${file}=    Catenate    SEPARATOR=    jsons/    ${content}    .json
-    ${body}=    Get File    ${file}
     Put    ${apiRoot}/${apiName}/${apiVersion}/bw_allocations/${allocation_id}    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
 
 
 Request a deltas changes
-    [Arguments]    ${allocation_id}    ${content}
+    [Arguments]    ${allocation_id}    ${body}
     Should Be True    ${PIC_MEC_PLAT} == 1
     Should Be True    ${PIC_SERVICES} == 1
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Set Headers    {"If-Match":"${ETAG}"}
-    ${file}=    Catenate    SEPARATOR=    jsons/    ${content}    .json
-    ${body}=    Get File    ${file}
     Patch    ${apiRoot}/${apiName}/${apiVersion}/bw_allocations/${allocation_id}    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
@@ -347,7 +318,6 @@ Request a deltas changes with invalid ETAG
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Set Headers    {"If-Match":"${INVALID_ETAG}"}
     ${file}=    Catenate    SEPARATOR=    jsons/    ${content}    .json
     ${body}=    Get File    ${file}
     Patch    ${apiRoot}/${apiName}/${apiVersion}/bw_allocations/${allocation_id}    ${body}
@@ -356,7 +326,7 @@ Request a deltas changes with invalid ETAG
 
 
 Register Bandwidth Management Service with incorrect parameters
-    [Arguments]    ${content}   ${request_type}
+    [Arguments]    ${content}
     Should Be True    ${PIC_MEC_PLAT} == 1
     Should Be True    ${PIC_SERVICES} == 1
     Set Headers    {"Accept":"application/json"}
@@ -368,9 +338,32 @@ Register Bandwidth Management Service with incorrect parameters
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
     Check HTTP Response Status Code Is    400
+
+Register Bandwidth Management Service Session specific
+    [Arguments]    ${content}
+    Should Be True    ${PIC_MEC_PLAT} == 1
+    Should Be True    ${PIC_SERVICES} == 1
+    Set Headers    {"Accept":"application/json"}
+    Set Headers    {"Content-Type":"application/json"}
+    Set Headers    {"Authorization":"${TOKEN}"}
+    ${file}=    Catenate    SEPARATOR=    jsons/    ${content}    .json
+    ${body}=    Get File    ${file}
+    ${json_object}=	Evaluate  json.loads('''${body}''')  json
+    Post    ${apiRoot}/${apiName}/${apiVersion}/bw_allocations    ${body}
+    ${output}=    Output    response
+    Set Suite Variable    ${response}    ${output}
+    Check HTTP Response Status Code Is    201
+    Check HTTP Response Body Json Schema Is   BwInfo
+    Should Not Be Empty    ${response['headers']['Location']}
+    Should Be Equal As Strings  ${response['body']['appInsId']}    ${json_object['appInsId']}
+    Should Be Equal As Strings  ${response['body']['requestType']}    ${json_object['requestType']}
+    Should Be Equal As Strings  ${response['body']['sessionFilter']}    ${json_object['sessionFilter']}
+    Should Be Equal As Strings  ${response['body']['fixedAllocation']}    ${json_object['fixedAllocation']}
+    Should Be Equal As Strings  ${response['body']['allocationDirection']}    ${json_object['allocationDirection']}
     
-Register Bandwidth Management Service
-    [Arguments]    ${content}   ${request_type}
+        
+Register Bandwidth Management Service Application specific
+    [Arguments]    ${content}
     Should Be True    ${PIC_MEC_PLAT} == 1
     Should Be True    ${PIC_SERVICES} == 1
     Set Headers    {"Accept":"application/json"}
@@ -383,15 +376,13 @@ Register Bandwidth Management Service
     Set Suite Variable    ${response}    ${output}
     Check HTTP Response Status Code Is    201
     Check HTTP Response Body Json Schema Is   BwInfo
+    ${json_object}=	Evaluate  json.loads('''${body}''')  json
     Should Not Be Empty    ${response['headers']['Location']}
-    Should Be Equal As Strings  ${response['body']['appInsId']}    ${APP_INSTANCE_ID}
-    Should Be Equal As Strings  ${response['body']['requestType']}    ${request_type}
-    Should Be Equal As Strings  ${response['body']['fixedAllocation']}    ${FIXED_ALLOCATION}
-    Should Be Equal As Strings  ${response['body']['allocationDirection']}    ${ALLOCATION_DIRECTION}
-         
-    # Extract ETAG_VALUE
-    Set Suite Variable    ${ETAG_VALUE}     ${response['headers']['ETag']}
-    Should Not Be Empty    ${ETAG_VALUE}
+    Should Be Equal As Strings  ${response['body']['appInsId']}    ${json_object['appInsId']}
+    Should Be Equal As Strings  ${response['body']['requestType']}    ${json_object['requestType']}
+    Should Be Equal As Strings  ${response['body']['fixedAllocation']}    ${json_object['fixedAllocation']}
+    Should Be Equal As Strings  ${response['body']['allocationDirection']}    ${json_object['allocationDirection']}
+
    
 
 

@@ -15,12 +15,10 @@ ${apiVersion}     v1
 
 
 ${CORRECT_FILTER}						 app_instance_id
-${BAD_FILTER}							 app_id
+${BAD_FILTER}							 appInsId
 ${APP_INSTANCE_ID}                       5abe4782-2c70-4e47-9a4e-0ee3a1a0fd1f
 ${NON_EXISTENT_APP_INSTANCE_ID}          NON_EXISTENT_INSTANCE_ID
 
-${REQUEST_TYPE_APPLICATION}              0
-${REQUEST_TYPE_SESSION}                  1
 ${FIXED_ALLOCATION}						 32
 ${ALLOCATION_DIRECTION}					 00
 

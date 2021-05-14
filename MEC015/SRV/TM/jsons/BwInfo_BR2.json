@@ -2,5 +2,18 @@
 "appInsId": "5abe4782-2c70-4e47-9a4e-0ee3a1a0fd1f",
   "requestType": 0,
   "fixedAllocation": "-30",
-  "allocationDirection": "00"
+  "allocationDirection": "00",
+    "sessionFilter": [{
+			"protocol": "123",
+			"sourceIp": "10.10.0.3",
+			"dstAddress": "1234",
+			"dstPort": [
+				"1234",
+				"1334"
+			],
+			"sourcePort": [
+				"8080",
+				"8082"
+			]
+		}]
 }
