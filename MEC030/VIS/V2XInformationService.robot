@@ -1,4 +1,4 @@
-''[Documentation]   robot --outputdir ../../../outputs ./V2XInformationService.robot
+Y''[Documentation]   robot --outputdir ../../../outputs ./V2XInformationService.robot
 ...    Test Suite to validate V2X Information Service API (VIS) operations.
 
 *** Settings ***
@@ -554,7 +554,7 @@ TP_MEC_MEC030_SRV_V2X_010_OK_01
 
 
 ##Different implementation respect to the TP. See issue: https://forge.etsi.org/rep/mec/gs032p2-test-purposes/issues/7
-TP_MEC_MEC030_SRV_V2X_010_NF_01
+TP_MEC_MEC030_SRV_V2X_010_NF
     [Documentation] 
     ...  Check that the IUT responds with the requested of updating subscription when queried by a MEC Application
     ...  ETSI GS MEC 030 V2.1.1, clause 7.9.3.2
