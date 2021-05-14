@@ -1,0 +1,33 @@
+{
+	"subscriptionType": "ProvChgUuMbmsSubscription",
+	"callbackReference": "http://callback.uri/1",
+	"filterCriteria": {
+		"locationInfo": {
+			"ecgi": {
+				"plmn": {
+					"mcc": "001",
+					"mnc": "001"
+				},
+				"cellId": {
+					"cellId": "001"
+				}
+			},
+			"geoArea": {
+				"latitude": 42.1,
+				"longitude": 10.3
+			}
+		},
+		"v2xServerUsd": {
+			"tmgi": {
+				"mbmsServiceId": "serviceId",
+				"mcc": "002",
+				"mnc": "002"
+			},
+			"serviceAreaIdentifier": ["id01"],
+			"sdpInfo": {
+				"ipMulticastAddress": "10.10.0.255",
+				"portNumber": "1234"
+			}
+		}
+	}
+}

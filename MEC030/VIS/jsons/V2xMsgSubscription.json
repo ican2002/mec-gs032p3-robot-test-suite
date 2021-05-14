@@ -1,0 +1,7 @@
+{
+	"subscriptionType": "V2xMsgSubscription",
+	"callbackReference": "http://callback.uri/1",
+	"filterCriteria": {
+		"stdOrganization": "ETSI"
+	}
+}

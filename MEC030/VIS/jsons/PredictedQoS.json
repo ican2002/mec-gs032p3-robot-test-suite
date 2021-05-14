@@ -1,0 +1,41 @@
+{
+	"locationGranularity": "10",
+	"routes": [{
+		"routeinfo": [
+		  {
+				"location": {
+					"geoArea": {
+						"latitude": 43.7228,
+						"longitude": 10.4017
+					},
+					"ecgi": {
+						"plmn": {
+							"mcc": "135",
+							"mnc": "792"
+						},
+						"cellId": {
+							"cellId": "4680"
+						}
+					}
+				}
+			},
+		  {
+				"location": {
+					"geoArea": {
+						"latitude": 43.73,
+						"longitude": 10.41
+					},
+					"ecgi": {
+						"plmn": {
+							"mcc": "135",
+							"mnc": "792"
+						},
+						"cellId": {
+							"cellId": "4685"
+						}
+					}
+				}
+			}
+		]
+	}]
+}

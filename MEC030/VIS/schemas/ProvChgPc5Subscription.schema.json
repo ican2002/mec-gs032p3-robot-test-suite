@@ -1,0 +1,259 @@
+{
+  "properties": {
+    "_links": {
+      "description": "Hyperlink related to the resource. This shall be only included in the HTTP responses and in HTTP PUT requests.",
+      "properties": {
+        "self": {
+          "description": "'This data type represents a type of link'",
+          "type": "object",
+          "required": [
+            "href"
+          ],
+          "properties": {
+            "href": {
+              "description": "The URI referring to the subscription.",
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      },
+      "required": [
+        "self"
+      ],
+      "type": "object",
+      "x-etsi-mec-cardinality": "0..1"
+    },
+    "callbackReference": {
+      "description": "URI selected by the service consumer to receive notifications on the subscribed VIS information. This shall be included both in the request and in response.",
+      "format": "uri",
+      "type": "string",
+      "x-etsi-mec-cardinality": "1",
+      "x-etsi-mec-origin-type": "URI"
+    },
+    "expiryDeadline": {
+      "properties": {
+        "nanoSeconds": {
+          "description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+          "format": "Uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint32"
+        },
+        "seconds": {
+          "description": "The seconds part of the time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC.",
+          "format": "Uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint32"
+        }
+      },
+      "required": [
+        "seconds",
+        "nanoSeconds"
+      ],
+      "type": "object",
+      "x-etsi-ref": "6.5.2"
+    },
+    "filterCriteria": {
+      "description": "List of filtering criteria for the subscription. Any filtering criteria from below, which is included in the request, shall also be included in the response.",
+      "properties": {
+        "dstLayer2Id": {
+          "description": "For sidelink communication, the Destination Layer-2 ID is set to the ProSe Layer-2 Group ID or Prose UE ID, see ETSI TS 136 321 [i.12].",
+          "type": "string",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "String"
+        },
+        "locationInfo": {
+          "properties": {
+            "ecgi": {
+              "properties": {
+                "cellId": {
+                  "properties": {
+                    "cellId": {
+                      "description": "E-UTRAN Cell Identity as a bit string (size (28)).",
+                      "type": "string",
+                      "x-etsi-mec-cardinality": "1",
+                      "x-etsi-mec-origin-type": "String"
+                    }
+                  },
+                  "required": [
+                    "cellId"
+                  ],
+                  "type": "object",
+                  "x-etsi-ref": "6.6.2"
+                },
+                "plmn": {
+                  "properties": {
+                    "mcc": {
+                      "description": "The Mobile Country Code part of PLMN Identity.",
+                      "type": "string",
+                      "x-etsi-mec-cardinality": "1",
+                      "x-etsi-mec-origin-type": "String"
+                    },
+                    "mnc": {
+                      "description": "The Mobile Network Code part of PLMN Identity.",
+                      "type": "string",
+                      "x-etsi-mec-cardinality": "1",
+                      "x-etsi-mec-origin-type": "String"
+                    }
+                  },
+                  "required": [
+                    "mcc",
+                    "mnc"
+                  ],
+                  "type": "object",
+                  "x-etsi-ref": "6.5.4"
+                }
+              },
+              "required": [
+                "plmn",
+                "cellId"
+              ],
+              "type": "object",
+              "x-etsi-ref": "6.5.5"
+            },
+            "geoArea": {
+              "description": "Information of a geographical area.",
+              "properties": {
+                "latitude": {
+                  "description": "Latitude (DATUM = WGS84) -90 to 90 in decimal degree format DDD.ddd",
+                  "format": "Float",
+                  "type": "number",
+                  "x-etsi-mec-cardinality": "1",
+                  "x-etsi-mec-origin-type": "Float"
+                },
+                "longitude": {
+                  "description": "Longitude (DATUM = WGS84)-180 to 180 in decimal degree format DDD.ddd",
+                  "format": "Float",
+                  "type": "number",
+                  "x-etsi-mec-cardinality": "1",
+                  "x-etsi-mec-origin-type": "Float"
+                }
+              },
+              "required": [
+                "latitude",
+                "longitude"
+              ],
+              "type": "object",
+              "x-etsi-mec-cardinality": "0..1"
+            }
+          },
+          "type": "object",
+          "x-etsi-notes": "NOTE:\tEither ecgi or geoArea shall be present, but not both.",
+          "x-etsi-ref": "6.5.3"
+        },
+        "neighbourCellInfo": {
+          "description": "The information of the neighbour cells in a visiting PLMN that support V2X communication over PC5.",
+          "items": {
+            "properties": {
+              "ecgi": {
+                "properties": {
+                  "cellId": {
+                    "properties": {
+                      "cellId": {
+                        "description": "E-UTRAN Cell Identity as a bit string (size (28)).",
+                        "type": "string",
+                        "x-etsi-mec-cardinality": "1",
+                        "x-etsi-mec-origin-type": "String"
+                      }
+                    },
+                    "required": [
+                      "cellId"
+                    ],
+                    "type": "object",
+                    "x-etsi-ref": "6.6.2"
+                  },
+                  "plmn": {
+                    "properties": {
+                      "mcc": {
+                        "description": "The Mobile Country Code part of PLMN Identity.",
+                        "type": "string",
+                        "x-etsi-mec-cardinality": "1",
+                        "x-etsi-mec-origin-type": "String"
+                      },
+                      "mnc": {
+                        "description": "The Mobile Network Code part of PLMN Identity.",
+                        "type": "string",
+                        "x-etsi-mec-cardinality": "1",
+                        "x-etsi-mec-origin-type": "String"
+                      }
+                    },
+                    "required": [
+                      "mcc",
+                      "mnc"
+                    ],
+                    "type": "object",
+                    "x-etsi-ref": "6.5.4"
+                  }
+                },
+                "required": [
+                  "plmn",
+                  "cellId"
+                ],
+                "type": "object",
+                "x-etsi-ref": "6.5.5"
+              },
+              "plmn": {
+                "properties": {
+                  "mcc": {
+                    "description": "The Mobile Country Code part of PLMN Identity.",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  },
+                  "mnc": {
+                    "description": "The Mobile Network Code part of PLMN Identity.",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  }
+                },
+                "required": [
+                  "mcc",
+                  "mnc"
+                ],
+                "type": "object",
+                "x-etsi-ref": "6.5.4"
+              },
+              "siV2xConfig": {
+                "description": "V2X sidelink communication configuration, as defined in ETSI TS 136 331 [i.11].",
+                "type": "string"
+              }
+            },
+            "required": [
+              "plmn",
+              "ecgi",
+              "siV2xConfig"
+            ],
+            "type": "object",
+            "x-etsi-ref": "6.5.12"
+          },
+          "minItems": 0,
+          "type": "array",
+          "x-etsi-mec-cardinality": "0..N",
+          "x-etsi-mec-origin-type": "Pc5NeighbourCellInfo"
+        }
+      },
+      "required": [
+        "locationInfo",
+        "dstLayer2Id"
+      ],
+      "type": "object",
+      "x-etsi-mec-cardinality": "1"
+    },
+    "subscriptionType": {
+      "description": "Shall be set to \"ProvChgPc5Subscription\".",
+      "type": "string",
+      "x-etsi-mec-cardinality": "1",
+      "x-etsi-mec-origin-type": "String"
+    }
+  },
+  "required": [
+    "subscriptionType",
+    "callbackReference",
+    "filterCriteria"
+  ],
+  "type": "object",
+  "x-etsi-ref": "6.3.4"
+}

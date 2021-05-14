@@ -1,0 +1,422 @@
+{
+        "properties": {
+          "_links": {
+            "description": "Hyperlink related to the resource. This shall be only included in the HTTP responses and in HTTP PUT requests.",
+            "properties": {
+              "self": {
+                "description": "'This data type represents a type of link'",
+                "type": "object",
+                "required": [
+                  "href"
+                ],
+                "properties": {
+                  "href": {
+                    "description": "The URI referring to the subscription.",
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            },
+            "required": [
+              "self"
+            ],
+            "type": "object",
+            "x-etsi-mec-cardinality": "0..1"
+          },
+          "callbackReference": {
+            "description": "URI selected by the service consumer to receive notifications on the subscribed VIS information. This shall be included both in the request and in response.",
+            "format": "uri",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "URI"
+          },
+          "expiryDeadline": {
+            "properties": {
+              "nanoSeconds": {
+                "description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+                "format": "Uint32",
+                "type": "integer",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "Uint32"
+              },
+              "seconds": {
+                "description": "The seconds part of the time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC.",
+                "format": "Uint32",
+                "type": "integer",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "Uint32"
+              }
+            },
+            "required": [
+              "seconds",
+              "nanoSeconds"
+            ],
+            "type": "object",
+            "x-etsi-ref": "6.5.2"
+          },
+          "filterCriteria": {
+            "description": "List of filtering criteria for the subscription. Any filtering criteria from below, which is included in the request, shall also be included in the response.",
+            "properties": {
+              "locationInfo": {
+                "properties": {
+                  "ecgi": {
+                    "properties": {
+                      "cellId": {
+                        "properties": {
+                          "cellId": {
+                            "description": "E-UTRAN Cell Identity as a bit string (size (28)).",
+                            "type": "string",
+                            "x-etsi-mec-cardinality": "1",
+                            "x-etsi-mec-origin-type": "String"
+                          }
+                        },
+                        "required": [
+                          "cellId"
+                        ],
+                        "type": "object",
+                        "x-etsi-ref": "6.6.2"
+                      },
+                      "plmn": {
+                        "properties": {
+                          "mcc": {
+                            "description": "The Mobile Country Code part of PLMN Identity.",
+                            "type": "string",
+                            "x-etsi-mec-cardinality": "1",
+                            "x-etsi-mec-origin-type": "String"
+                          },
+                          "mnc": {
+                            "description": "The Mobile Network Code part of PLMN Identity.",
+                            "type": "string",
+                            "x-etsi-mec-cardinality": "1",
+                            "x-etsi-mec-origin-type": "String"
+                          }
+                        },
+                        "required": [
+                          "mcc",
+                          "mnc"
+                        ],
+                        "type": "object",
+                        "x-etsi-ref": "6.5.4"
+                      }
+                    },
+                    "required": [
+                      "plmn",
+                      "cellId"
+                    ],
+                    "type": "object",
+                    "x-etsi-ref": "6.5.5"
+                  },
+                  "geoArea": {
+                    "description": "Information of a geographical area.",
+                    "properties": {
+                      "latitude": {
+                        "description": "Latitude (DATUM = WGS84) -90 to 90 in decimal degree format DDD.ddd",
+                        "format": "Float",
+                        "type": "number",
+                        "x-etsi-mec-cardinality": "1",
+                        "x-etsi-mec-origin-type": "Float"
+                      },
+                      "longitude": {
+                        "description": "Longitude (DATUM = WGS84)-180 to 180 in decimal degree format DDD.ddd",
+                        "format": "Float",
+                        "type": "number",
+                        "x-etsi-mec-cardinality": "1",
+                        "x-etsi-mec-origin-type": "Float"
+                      }
+                    },
+                    "required": [
+                      "latitude",
+                      "longitude"
+                    ],
+                    "type": "object",
+                    "x-etsi-mec-cardinality": "0..1"
+                  }
+                },
+                "type": "object",
+                "x-etsi-notes": "NOTE:\tEither ecgi or geoArea shall be present, but not both.",
+                "x-etsi-ref": "6.5.3"
+              },
+              "neighbourCellInfo": {
+                "description": "The information of the neighbour cells in a visiting PLMN that support V2X communication over Uu unicast.",
+                "items": {
+                  "properties": {
+                    "ecgi": {
+                      "properties": {
+                        "cellId": {
+                          "properties": {
+                            "cellId": {
+                              "description": "E-UTRAN Cell Identity as a bit string (size (28)).",
+                              "type": "string",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "String"
+                            }
+                          },
+                          "required": [
+                            "cellId"
+                          ],
+                          "type": "object",
+                          "x-etsi-ref": "6.6.2"
+                        },
+                        "plmn": {
+                          "properties": {
+                            "mcc": {
+                              "description": "The Mobile Country Code part of PLMN Identity.",
+                              "type": "string",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "String"
+                            },
+                            "mnc": {
+                              "description": "The Mobile Network Code part of PLMN Identity.",
+                              "type": "string",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "String"
+                            }
+                          },
+                          "required": [
+                            "mcc",
+                            "mnc"
+                          ],
+                          "type": "object",
+                          "x-etsi-ref": "6.5.4"
+                        }
+                      },
+                      "required": [
+                        "plmn",
+                        "cellId"
+                      ],
+                      "type": "object",
+                      "x-etsi-ref": "6.5.5"
+                    },
+                    "fddInfo": {
+                      "properties": {
+                        "dlEarfcn": {
+                          "properties": {
+                            "earfcn": {
+                              "description": "E-UTRA Absolute Radio Frequency Channel Number, range (0... 65535)",
+                              "type": "integer",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "Integer"
+                            }
+                          },
+                          "required": [
+                            "earfcn"
+                          ],
+                          "type": "object",
+                          "x-etsi-ref": "6.6.3"
+                        },
+                        "dlTransmissionBandwidth": {
+                          "properties": {
+                            "transmissionBandwidth": {
+                              "description": "Numeric value corresponding to the transmission bandwidth expressed in units of resource blocks as follows:1 = bw6 (6 resource blocks)2 = bw15 (15 resource blocks) 3 = bw25 (25 resource blocks) 4 = bw50 (50 resource blocks) 5 = bw75 (75 resource blocks) 6 = bw100 (100 resource blocks)",
+                              "enum": [
+                                1,
+                                2,
+                                3,
+                                4,
+                                5,
+                                6
+                              ],
+                              "type": "integer",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "Enum"
+                            }
+                          },
+                          "required": [
+                            "transmissionBandwidth"
+                          ],
+                          "type": "object",
+                          "x-etsi-ref": "6.6.4"
+                        },
+                        "ulEarfcn": {
+                          "properties": {
+                            "earfcn": {
+                              "description": "E-UTRA Absolute Radio Frequency Channel Number, range (0... 65535)",
+                              "type": "integer",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "Integer"
+                            }
+                          },
+                          "required": [
+                            "earfcn"
+                          ],
+                          "type": "object",
+                          "x-etsi-ref": "6.6.3"
+                        },
+                        "ulTransmissionBandwidth": {
+                          "properties": {
+                            "transmissionBandwidth": {
+                              "description": "Numeric value corresponding to the transmission bandwidth expressed in units of resource blocks as follows:1 = bw6 (6 resource blocks)2 = bw15 (15 resource blocks) 3 = bw25 (25 resource blocks) 4 = bw50 (50 resource blocks) 5 = bw75 (75 resource blocks) 6 = bw100 (100 resource blocks)",
+                              "enum": [
+                                1,
+                                2,
+                                3,
+                                4,
+                                5,
+                                6
+                              ],
+                              "type": "integer",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "Enum"
+                            }
+                          },
+                          "required": [
+                            "transmissionBandwidth"
+                          ],
+                          "type": "object",
+                          "x-etsi-ref": "6.6.4"
+                        }
+                      },
+                      "required": [
+                        "ulEarfcn",
+                        "dlEarfcn",
+                        "ulTransmissionBandwidth",
+                        "dlTransmissionBandwidth"
+                      ],
+                      "type": "object",
+                      "x-etsi-ref": "6.5.6"
+                    },
+                    "pci": {
+                      "description": "Physical Cell Identifier.",
+                      "type": "integer",
+                      "x-etsi-mec-cardinality": "1",
+                      "x-etsi-mec-origin-type": "Integer"
+                    },
+                    "plmn": {
+                      "properties": {
+                        "mcc": {
+                          "description": "The Mobile Country Code part of PLMN Identity.",
+                          "type": "string",
+                          "x-etsi-mec-cardinality": "1",
+                          "x-etsi-mec-origin-type": "String"
+                        },
+                        "mnc": {
+                          "description": "The Mobile Network Code part of PLMN Identity.",
+                          "type": "string",
+                          "x-etsi-mec-cardinality": "1",
+                          "x-etsi-mec-origin-type": "String"
+                        }
+                      },
+                      "required": [
+                        "mcc",
+                        "mnc"
+                      ],
+                      "type": "object",
+                      "x-etsi-ref": "6.5.4"
+                    },
+                    "tddInfo": {
+                      "properties": {
+                        "earfcn": {
+                          "properties": {
+                            "earfcn": {
+                              "description": "E-UTRA Absolute Radio Frequency Channel Number, range (0... 65535)",
+                              "type": "integer",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "Integer"
+                            }
+                          },
+                          "required": [
+                            "earfcn"
+                          ],
+                          "type": "object",
+                          "x-etsi-ref": "6.6.3"
+                        },
+                        "subframeAssignment": {
+                          "description": "Uplink-downlink subframe configuration information.",
+                          "type": "string",
+                          "x-etsi-mec-cardinality": "1",
+                          "x-etsi-mec-origin-type": "String"
+                        },
+                        "transmissionBandwidth": {
+                          "properties": {
+                            "transmissionBandwidth": {
+                              "description": "Numeric value corresponding to the transmission bandwidth expressed in units of resource blocks as follows:1 = bw6 (6 resource blocks)2 = bw15 (15 resource blocks) 3 = bw25 (25 resource blocks) 4 = bw50 (50 resource blocks) 5 = bw75 (75 resource blocks) 6 = bw100 (100 resource blocks)",
+                              "enum": [
+                                1,
+                                2,
+                                3,
+                                4,
+                                5,
+                                6
+                              ],
+                              "type": "integer",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "Enum"
+                            }
+                          },
+                          "required": [
+                            "transmissionBandwidth"
+                          ],
+                          "type": "object",
+                          "x-etsi-ref": "6.6.4"
+                        }
+                      },
+                      "required": [
+                        "earfcn",
+                        "transmissionBandwidth",
+                        "subframeAssignment"
+                      ],
+                      "type": "object",
+                      "x-etsi-ref": "6.5.7"
+                    }
+                  },
+                  "required": [
+                    "plmn",
+                    "ecgi",
+                    "pci",
+                    "fddInfo",
+                    "tddInfo"
+                  ],
+                  "type": "object",
+                  "x-etsi-ref": "6.5.9"
+                },
+                "minItems": 0,
+                "type": "array",
+                "x-etsi-mec-cardinality": "0..N",
+                "x-etsi-mec-origin-type": "UuUniNeighbourCellInfo"
+              },
+              "v2xApplicationServer": {
+                "properties": {
+                  "ipAddress": {
+                    "description": "",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  },
+                  "udpPort": {
+                    "description": "",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  }
+                },
+                "required": [
+                  "ipAddress",
+                  "udpPort"
+                ],
+                "type": "object",
+                "x-etsi-ref": "6.5.8"
+              }
+            },
+            "required": [
+              "locationInfo",
+              "v2xApplicationServer"
+            ],
+            "type": "object",
+            "x-etsi-mec-cardinality": "1"
+          },
+          "subscriptionType": {
+            "description": "Shall be set to \"ProvChgUuUniSubscription\".",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "String"
+          }
+        },
+        "required": [
+          "subscriptionType",
+          "callbackReference",
+          "filterCriteria"
+        ],
+        "type": "object",
+        "x-etsi-ref": "6.3.2"
+      }

@@ -1,0 +1,25 @@
+{
+	"subscriptionType": "ProvChgUuUniSubscription",
+	"callbackReference": "http://callback.uri/1",
+	"filterCriteria": {
+		"locationInfo": {
+			"ecgi": {
+				"plmn": {
+					"mcc": "001",
+					"mnc": "002"
+				},
+				"cellId": {
+					"cellId": "002"
+				}
+			},
+			"geoArea": {
+				"latitude": 42.1,
+				"longitude": 10.5
+			}
+		},
+		"v2xApplicationServer": {
+			"ipAddress": "10.10.0.32",
+			"udpPort": "12345"
+		}
+	}
+}

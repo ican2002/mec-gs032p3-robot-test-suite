@@ -1,0 +1,174 @@
+{
+  "description": "predicted QoS of a vehicular UE",
+  "properties": {
+    "timeGranularity": {
+      "properties": {
+        "nanoSeconds": {
+          "description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+          "format": "Uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint32"
+        },
+        "seconds": {
+          "description": "The seconds part of the time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC.",
+          "format": "Uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint32"
+        }
+      },
+      "required": [
+        "seconds",
+        "nanoSeconds"
+      ],
+      "type": "object",
+      "x-etsi-ref": "6.5.2"
+    },
+    "locationGranularity": {
+      "description": "Granularity of visited location. Measured in meters",
+      "type": "string"
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "routeinfo": {
+            "description": "Information relating to a specific route. The first structure shall relate to the route origin and the last to the route destination. Intermediate waypoint locations may also be provided. ",
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "required": [
+                "location"
+              ],
+              "properties": {
+                "location": {
+                  "properties": {
+                    "ecgi": {
+                      "properties": {
+                        "cellId": {
+                          "properties": {
+                            "cellId": {
+                              "description": "E-UTRAN Cell Identity as a bit string (size (28)).",
+                              "type": "string",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "String"
+                            }
+                          },
+                          "required": [
+                            "cellId"
+                          ],
+                          "type": "object",
+                          "x-etsi-ref": "6.6.2"
+                        },
+                        "plmn": {
+                          "properties": {
+                            "mcc": {
+                              "description": "The Mobile Country Code part of PLMN Identity.",
+                              "type": "string",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "String"
+                            },
+                            "mnc": {
+                              "description": "The Mobile Network Code part of PLMN Identity.",
+                              "type": "string",
+                              "x-etsi-mec-cardinality": "1",
+                              "x-etsi-mec-origin-type": "String"
+                            }
+                          },
+                          "required": [
+                            "mcc",
+                            "mnc"
+                          ],
+                          "type": "object",
+                          "x-etsi-ref": "6.5.4"
+                        }
+                      },
+                      "required": [
+                        "plmn",
+                        "cellId"
+                      ],
+                      "type": "object",
+                      "x-etsi-ref": "6.5.5"
+                    },
+                    "geoArea": {
+                      "description": "Information of a geographical area.",
+                      "properties": {
+                        "latitude": {
+                          "description": "Latitude (DATUM = WGS84) -90 to 90 in decimal degree format DDD.ddd",
+                          "format": "Float",
+                          "type": "number",
+                          "x-etsi-mec-cardinality": "1",
+                          "x-etsi-mec-origin-type": "Float"
+                        },
+                        "longitude": {
+                          "description": "Longitude (DATUM = WGS84)-180 to 180 in decimal degree format DDD.ddd",
+                          "format": "Float",
+                          "type": "number",
+                          "x-etsi-mec-cardinality": "1",
+                          "x-etsi-mec-origin-type": "Float"
+                        }
+                      },
+                      "required": [
+                        "latitude",
+                        "longitude"
+                      ],
+                      "type": "object",
+                      "x-etsi-mec-cardinality": "0..1"
+                    }
+                  },
+                  "type": "object",
+                  "x-etsi-notes": "NOTE:\tEither ecgi or geoArea shall be present, but not both.",
+                  "x-etsi-ref": "6.5.3"
+                },
+                "time": {
+                  "properties": {
+                    "nanoSeconds": {
+                      "description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+                      "format": "Uint32",
+                      "type": "integer",
+                      "x-etsi-mec-cardinality": "1",
+                      "x-etsi-mec-origin-type": "Uint32"
+                    },
+                    "seconds": {
+                      "description": "The seconds part of the time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC.",
+                      "format": "Uint32",
+                      "type": "integer",
+                      "x-etsi-mec-cardinality": "1",
+                      "x-etsi-mec-origin-type": "Uint32"
+                    }
+                  },
+                  "required": [
+                    "seconds",
+                    "nanoSeconds"
+                  ],
+                  "type": "object",
+                  "x-etsi-ref": "6.5.2"
+                },
+                "rsrp": {
+                  "description": "Reference Signal Received Quality as defined in ETSI TS 136 214 [i.13]. Shall only be included in the response",
+                  "type": "integer",
+                  "format": "Uint8"
+                },
+                "rsrq": {
+                  "description": "Reference Signal Received Quality as defined in ETSI TS 136 214 [i.13]. Shall only be included in the response",
+                  "type": "integer",
+                  "format": "Uint8"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "routeinfo"
+        ]
+      }
+    }
+  },
+  "required": [
+    "locationGranularity",
+    "routes"
+  ],
+  "type": "object",
+  "x-etsi-mec-cardinality": "0..1"
+}

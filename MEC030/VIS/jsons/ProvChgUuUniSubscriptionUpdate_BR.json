@@ -1,0 +1,30 @@
+{
+	"subscriptionType": "InvalidProvChgUuUniSubscription",
+	"callbackReference": "http://callback.uri/1",
+	"filterCriteria": {
+		"locationInfo": {
+			"ecgi": {
+				"plmn": {
+					"mcc": "005",
+					"mnc": "006"
+				},
+				"cellId": {
+					"cellId": "007"
+				}
+			},
+			"geoArea": {
+				"latitude": 43,
+				"longitude": 11
+			}
+		},
+		"v2xApplicationServer": {
+			"ipAddress": "10.10.0.33",
+			"udpPort": "12345"
+		}
+	},
+	"_links": {
+    "self": {
+      "href": "https://127.0.0.1/vis/v1/subscription/1"
+    }
+  }
+}

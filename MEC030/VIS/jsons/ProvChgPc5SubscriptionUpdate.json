@@ -1,0 +1,27 @@
+{
+	"subscriptionType": "ProvChgPc5Subscription",
+	"callbackReference": "http://callback.uri/1",
+	"filterCriteria": {
+		"locationInfo": {
+			"ecgi": {
+				"plmn": {
+					"mcc": "003",
+					"mnc": "002"
+				},
+				"cellId": {
+					"cellId": "005"
+				}
+			},
+			"geoArea": {
+				"latitude": 42,
+				"longitude": 10.3
+			}
+		},
+		"dstLayer2Id": "1"
+	},
+	"_links": {
+		"self": {
+			"href": "https://127.0.0.1/v1/vai/subscriptions/3"
+		}
+	}
+}

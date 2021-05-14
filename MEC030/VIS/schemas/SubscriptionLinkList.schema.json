@@ -1,0 +1,59 @@
+{
+  "properties": {
+    "_links": {
+      "description": "List of hyperlinks related to the resource.",
+      "properties": {
+        "self": {
+          "description": "'This data type represents a type of link'",
+          "type": "object",
+          "required": [
+            "href"
+          ],
+          "properties": {
+            "href": {
+              "description": "The URI referring to the subscription.",
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "description": "The service consumer’s subscriptions.",
+            "properties": {
+              "href": {
+                "description": "The URI referring to the subscription.",
+                "format": "uri",
+                "type": "string",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "URI"
+              },
+              "subscriptionType": {
+                "description": "Type of the subscription. The values are as defined in the \\\"subscriptionType\\\" attribute for each different V2X information event subscription data type.",
+                "type": "string",
+                "x-etsi-mec-cardinality": "1",
+                "x-etsi-mec-origin-type": "String"
+              }
+            },
+            "required": [
+              "href",
+              "subscriptionType"
+            ],
+            "x-etsi-mec-cardinality": "0..N"
+          }
+        }
+      },
+      "type": "object",
+      "required": [
+        "self"
+      ],
+      "x-etsi-mec-cardinality": "1"
+    }
+  },
+  "required": [
+    "_links"
+  ],
+  "type": "object",
+  "x-etsi-ref": "6.3.6"
+}

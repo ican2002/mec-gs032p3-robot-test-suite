@@ -1,0 +1,102 @@
+{
+  "properties": {
+    "_links": {
+      "description": "Hyperlink related to the resource. This shall be only included in the HTTP responses and in HTTP PUT requests.",
+      "properties": {
+        "self": {
+          "description": "'This data type represents a type of link'",
+          "type": "object",
+          "required": [
+            "href"
+          ],
+          "properties": {
+            "href": {
+              "description": "The URI referring to the subscription.",
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      },
+      "required": [
+        "self"
+      ],
+      "type": "object",
+      "x-etsi-mec-cardinality": "0..1"
+    },
+    "callbackReference": {
+      "description": "URI selected by the service consumer to receive notifications on the subscribed V2X message. This shall be included both in the request and in response.",
+      "format": "uri",
+      "type": "string",
+      "x-etsi-mec-cardinality": "1",
+      "x-etsi-mec-origin-type": "URI"
+    },
+    "expiryDeadline": {
+      "properties": {
+        "nanoSeconds": {
+          "description": "The nanoseconds part of the time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC.",
+          "format": "Uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint32"
+        },
+        "seconds": {
+          "description": "The seconds part of the time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC.",
+          "format": "Uint32",
+          "type": "integer",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Uint32"
+        }
+      },
+      "required": [
+        "seconds",
+        "nanoSeconds"
+      ],
+      "type": "object",
+      "x-etsi-ref": "6.5.2"
+    },
+    "filterCriteria": {
+      "description": "List of filtering criteria for the subscription. Any filtering criteria from below, which is included in the request, shall also be included in the response.",
+      "properties": {
+        "msgType": {
+          "description": "Subscribed V2X message type. Its value is defined by the standardization organization indicated by the attribute stdOrganization. See note 2.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "x-etsi-mec-cardinality": "0..N",
+          "x-etsi-mec-origin-type": "Enum"
+        },
+        "stdOrganization": {
+          "description": "Standardization organization which defines the subscribed V2X message type: \nETSI: European Telecommunications Standards Institute. \nSee note 1.",
+          "enum": [
+            "ETSI"
+          ],
+          "type": "string",
+          "x-etsi-mec-cardinality": "1",
+          "x-etsi-mec-origin-type": "Enum"
+        }
+      },
+      "required": [
+        "stdOrganization"
+      ],
+      "type": "object",
+      "x-etsi-mec-cardinality": "1"
+    },
+    "subscriptionType": {
+      "description": "Shall be set to \"V2xMsgSubscription\".",
+      "type": "string",
+      "x-etsi-mec-cardinality": "1",
+      "x-etsi-mec-origin-type": "String"
+    }
+  },
+  "required": [
+    "subscriptionType",
+    "callbackReference",
+    "filterCriteria"
+  ],
+  "type": "object",
+  "x-etsi-notes": "NOTE 1:\tOther standardization organizations could be added as needed.\nNOTE 2:\tThe V2X message types of ETSI shall be used as specified in ETSI TS 102 894-2 [6], clause A.114.",
+  "x-etsi-ref": "6.3.5"
+}

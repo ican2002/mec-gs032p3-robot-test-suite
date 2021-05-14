@@ -1,0 +1,40 @@
+*** Variables ***
+# Generic variables
+${SCHEMA}                   http
+${HOST}                     127.0.0.1
+${PORT}                     8082
+${response}                         {}
+${TOKEN}                            Basic YWxhZGRpbjpvcGVuc2VzYW1l
+${apiRoot}        
+${apiName}        vis
+${apiVersion}     v1
+
+# Specific variables
+${LOCATION_INFO_QUERY_PARAM} 		location_info 								
+${ECGI} 							1357924680
+${UNKNOWN_ECGI} 					1357924689
+
+${LAT_VALUE}						43.7228
+${LON_VALUE}						10.4017
+${UNKNOWN_LAT_VALUE}				10.10
+
+${SUB_TYPE_PROV_CHG_UU_UNI}			prov_chg_uu_uni
+${SUB_TYPE_PROV_CHG_UU_MBMS}		prov_chg_uu_mbms
+${SUB_TYPE_PROV_CHG_PC5}			prov_chg_uu_pc5
+${SUB_TYPE_V2X_MSG}					v2x_msg
+${SUB_TYPE_INVALID}					INVALID_SUB_TYPE
+
+${SUB_TYPE_RESP_PROV_CHG_UU_UNI}		ProvChgUuUniSubscription
+${SUB_TYPE_RESP_PROV_CHG_UU_MBMS}		ProvChgUuMbmsSubscription
+${SUB_TYPE_RESP_PROV_CHG_PC5}			ProvChgPc5Subscription
+${SUB_TYPE_RESP_V2X_MSG}				V2xMsgSubscription
+
+${SUB_PROV_CHG_UU_UNI_ID}		1
+${SUB_PROV_CHG_UU_MBMS_ID}		2
+${SUB_PROV_CHG_PC5_ID}			3
+${SUB_V2X_MSG_ID}				4
+${SUB_WRONG_PARAM}				WRONG_PARAM
+${NOT_EXISTING_SUB_ID}			NOT_EXISTING_SUB_ID
+
+${CALLBACK_URL}							http://callback.uri/1
+
