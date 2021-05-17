@@ -12,8 +12,8 @@ Library     String
 
 
 *** Test Cases ***
-Request RNIS subscription list
-    [Documentation]   TC_MEC_SRV_RNIS_011_OK
+TC_MEC_MEC012_SRV_RNIS_011_OK
+    [Documentation]   Request RNIS subscription list
     ...  Check that the RNIS service sends the list of links to the relevant RNIS subscriptions when requested
     ...  ETSI GS MEC 012 2.1.1, clause 7.6.3.1
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml#/definitions/SubscriptionLinkList
@@ -25,8 +25,8 @@ Request RNIS subscription list
     # Check Subscription    ${response['body']}    ${SUBSCRIPTION_VALUE}
 
 
-Create RNIS subscription
-    [Documentation]   TC_MEC_SRV_RNIS_012_OK
+TC_MEC_MEC012_SRV_RNIS_012_OK
+    [Documentation]   Create RNIS subscription
     ...  Check that the RNIS service creates a new RNIS subscription
     ...  ETSI GS MEC 012 2.1.1, clause 7.6.3.4
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
@@ -36,8 +36,8 @@ Create RNIS subscription
     Check CellChangeSubscription    ${response['body']}
 
 
-Get an Individual RNIS subscription
-    [Documentation]    TC_MEC_SRV_RNIS_013_OK
+TC_MEC_MEC012_SRV_RNIS_013_OK
+    [Documentation]    Get an Individual RNIS subscription
     ...    Check that the RNIS service sends a RNIS subscription when requested
     ...    ETSI GS MEC 012 2.1.1, clause 7.8.3.1
     ...    Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
@@ -46,8 +46,8 @@ Get an Individual RNIS subscription
     Check HTTP Response Body Json Schema Is   CellChangeSubscription
 
 
-Update an Individual RNIS subscription
-    [Documentation]    TC_MEC_SRV_RNIS_014_OK
+TC_MEC_MEC012_SRV_RNIS_014_OK
+    [Documentation]    Update an Individual RNIS subscription
     ...    Check that the RNIS service modifies a RNIS subscription when requested
     ...    ETSI GS MEC 012 2.1.1, clause 7.8.3.2
     ...    Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
@@ -55,8 +55,9 @@ Update an Individual RNIS subscription
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   CellChangeSubscription
     
-Remove an Individual RNIS subscription
-    [Documentation]    TC_MEC_SRV_RNIS_015_OK
+
+TC_MEC_MEC012_SRV_RNIS_015_OK
+    [Documentation]    Remove an Individual RNIS subscription
     ...    Check that the RNIS service deletes a RNIS subscription when requested
     ...    ETSI GS MEC 012 2.1.1, clause 7.8.3.5
     ...    Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml

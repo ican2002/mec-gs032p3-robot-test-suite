@@ -9,8 +9,8 @@ Resource    resources/RadioNetworkInformationAPI.robot
 Library     REST    ${MEC-APP_SCHEMA}://${MEC-APP_HOST}:${MEC-APP_PORT}    ssl_verify=false
 
 *** Test Cases ***
-Request RNIS subscription list using bad parameters
-    [Documentation]   TC_MEC_SRV_RNIS_011_BR
+TC_MEC_MEC012_SRV_RNIS_011_BR
+    [Documentation]   Request RNIS subscription list using bad parameters
     ...  Check that the RNIS service responds with an error when it receives a request to get all RNIS subscriptions with a wrong subscription type
     ...  ETSI GS MEC 012 2.1.1, clause 7.6.3.1
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml#/definitions/SubscriptionLinkList
@@ -18,8 +18,8 @@ Request RNIS subscription list using bad parameters
     Check HTTP Response Status Code Is    400
     
 
-Create RNIS subscription using bad parameters
-    [Documentation]   TC_MEC_SRV_RNIS_012_BR
+TC_MEC_MEC012_SRV_RNIS_012_BR
+    [Documentation]   Create RNIS subscription using bad parameters
     ...  Check that the RNIS service responds with an error when it receives a request to create a new RNIS subscription with a wrong format
     ...  ETSI GS MEC 012 2.1.1, clause 7.6.3.4
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml

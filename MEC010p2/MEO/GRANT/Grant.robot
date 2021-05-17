@@ -3,7 +3,7 @@
 
 *** Settings ***
 Resource    environment/variables.txt
-Resource    ../../GenericKeywords.robot
+Resource    ../../../GenericKeywords.robot
 Library     REST    ${MEO_SCHEMA}://${MEO_HOST}:${MEO_PORT}    ssl_verify=false
 Library     OperatingSystem
 
@@ -11,8 +11,8 @@ Library     OperatingSystem
 
 
 *** Test Cases ***
-Request a new Grant - Synchronous mode
-    [Documentation]   TP_MEC_MEO_GRANT_001_OK
+TC_MEC_MEC010p2_MEO_GRANT_001_OK
+    [Documentation]  
     ...  Check that MEO sends a synchronous grant response when a grant request is requested
     ...  ETSI GS MEC 010-2 2.0.10, clause 7.6.1.3.1
     ...  ETSI GS MEC 010-2 2.0.10, Table 6.2.4.2.2-1 (GrantRequest)
@@ -25,7 +25,7 @@ Request a new Grant - Synchronous mode
 
 
 
-Request a new Grant - Malformed request
+TC_MEC_MEC010p2_MEO_GRANT_001_BR
     [Documentation]   TP_MEC_MEO_GRANT_001_BR
     ...  Check that MEO responds with an error when it receives a malformed request when a new grant request is performed
     ...  ETSI GS MEC 010-2 2.0.10, clause 7.6.1.3.2
@@ -36,7 +36,7 @@ Request a new Grant - Malformed request
 
 
 
-Request a new Grant - Asynchronous mode
+TC_MEC_MEC010p2_MEO_GRANT_002_OK
     [Documentation]   TP_MEC_MEO_GRANT_002_OK
     ...  Check that MEO sends a asynchronous grant response when a grant request is requested
     ...  ETSI GS MEC 010-2 2.0.10, clause 7.6.1.3.1
@@ -48,7 +48,7 @@ Request a new Grant - Asynchronous mode
     Check HTTP Response Body is Empty
 
 
-Request an individual grant - Ongoing process
+TC_MEC_MEC010p2_MEO_GRANT_003_OK
     [Documentation]    TP_MEC_MEO_GRANT_003_OK
     ...  Check that MEO sends the status of a grant request when a query on a granting ID is performed.
     ...  The process of creating the grant is ongoing, no grant is available yet 
@@ -61,7 +61,7 @@ Request an individual grant - Ongoing process
     
     
     
-Request an individual grant using non existant grant identifier
+TC_MEC_MEC010p2_MEO_GRANT_003_NF
     [Documentation]    TP_MEC_MEO_GRANT_003_NF
     ...    Check that MEO responds with an error when it receives a request for returning a grant referred with a wrong ID
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.6.1.3.2
@@ -71,7 +71,7 @@ Request an individual grant using non existant grant identifier
     
     
 
-Request an individual grant - Successful 
+TC_MEC_MEC010p2_MEO_GRANT_004_OK
     [Documentation]    TP_MEC_MEO_GRANT_004_OK
     ...  Check that MEO sends the status of a grant request when a query on a granting ID is performed 
     ...  ETSI GS MEC 010-2 2.0.10, clause 7.6.1.3.2

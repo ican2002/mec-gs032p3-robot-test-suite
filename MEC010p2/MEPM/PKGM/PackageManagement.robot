@@ -3,7 +3,7 @@
 
 *** Settings ***
 Resource    environment/variables.txt
-Resource    ../../GenericKeywords.robot
+Resource    ../../../GenericKeywords.robot
 Library     REST    ${MEPM_SCHEMA}://${MEPM_HOST}:${MEPM_PORT}    ssl_verify=false
 Library     BuiltIn
 Library     OperatingSystem
@@ -11,7 +11,7 @@ Library     MockServerLibrary
 
 
 *** Test Cases ***
-Request all APP Packages
+TC_MEC_MEC010p2_MEPM_PKGM_001_OK
     [Documentation]    TP_MEC_MEPM_PKGM_001_OK
     ...    Check that MEPM returns the list of App Packages when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.4.1.3.2
@@ -24,7 +24,7 @@ Request all APP Packages
     Check Result Contains    ${response}    appDId    ${APPD_ID}
 
 
-Request all APP Packages using bad attribute-based filtering parameter
+TC_MEC_MEC010p2_MEPM_PKGM_001_BR
     [Documentation]    TP_MEC_MEPM_PKGM_001_BR
     ...    Check that MEPM responds with an error when it receives 
     ...    a malformed request for requesting the list of existing App Packages
@@ -34,7 +34,7 @@ Request all APP Packages using bad attribute-based filtering parameter
     Check HTTP Response Status Code Is    400
 
 
-Request an individual APP Package
+TC_MEC_MEC010p2_MEPM_PKGM_002_OK
     [Documentation]    TP_MEC_MEPM_PKGM_002_OK
     ...    Check that MEPM returns the an App Package when requested
     ...    EETSI GS MEC 010-2 2.0.10, clause 7.4.2.3.2
@@ -47,7 +47,7 @@ Request an individual APP Package
     Check Result Contains    ${response}    appDId    ${APPD_ID}       
 
  
- Request an individual APP Package using wrong identifier
+TC_MEC_MEC010p2_MEPM_PKGM_002_NF
     [Documentation]    TP_MEC_MEPM_PKGM_002_NF
     ...    Check that MEPM responds with an error when it receives
     ...    a request for returning a App Package referred with a wrong ID
@@ -58,7 +58,7 @@ Request an individual APP Package
     
     
  
- Request the App Descriptor of an App Package
+TC_MEC_MEC010p2_MEPM_PKGM_003_OK
     [Documentation]    TP_MEC_MEPM_PKGM_003_OK
     ...    Check that MEPM returns the Application Descriptor contained on a on-boarded Application Package when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.4.4.3.2
@@ -69,7 +69,7 @@ Request an individual APP Package
     ##TODO: How to check content returned?    
     
 
-Request the App Descriptor of an App Package using a non onboarded APP Package
+TC_MEC_MEC010p2_MEPM_PKGM_003_NF
     [Documentation]    TP_MEC_MEPM_PKGM_003_NF
     ...    Check that MEPM responds with an error when it receives
     ...    a request for returning a App Descriptor referred with a wrong App Package ID
@@ -79,7 +79,7 @@ Request the App Descriptor of an App Package using a non onboarded APP Package
     Check HTTP Response Status Code Is    404
     
     
- Request the Content of an onboarded App Package
+TC_MEC_MEC010p2_MEPM_PKGM_004_OK
     [Documentation]    TP_MEC_MEPM_PKGM_004_OK
     ...    Check that MEPM returns the content on a on-boarded Application Package when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.4.3.3.2
@@ -88,7 +88,7 @@ Request the App Descriptor of an App Package using a non onboarded APP Package
     Check HTTP Response Status Code Is    200
     ##TODO: How to check content returned?    
 
-Request the Content of an App Package using a non onboarded APP Package identifier
+TC_MEC_MEC010p2_MEPM_PKGM_004_NF
     [Documentation]    TP_MEC_MEPM_PKGM_004_NF
     ...    Check that MEPM responds with an error when it receives 
     ...    a request for returning a application package content referred with a wrong App Package ID
@@ -98,7 +98,7 @@ Request the Content of an App Package using a non onboarded APP Package identifi
     Check HTTP Response Status Code Is    404
     
 
-Create a new App Packages Subscription
+TC_MEC_MEC010p2_MEPM_PKGM_005_OK
     [Documentation]    TP_MEC_MEPM_PKGM_005_OK
     ...    Check that MEPM service returns an application package subscription when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.4.5.3.1
@@ -111,9 +111,8 @@ Create a new App Packages Subscription
     Check Result Contains    ${response}    subscriptionType    ON_BOARDING
     Check Result Contains    ${response}    callbackUri    ${CALLBACK_URI}
 
-    
 
-Create a new App Packages Subscription with malformed parameter
+TC_MEC_MEC010p2_MEPM_PKGM_005_BR
     [Documentation]    TP_MEC_MEPM_PKGM_005_BR
     ...    Check that MEPM service sends an error when it receives a 
     ...    malformed request for creating a new subscription on AppPackages
@@ -124,7 +123,7 @@ Create a new App Packages Subscription with malformed parameter
     Check HTTP Response Status Code Is    400
 
 
-Request all App Package subscriptions
+TC_MEC_MEC010p2_MEPM_PKGM_006_OK
    [Documentation]    TP_MEC_MEPM_PKGM_006_OK
     ...    Check that MEPM service returns the list of Application Package Subscriptions when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.4.5.3.2
@@ -136,7 +135,7 @@ Request all App Package subscriptions
     Check Result Contains    ${response}    subscriptionId    ${SUBSCRIPTION_ID}
 
 
-Request a specific App Package subscription
+TC_MEC_MEC010p2_MEPM_PKGM_007_OK
     [Documentation]    TP_MEC_MEPM_PKGM_007_OK
     ...    Check that MEPM service returns an Application Package Subscription when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.4.6.3.2
@@ -148,7 +147,7 @@ Request a specific App Package subscription
     Check Result Contains    ${response}    subscriptionId    ${SUBSCRIPTION_ID}
 
 
-Request a specific App Package subscription using non existant subscription identifier
+TC_MEC_MEC010p2_MEPM_PKGM_007_NF
     [Documentation]    TP_MEC_MEPM_PKGM_007_NF
     ...    Check that MEPM service sends an error when it receives a query for a subscription
     ...    on AppPackages with a wrong identifier
@@ -158,7 +157,7 @@ Request a specific App Package subscription using non existant subscription iden
     Check HTTP Response Status Code Is    404
 
 
-Remove a APP Package subscription
+TC_MEC_MEC010p2_MEPM_PKGM_008_OK
     [Documentation]    TP_MEC_MEPM_PKGM_008_OK
     ...    Check that MEPM service deletes an Application Package Subscription when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.4.6.3.4
@@ -168,7 +167,7 @@ Remove a APP Package subscription
     Check HTTP Response Body is Empty
 
 
-Remove a APP Package subscription using non existant subscription id
+TC_MEC_MEC010p2_MEPM_PKGM_008_NF
     [Documentation]    TP_MEC_MEPM_PKGM_008_NF
     ...    Check that MEPM service sends an error when it receives a deletion 
     ...    request for a subscription on AppPackages with a wrong identifier
@@ -178,7 +177,7 @@ Remove a APP Package subscription using non existant subscription id
     Check HTTP Response Status Code Is    404
 
 
-Post Application Package Notification
+TC_MEC_MEC010p2_MEPM_PKGM_009_OK
     [Documentation]   TP_MEC_MEPM_PKGM_009_OK
     ...  Check that the MEPM service sends a application package notification 
     ...  if the MEPM service has an associated subscription and the event is generated

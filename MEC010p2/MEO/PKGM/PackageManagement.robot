@@ -3,7 +3,7 @@
 
 *** Settings ***
 Resource    environment/variables.txt
-Resource    ../../GenericKeywords.robot
+Resource    ../../../GenericKeywords.robot
 Library     REST    ${MEO_SCHEMA}://${MEO_HOST}:${MEO_PORT}    ssl_verify=false
 Library     BuiltIn
 Library     OperatingSystem
@@ -11,8 +11,8 @@ Library     MockServerLibrary
 
 
 *** Test Cases ***
-Create new App Package Resource
-    [Documentation]   TP_MEC_MEO_PKGM_001_OK
+TC_MEC_MEC010p2_MEO_PKGM_001_OK
+    [Documentation]  
     ...  Check that MEO creates a new App Package when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.1.3.1
     ...    ETSI GS MEC 010-2 2.0.10, Table 6.2.3.3.2-1 (OnboardedAppPkgInfo)
@@ -29,8 +29,8 @@ Create new App Package Resource
     Check Result Contains    ${response}    usageState    ${USAGE_STATE}
 
 
-Create new App Package Resource using malformed request
-    [Documentation]   TP_MEC_MEO_PKGM_001_BR
+TC_MEC_MEC010p2_MEO_PKGM_001_BR
+    [Documentation]  
     ...  Check that MEO creates a new App Package when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.1.3.1
     ...    ETSI GS MEC 010-2 2.0.10, Table 6.2.3.2.2-1 (AppPkg)
@@ -39,7 +39,7 @@ Create new App Package Resource using malformed request
     Check HTTP Response Status Code Is    400
 
 
-Request all APP Packages
+TC_MEC_MEC010p2_MEO_PKGM_002_OK
     [Documentation]    TP_MEC_MEO_PKGM_002_OK
     ...    Check that MEO returns the list of App Packages when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.1.3.2
@@ -52,7 +52,7 @@ Request all APP Packages
     Check Result Contains    ${response}    appDId    ${APPD_ID}
 
         
-Request all APP Packages using bad attribute-based filtering parameter
+TC_MEC_MEC010p2_MEO_PKGM_002_BR
     [Documentation]    TP_MEC_MEO_PKGM_002_BR
     ...    Check that MEO responds with an error when it receives 
     ...    a malformed request for retrieving the list of existing App Packages
@@ -62,7 +62,7 @@ Request all APP Packages using bad attribute-based filtering parameter
     Check HTTP Response Status Code Is    400
     
     
-Request an individual APP Package
+TC_MEC_MEC010p2_MEO_PKGM_003_OK
     [Documentation]    TP_MEC_MEO_PKGM_003_OK
     ...    Check that MEO returns the list of App Packages when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.1.3.2
@@ -75,7 +75,7 @@ Request an individual APP Package
     Check Result Contains    ${response}    appDId    ${APPD_ID}
     
     
-Request an individual APP Package using wrong identifier
+TC_MEC_MEC010p2_MEO_PKGM_003_NF
     [Documentation]    TP_MEC_MEO_PKGM_003_NF
     ...    Check that MEO responds with an error when it receives 
     ...    a request for retrieving a App Package referred with a wrong ID
@@ -86,7 +86,7 @@ Request an individual APP Package using wrong identifier
     Check HTTP Response Status Code Is    404
     
 
-Remove an individual APP Package
+TC_MEC_MEC010p2_MEO_PKGM_004_OK
     [Documentation]    TP_MEC_MEO_PKGM_004_OK
     ...    Check that MEO deletes an App Package when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.2.3.4
@@ -96,7 +96,7 @@ Remove an individual APP Package
     Check HTTP Response Body is Empty
     
 
-Remove an individual APP Package using wrong identifier
+TC_MEC_MEC010p2_MEO_PKGM_004_NF
     [Documentation]    TP_MEC_MEO_PKGM_004_NF
     ...    Check that MEO responds with an error when it receives 
     ...    a request for deleting an App Package referred with a wrong ID
@@ -106,7 +106,7 @@ Remove an individual APP Package using wrong identifier
     Check HTTP Response Status Code Is    404
 
 
-Request a Operational state update on an APP Package
+TC_MEC_MEC010p2_MEO_PKGM_005_OK
     [Documentation]    TP_MEC_MEO_PKGM_005_OK
     ...    Check that MEO changes the status of an App Package from INITIAL_OP_STATE with an operation of type OPERATION_VALUE when requested, with the following possible combinations:
     ...            - ENABLED, DISABLE
@@ -119,7 +119,7 @@ Request a Operational state update on an APP Package
     Check HTTP Response Body is Empty
 
 
-Request a Operational state update on an APP Package using wrong operation value
+TC_MEC_MEC010p2_MEO_PKGM_005_BR
     [Documentation]    TP_MEC_MEO_PKGM_005_BR
     ...    Check that MEO sends an error when it receives a malformed request to modify the operational state of an application package
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.2.3.3
@@ -128,7 +128,7 @@ Request a Operational state update on an APP Package using wrong operation value
     Check HTTP Response Status Code Is    400
 
 
-Request a Operational state update on a non onboarded APP Package
+TC_MEC_MEC010p2_MEO_PKGM_005_NF
     [Documentation]    TP_MEC_MEO_PKGM_005_NF
     ...    Check that MEO responds with an error when it receives a request for updating an App Package referred with a wrong ID
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.2.3.3
@@ -137,7 +137,7 @@ Request a Operational state update on a non onboarded APP Package
     Check HTTP Response Status Code Is    404
 
 
-Request the App Descriptor of an App Package
+TC_MEC_MEC010p2_MEO_PKGM_006_OK
     [Documentation]    TP_MEC_MEO_PKGM_006_OK
     ...    Check that MEO returns the Application Descriptor contained on a on-boarded Application Package when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.6.3.2
@@ -147,7 +147,7 @@ Request the App Descriptor of an App Package
     Check HTTP Response Contain Header with value    Content-Type    ${ACCEPTED_CONTENT_TYPE}
     
 
-Request the App Descriptor of an App Package using a non onboarded APP Package
+TC_MEC_MEC010p2_MEO_PKGM_006_NF
     [Documentation]    TP_MEC_MEO_PKGM_006_NF
     ...    Check that MEO responds with an error when it receives a request to retrieve an application descriptor referred with a wrong app package ID
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.6.3.2
@@ -156,7 +156,7 @@ Request the App Descriptor of an App Package using a non onboarded APP Package
     Check HTTP Response Status Code Is    404
 
 
-Create a new App Packages Subscription
+TC_MEC_MEC010p2_MEO_PKGM_007_OK
     [Documentation]    TP_MEC_MEO_PKGM_007_OK
     ...    Check that MEO service sends a Application Package Subscription when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.3.3.1
@@ -170,7 +170,7 @@ Create a new App Packages Subscription
     Check Result Contains    ${response}    callbackUri    ${CALLBACK_URI}
     
 
-Create a new App Packages Subscription with malformed parameter
+TC_MEC_MEC010p2_MEO_PKGM_007_BR
     [Documentation]    TP_MEC_MEO_PKGM_007_BR
     ...    Check that MEO service sends an error when it receives a malformed request for creating a new subscription on AppPackages
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.3.3.1
@@ -180,7 +180,7 @@ Create a new App Packages Subscription with malformed parameter
     Check HTTP Response Status Code Is    400
       
 
-Request all App Package subscriptions
+TC_MEC_MEC010p2_MEO_PKGM_008_OK
    [Documentation]    TP_MEC_MEO_PKGM_008_OK
     ...    Check that MEO service returns the list of Application Package Subscriptions when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.3.3.2
@@ -192,7 +192,7 @@ Request all App Package subscriptions
     Check Result Contains    ${response}    subscriptionId    ${SUBSCRIPTION_ID}
 
 
-Request a specific App Package subscription
+TC_MEC_MEC010p2_MEO_PKGM_009_OK
     [Documentation]    TP_MEC_MEO_PKGM_009_OK
     ...    Check that MEO service returns an Application Package Subscription when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.4.3.2
@@ -204,7 +204,7 @@ Request a specific App Package subscription
     Check Result Contains    ${response}    subscriptionId    ${SUBSCRIPTION_ID}
 
 
-Request a specific App Package subscription using non existant subscription identifier
+TC_MEC_MEC010p2_MEO_PKGM_009_NF
     [Documentation]    TP_MEC_MEO_PKGM_009_NF
     ...    Check that MEO service sends an error when it receives a query for a subscription
     ...    on AppPackages with a wrong identifier
@@ -214,7 +214,7 @@ Request a specific App Package subscription using non existant subscription iden
     Check HTTP Response Status Code Is    404
 
 
-Remove a APP Package subscription
+TC_MEC_MEC010p2_MEO_PKGM_010_OK
     [Documentation]    TP_MEC_MEO_PKGM_010_OK
     ...    Check that MEO service deletes an Application Package Subscription when requested
     ...    ETSI GS MEC 010-2 2.0.10, clause 7.3.4.3.4
@@ -224,7 +224,7 @@ Remove a APP Package subscription
     Check HTTP Response Body is Empty
 
 
-Remove a APP Package subscription using non existant subscription id
+TC_MEC_MEC010p2_MEO_PKGM_010_NF
     [Documentation]    TP_MEC_MEO_PKGM_010_NF
     ...    Check that MEO service sends an error when it receives a deletion request
     ...    for a subscription on AppPackages with a wrong identifier
@@ -234,7 +234,7 @@ Remove a APP Package subscription using non existant subscription id
     Check HTTP Response Status Code Is    404
 
 
-Post Application Package Notification
+TC_MEC_MEC010p2_MEO_PKGM_011_OK
     [Documentation]   TP_MEC_MEO_PKGM_011_OK
     ...  Check that the MEO service sends a application package notification 
     ...  if the MEO service has an associated subscription and the event is generated

@@ -14,8 +14,8 @@ Suite Setup    Create Mock Session    ${callback_uri}:${callback_port}
 Test Teardown  Reset All Requests
 
 *** Test Cases ***
-Cell change notification
-    [Documentation]   TC_MEC_SRV_RNIS_001_OK
+TC_MEC_MEC012_SRV_RNIS_001_OK
+    [Documentation]   Cell change notification
     ...  Check that the RNIS service sends an RNIS notification about cell change if the RNIS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 012 2.1.1, clause 6.4.2
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
@@ -33,8 +33,8 @@ Cell change notification
     Clear Requests    ${callback_endpoint}
 
 
-RAB Establishment notification
-    [Documentation]   TC_MEC_SRV_RNIS_002_OK
+TC_MEC_MEC012_SRV_RNIS_002_OK
+    [Documentation]   RAB Establishment notification
     ...  Check that the RNIS service sends an RNIS notification about RAB establishment if the RNIS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 012 2.1.1, clause 6.4.3
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
@@ -52,8 +52,8 @@ RAB Establishment notification
     Clear Requests    ${callback_endpoint}
 
 
-RAB modification notification
-    [Documentation]   TC_MEC_SRV_RNIS_003_OK
+TC_MEC_MEC012_SRV_RNIS_003_OK
+    [Documentation]   RAB modification notification
     ...  Check that the RNIS service sends an RNIS notification about RAB modification if the RNIS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 012 2.1.1, clause 6.4.4
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
@@ -71,8 +71,8 @@ RAB modification notification
     Clear Requests    ${callback_endpoint}
 
 
-RAB release notification
-    [Documentation]   TC_MEC_SRV_RNIS_004_OK
+TC_MEC_MEC012_SRV_RNIS_004_OK
+    [Documentation]   RAB release notification
     ...  Check that the RNIS service sends an RNIS notification about RAB release if the RNIS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 012 2.1.1, clause 6.4.5
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
@@ -90,8 +90,8 @@ RAB release notification
     Clear Requests    ${callback_endpoint}
 
 
-UE measurement notification
-    [Documentation]   TC_MEC_SRV_RNIS_005_OK
+TC_MEC_MEC012_SRV_RNIS_005_OK
+    [Documentation]   UE measurement notification
     ...  Check that the RNIS service sends an RNIS notification about UE measurement report  if the RNIS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 012 2.1.1, clause 6.4.6
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
@@ -109,8 +109,8 @@ UE measurement notification
     Clear Requests    ${callback_endpoint}
 
 
-UE timing advance notification
-    [Documentation]   TC_MEC_SRV_RNIS_006_OK
+TC_MEC_MEC012_SRV_RNIS_006_OK
+    [Documentation]   UE timing advance notification
     ...  Check that the RNIS service sends an RNIS notification about UE timing advance if the RNIS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 012 2.1.1, clause 6.4.7
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
@@ -128,8 +128,8 @@ UE timing advance notification
     Clear Requests    ${callback_endpoint}
 
 
-UE carrier aggregation reconfiguration notification
-    [Documentation]   TC_MEC_SRV_RNIS_007_OK
+TC_MEC_MEC012_SRV_RNIS_007_OK
+    [Documentation]   UE carrier aggregation reconfiguration notification
     ...  Check that the RNIS service sends an RNIS notification about UE carrier aggregation reconfiguration if the RNIS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 012 2.1.1, clause 6.4.8
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
@@ -147,8 +147,8 @@ UE carrier aggregation reconfiguration notification
     Clear Requests    ${callback_endpoint}
 
 
-S1-U bearer notification
-    [Documentation]   TC_MEC_SRV_RNIS_008_OK
+TC_MEC_MEC012_SRV_RNIS_008_OK
+    [Documentation]   S1-U bearer notification
     ...  Check that the RNIS service sends an RNIS notification about S1-U bearer if the RNIS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 012 2.1.1, clause 6.4.9
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml

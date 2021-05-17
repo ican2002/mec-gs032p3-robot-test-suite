@@ -11,8 +11,8 @@ Library     REST    ${MEC-APP_SCHEMA}://${MEC-APP_HOST}:${MEC-APP_PORT}    ssl_v
 
 
 *** Test Cases ***
-Request RabInfo info
-    [Documentation]   TC_MEC_SRV_RNIS_016_OK
+TC_MEC_MEC012_SRV_RNIS_016_OK
+    [Documentation]   Request RabInfo info
     ...  Check that the RNIS service returns the RAB information when requested
     ...  ETSI GS MEC 012 2.1.1, clause 7.3.3.1
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/RabInfo
@@ -22,8 +22,8 @@ Request RabInfo info
     Check RabInfo    ${response['body']}
 
 
-Request Plmn info
-    [Documentation]   TC_MEC_SRV_RNIS_017_OK
+TC_MEC_MEC012_SRV_RNIS_017_OK
+    [Documentation]   Request Plmn info
     ...  Check that the RNIS service returns the PLMN information when requested
     ...  ETSI GS MEC 012 2.1.1, clause 7.4.3.1
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/PlmnInfo
@@ -33,8 +33,8 @@ Request Plmn info
     Check PlmnInfo    ${response['body'][0]}
 
 
-Request S1Bearer info
-    [Documentation]   TC_MEC_SRV_RNIS_018_OK
+TC_MEC_MEC012_SRV_RNIS_018_OK
+    [Documentation]   Request S1Bearer info
     ...  Check that the RNIS service returns the S1 bearer information
     ...  ETSI GS MEC 012 2.1.1, clause 7.5.3.1
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/S1BearerInfo
@@ -44,8 +44,9 @@ Request S1Bearer info
     #log    ${response['body']}
     Check S1BearerInfo    ${response['body']}
 
-Request L2Meas info
-        [Documentation]   TC_MEC_SRV_RNIS_019_OK
+
+TC_MEC_MEC012_SRV_RNIS_019_OK
+        [Documentation]   Request L2Meas info
     ...  Check that the RNIS service returns the L2 measurements information
     ...  ETSI GS MEC 012 2.1.1, clause 7.5a.3.1
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/L2Meas
