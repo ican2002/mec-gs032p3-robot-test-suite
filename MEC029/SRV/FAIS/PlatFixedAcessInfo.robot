@@ -3,7 +3,8 @@
 Documentation
 ...    A test suite for validating Fixed Access Information Service (FAIS) operations.
 
-Resource    ../../GenericKeywords.robot
+Resource    ../../../GenericKeywords.robot
+Resource    ../../../pics.txt
 Resource    environment/variables.txt
 Library     REST    ${SCHEMA}://${HOST}:${PORT}    ssl_verify=false
 Library     OperatingSystem
@@ -15,8 +16,7 @@ Default Tags    TC_MEC_SRV_FAIS
 
 
 *** Test Cases ***
-
-TC_MEC_SRV_FAIS_001_OK
+TC_MEC_MEC029_SRV_FAIS_001_OK
     [Documentation]
     ...    Check that the IUT responds with the current status of the fixed access information
     ...    when queried by a MEC Application
@@ -29,7 +29,7 @@ TC_MEC_SRV_FAIS_001_OK
     Check HTTP Response Body Json Schema Is    FaInfo
 
 
-TC_MEC_SRV_FAIS_001_BR
+TC_MEC_MEC029_SRV_FAIS_001_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -41,7 +41,7 @@ TC_MEC_SRV_FAIS_001_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_FAIS_001_NF
+TC_MEC_MEC029_SRV_FAIS_001_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for non-existing data is sent by a MEC Application
@@ -53,7 +53,7 @@ TC_MEC_SRV_FAIS_001_NF
     Check HTTP Response Status Code Is    404
 
 
-TC_MEC_SRV_FAIS_002_OK
+TC_MEC_MEC029_SRV_FAIS_002_OK
     [Documentation]
     ...    Check that the IUT responds with the current status of the device information
     ...    when queried by a MEC Application
@@ -66,7 +66,7 @@ TC_MEC_SRV_FAIS_002_OK
     Check HTTP Response Body Json Schema Is    DeviceInfo
 
 
-TC_MEC_SRV_FAIS_002_BR
+TC_MEC_MEC029_SRV_FAIS_002_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -78,7 +78,7 @@ TC_MEC_SRV_FAIS_002_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_FAIS_002_NF
+TC_MEC_MEC029_SRV_FAIS_002_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for non-existing data is sent by a MEC Application
@@ -90,7 +90,7 @@ TC_MEC_SRV_FAIS_002_NF
     Check HTTP Response Status Code Is    404
 
 
-TC_MEC_SRV_FAIS_003_OK
+TC_MEC_MEC029_SRV_FAIS_003_OK
     [Documentation]
     ...    Check that the IUT responds with the current status of the cable line information
     ...    when queried by a MEC Application
@@ -103,7 +103,7 @@ TC_MEC_SRV_FAIS_003_OK
     Check HTTP Response Body Json Schema Is    CableLineInfo
 
 
-TC_MEC_SRV_FAIS_003_BR
+TC_MEC_MEC029_SRV_FAIS_003_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -115,7 +115,7 @@ TC_MEC_SRV_FAIS_003_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_FAIS_003_NF
+TC_MEC_MEC029_SRV_FAIS_003_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for non-existing data is sent by a MEC Application
@@ -127,7 +127,7 @@ TC_MEC_SRV_FAIS_003_NF
     Check HTTP Response Status Code Is    404
 
 
-TC_MEC_SRV_FAIS_004_OK
+TC_MEC_MEC029_SRV_FAIS_004_OK
     [Documentation]
     ...    Check that the IUT responds with the current status of the optical network information
     ...    when queried by a MEC Application
@@ -140,7 +140,7 @@ TC_MEC_SRV_FAIS_004_OK
     Check HTTP Response Body Json Schema Is    PonInfo
 
 
-TC_MEC_SRV_FAIS_004_BR
+TC_MEC_MEC029_SRV_FAIS_004_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -152,7 +152,7 @@ TC_MEC_SRV_FAIS_004_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_FAIS_004_NF
+TC_MEC_MEC029_SRV_FAIS_004_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for non-existing data is sent by a MEC Application
@@ -164,7 +164,7 @@ TC_MEC_SRV_FAIS_004_NF
     Check HTTP Response Status Code Is    404
 
 
-TC_MEC_SRV_FAIS_005_OK
+TC_MEC_MEC029_SRV_FAIS_005_OK
     [Documentation]
     ...    Check that the IUT responds with the subscriptions for fixed access information notifications
     ...    when queried by a MEC Application
@@ -177,7 +177,7 @@ TC_MEC_SRV_FAIS_005_OK
     Check HTTP Response Body Json Schema Is    SubscriptionLinkList
 
 
-TC_MEC_SRV_FAIS_005_BR
+TC_MEC_MEC029_SRV_FAIS_005_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -189,7 +189,7 @@ TC_MEC_SRV_FAIS_005_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_FAIS_005_NF
+TC_MEC_MEC029_SRV_FAIS_005_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for non-existing data is sent by a MEC Application
@@ -201,7 +201,7 @@ TC_MEC_SRV_FAIS_005_NF
     Check HTTP Response Status Code Is    404
 
 
-TC_MEC_SRV_FAIS_006_OK
+TC_MEC_MEC029_SRV_FAIS_006_OK
     [Documentation]
     ...    Check that the IUT acknowledges the subscription by a MEC Application
     ...    to notifications on Optical Network Unit alarm events
@@ -216,7 +216,7 @@ TC_MEC_SRV_FAIS_006_OK
 
 
 
-TC_MEC_SRV_FAIS_006_BR
+TC_MEC_MEC029_SRV_FAIS_006_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -228,7 +228,7 @@ TC_MEC_SRV_FAIS_006_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_FAIS_007_OK
+TC_MEC_MEC029_SRV_FAIS_007_OK
     [Documentation]
     ...    Check that the IUT responds with the information on a given subscription
     ...    when queried by a MEC Application
@@ -242,7 +242,7 @@ TC_MEC_SRV_FAIS_007_OK
     Check Result Contains    ${response['body']['OnuAlarmSubscription']}    subscriptionType    OnuAlarmSubscription
 
 
-TC_MEC_SRV_FAIS_007_NF
+TC_MEC_MEC029_SRV_FAIS_007_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for an unknown URI is sent by a MEC Application
@@ -254,7 +254,7 @@ TC_MEC_SRV_FAIS_007_NF
     Check HTTP Response Status Code Is    404
 
 
-TC_MEC_SRV_FAIS_008_OK
+TC_MEC_MEC029_SRV_FAIS_008_OK
     [Documentation]
     ...    Check that the IUT updates an existing subscription
     ...    when commanded by a MEC Application
@@ -268,7 +268,7 @@ TC_MEC_SRV_FAIS_008_OK
     Check Result Contains    ${response['body']['OnuAlarmSubscription']}    subscriptionType    OnuAlarmSubscription
 
 
-TC_MEC_SRV_FAIS_008_BR
+TC_MEC_MEC029_SRV_FAIS_008_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -280,7 +280,7 @@ TC_MEC_SRV_FAIS_008_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_FAIS_008_NF
+TC_MEC_MEC029_SRV_FAIS_008_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for an unknown URI is sent by a MEC Application
@@ -292,7 +292,7 @@ TC_MEC_SRV_FAIS_008_NF
     Check HTTP Response Status Code Is    404
 
 
-TC_MEC_SRV_FAIS_008_PF
+TC_MEC_MEC029_SRV_FAIS_008_PF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request sent by a MEC Application doesn't comply with a required condition
@@ -304,7 +304,7 @@ TC_MEC_SRV_FAIS_008_PF
     Check HTTP Response Status Code Is    412
 
 
-TC_MEC_SRV_FAIS_009_OK
+TC_MEC_MEC029_SRV_FAIS_009_OK
     [Documentation]
     ...    Check that the IUT cancels an existing subscription
     ...    when commanded by a MEC Application
@@ -316,7 +316,7 @@ TC_MEC_SRV_FAIS_009_OK
     Check HTTP Response Status Code Is    204
 
 
-TC_MEC_SRV_FAIS_010_OK
+TC_MEC_MEC029_SRV_FAIS_010_OK
     [Documentation]
     ...    Check that the IUT sends notification on expiry of Fixed Access Information event subscription
     ...    to a MEC Application
@@ -336,7 +336,7 @@ TC_MEC_SRV_FAIS_010_OK
     Clear Requests  ${callback_endpoint} 
 
 
-TC_MEC_SRV_FAIS_011_OK
+TC_MEC_MEC029_SRV_FAIS_011_OK
     [Documentation]
     ...    Check that the IUT sends notifications on Fixed Access Information events
     ...    to a subscribed MEC Application
