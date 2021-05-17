@@ -3,8 +3,8 @@
 
 *** Settings ***
 Resource    environment/variables.txt
-Resource    ../../pics.txt
-Resource    ../../GenericKeywords.robot
+Resource    ../../../pics.txt
+Resource    ../../../GenericKeywords.robot
 Library     REST    ${AMS_SCHEMA}://${AMS_HOST}:${AMS_PORT}    ssl_verify=false
 Library     BuiltIn
 Library     OperatingSystem
@@ -14,8 +14,8 @@ Library     MockServerLibrary
 
 
 *** Test Cases ***
-Request Registered AMS information
-    [Documentation]   TP_MEC_SRV_AMS_001_OK
+TC_MEC_MEC021_SRV_AMS_001_OK
+    [Documentation]  Request Registered AMS information 
     ...  Check that the AMS service returns information about the registered application mobility services when requested
     ...  ETSI GS MEC 021 2.0.8, clause 8.3.3.1
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -24,8 +24,8 @@ Request Registered AMS information
     Check HTTP Response Body Json Schema Is   AppMobilityServiceInfos
 
 
-Request Registered AMS information using attribute-selector    
-    [Documentation]   TP_MEC_SRV_AMS_001_OK
+TC_MEC_MEC021_SRV_AMS_002_OK
+    [Documentation]   Request Registered AMS information using attribute-selector
     ...  Check that the AMS service returns information about the registered application mobility services when requested
     ...  ETSI GS MEC 021 2.0.8, clause 8.3.3.1
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -35,8 +35,8 @@ Request Registered AMS information using attribute-selector
     Check Result Contains    ${response['body']['AppMobilityServiceInfo']}    appMobilityServiceId    ${APP_MOBILITY_SERVICE_ID}
     
 
-Request Registered AMS information using bad parameters
-    [Documentation]   TP_MEC_SRV_AMS_001_BR
+TC_MEC_MEC021_SRV_AMS_001_BR
+    [Documentation]    Request Registered AMS information using bad parameters
     ...  Check that the AMS service returns an error when receives a query about a registered application mobility service with wrong parameters
     ...  ETSI GS MEC 021 2.0.8, clause 8.3.3.1
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -44,8 +44,8 @@ Request Registered AMS information using bad parameters
     Check HTTP Response Status Code Is    400
 
 
-Register a new application mobility services
-    [Documentation]   TP_MEC_SRV_AMS_002_OK
+TC_MEC_MEC021_SRV_AMS_003_OK
+    [Documentation]   Register a new application mobility services
     ...  Check that the AMS service creates a new application mobility services when requested
     ...  ETSI GS MEC 021 2.0.8, clause 8.3.3.4
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -56,8 +56,8 @@ Register a new application mobility services
     Check Result Contains    ${response['body']['AppMobilityServiceInfo']['registeredAppMobilityService']['serviceConsumerId']['']}    appInstanceId    ${APP_INS_ID}
     
 
-Register an UE Identity Tag using invalid parameter
-    [Documentation]   TP_MEC_SRV_AMS_002_BR
+TC_MEC_MEC021_SRV_AMS_003_BR
+    [Documentation]   Register an UE Identity Tag using invalid parameter
     ...  Check that the AMS service sends an error when it receives a malformed request to create a new application mobility service
     ...  ETSI GS MEC 021 2.0.8, clause 8.3.3.4
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -65,8 +65,8 @@ Register an UE Identity Tag using invalid parameter
     Check HTTP Response Status Code Is    400
 
 
-Request Subscriptions List for the registered AMS services
-    [Documentation]   TP_MEC_SRV_AMS_003_OK
+TC_MEC_MEC021_SRV_AMS_004_OK
+    [Documentation]   Request Subscriptions List for the registered AMS services
     ...  Check that the AMS service returns information about the available subscriptions when requested.
     ...     Permitted SUBSCRIPTION_TYPE are:
     ...     - MobilityProcedureSubscription
@@ -79,8 +79,8 @@ Request Subscriptions List for the registered AMS services
 
 
 
-Request Subscription List for registered AMS Services using wrong attribute parameters
-    [Documentation]   TP_MEC_SRV_AMS_003_BR
+TC_MEC_MEC021_SRV_AMS_004_BR
+    [Documentation]   Request Subscription List for registered AMS Services using wrong attribute parameters
     ...  Check that the AMS service sends an error when it receives a malformed query about the available subscriptions
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
     Get Subscriptions for registered AMS with wrong attbirube parameter
@@ -88,8 +88,8 @@ Request Subscription List for registered AMS Services using wrong attribute para
 
 
 
-Create a notification subscription
-    [Documentation]   TP_MEC_SRV_AMS_004_OK
+TC_MEC_MEC021_SRV_AMS_005_OK
+    [Documentation]   Create a notification subscription
     ...  Check that the AMS service creates a notification subscriptions when requested.
     ...     Permitted SUBSCRIPTION_TYPE are:
     ...     - MobilityProcedureSubscription
@@ -101,8 +101,8 @@ Create a notification subscription
     Check HTTP Response Body Json Schema Is    NotificationSubscription
     
 
-Create a notification subscription with wrong attribute parameter
-    [Documentation]   TP_MEC_SRV_AMS_004_BR
+TC_MEC_MEC021_SRV_AMS_005_BR
+    [Documentation]   Create a notification subscription with wrong attribute parameter
     ...  Check that the AMS service creates a notification subscriptions when requested.
     ...     Permitted SUBSCRIPTION_TYPE are:
     ...     - MobilityProcedureSubscription
@@ -114,8 +114,8 @@ Create a notification subscription with wrong attribute parameter
 
 
 
-Request a specific subscription
-    [Documentation]   TP_MEC_SRV_AMS_005_OK
+TC_MEC_MEC021_SRV_AMS_006_OK
+    [Documentation]   Request a specific subscription
     ...  Check that the AMS service returns information about a given subscription when requested.
     ...     Permitted SUBSCRIPTION_TYPE are:
     ...     - MobilityProcedureSubscription
@@ -128,9 +128,8 @@ Request a specific subscription
 
 
 
-
-Request a specific subscription using wrong identifier
-    [Documentation]   TP_MEC_SRV_AMS_005_NF
+TC_MEC_MEC021_SRV_AMS_006_NF
+    [Documentation]   Request a specific subscription using wrong identifier
     ...  Check that the AMS service returns an error when receives a query about a not existing subscription
     ...     ETSI GS MEC 021 2.0.8, clause 8.7.3.1
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -138,9 +137,8 @@ Request a specific subscription using wrong identifier
     Check HTTP Response Status Code Is    404
 
 
-
-Modify a specific subscription
-    [Documentation]   TP_MEC_SRV_AMS_007_OK
+TC_MEC_MEC021_SRV_AMS_007_OK
+    [Documentation]   Modify a specific subscription
     ...  Check that the AMS service modifies a given subscription when requested.
     ...  Permitted SUBSCRIPTION_TYPE are:
     ...    - MobilityProcedureSubscription
@@ -153,8 +151,8 @@ Modify a specific subscription
 
 
 
-Modify a specific subscription using malformed request
-    [Documentation]   TP_MEC_SRV_AMS_007_BR
+TC_MEC_MEC021_SRV_AMS_007_BR
+    [Documentation]   Modify a specific subscription using malformed request
     ...  Check that the AMS service sends an error when it receives a malformed modify request for a given subscription.
     ...  Permitted SUBSCRIPTION_TYPE are:
     ...    - MobilityProcedureSubscription
@@ -165,8 +163,8 @@ Modify a specific subscription using malformed request
     Check HTTP Response Status Code Is    400
 
 
-Modify a specific subscription using wrong identifier
-    [Documentation]   TP_MEC_SRV_AMS_007_NF
+TP_MEC_MEC021_SRV_AMS_007_NF
+    [Documentation]   Modify a specific subscription using wrong identifier
     ...  Check that the AMS service sends an error when it receives a modify request for a not existing subscription.
     ...  ETSI GS MEC 021 2.0.8, clause 8.7.3.2
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -174,8 +172,8 @@ Modify a specific subscription using wrong identifier
     Check HTTP Response Status Code Is    404
 
 
-Remove a specific subscription
-    [Documentation]   TP_MEC_SRV_AMS_006_OK
+TC_MEC_MEC021_SRV_AMS_008_OK
+    [Documentation]   Remove a specific subscription
     ...  Check that the AMS service deletes a given subscription when requested
     ...  ETSI GS MEC 021 2.0.8, clause 8.7.3.5
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -183,8 +181,8 @@ Remove a specific subscription
     Check HTTP Response Status Code Is    204
 
 
-Remove a specific subscription using wrong identifier
-    [Documentation]   TP_MEC_SRV_AMS_006_NF
+TC_MEC_MEC021_SRV_AMS_008_NF
+    [Documentation]   Remove a specific subscription using wrong identifier
     ...  Check that the AMS service sends an error when it receives a delete request for a not existing subscription
     ...  ETSI GS MEC 021 2.0.8, clause 8.7.3.5
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -192,9 +190,8 @@ Remove a specific subscription using wrong identifier
     Check HTTP Response Status Code Is    404
 
 
-
-Post Mobility Procedure Notification
-    [Documentation]   TP_MEC_SRV_AMS_008_OK
+TC_MEC_MEC021_SRV_AMS_009_OK
+    [Documentation]   Post Mobility Procedure Notification
     ...  Check that the AMS service sends an AMS notification  about a mobility procedure 
     ...    if the AMS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 021 2.0.8, clause 7.4.2
@@ -212,8 +209,8 @@ Post Mobility Procedure Notification
     
 
 
-Post Adjacent Application Info Notification
-    [Documentation]   TP_MEC_SRV_AMS_009_OK
+TC_MEC_MEC021_SRV_AMS_010_OK
+    [Documentation]   Post Adjacent Application Info Notification
     ...  Check that the AMS service sends an AMS notification about adjacent application instances 
     ...    if the AMS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 021 2.0.8, clause 7.4.3
@@ -231,8 +228,8 @@ Post Adjacent Application Info Notification
 
 
 
-Post Expire Notification
-    [Documentation]   TP_MEC_SRV_AMS_010_OK
+TC_MEC_MEC021_SRV_AMS_011_OK
+    [Documentation]   Post Expire Notification
     ...  Check that the AMS service sends an AMS notification on subscription expiration
     ...    if the AMS service has an associated subscription and the event is generated
     ...  ETSI GS MEC 021 2.0.8, clause 7.4.4
@@ -250,8 +247,8 @@ Post Expire Notification
 
 
 
-Request a specific AMS service
-    [Documentation]   TP_MEC_SRV_AMS_011_OK
+TC_MEC_MEC021_SRV_AMS_012_OK
+    [Documentation]   Request a specific AMS service
     ...  Check that the AMS service returns information about this individual application mobility service
     ...  ETSI GS MEC 021 2.0.10, clause 8.4.3.1
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -261,8 +258,8 @@ Request a specific AMS service
 
 
 
-Request a specific AMS Service using non existent identifier
-    [Documentation]   TP_MEC_SRV_AMS_011_NF
+TC_MEC_MEC021_SRV_AMS_012_NF
+    [Documentation]   Request a specific AMS Service using non existent identifier
     ...  Check that the AMS service sends an error when receives a query about a not existing individual application mobility service
     ...  ETSI GS MEC 021 2.0.10, clause 8.4.3.1
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -271,8 +268,8 @@ Request a specific AMS Service using non existent identifier
 
 
 
-Modify a specific AMS service
-    [Documentation]   TP_MEC_SRV_AMS_012_OK
+TC_MEC_MEC021_SRV_AMS_013_OK
+    [Documentation]   Modify a specific AMS service
     ...  Check that the AMS service modifies the individual application mobility service when requested
     ...  ETSI GS MEC 021 2.0.10, clause 8.4.3.2
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -283,8 +280,8 @@ Modify a specific AMS service
 
 
 
-Modify a specific AMS Service using non existent identifier
-    [Documentation]   TP_MEC_SRV_AMS_012_NF
+TC_MEC_MEC021_SRV_AMS_013_NF
+    [Documentation]   Modify a specific AMS Service using non existent identifier
     ...  Check that the AMS service sends an error when receives a request to modify a not existing individual application mobility service
     ...  ETSI GS MEC 021 2.0.10, clause 8.4.3.2
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -292,8 +289,8 @@ Modify a specific AMS Service using non existent identifier
     Check HTTP Response Status Code Is    404
 
 
-Modify a specific AMS Service using bad parameters
-    [Documentation]   TP_MEC_SRV_AMS_012_BR
+TC_MEC_MEC021_SRV_AMS_013_BR
+    [Documentation]   Modify a specific AMS Service using bad parameters
     ...  Check that the AMS service sends an error when receives a request to modify a individual application mobility service using bad parameters
     ...  ETSI GS MEC 021 2.0.10, clause 8.4.3.2
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -301,8 +298,8 @@ Modify a specific AMS Service using bad parameters
     Check HTTP Response Status Code Is    400
 
 
-Remove a specific AMS service
-    [Documentation]   TP_MEC_SRV_AMS_013_OK
+TC_MEC_MEC021_SRV_AMS_014_OK
+    [Documentation]   Remove a specific AMS service
     ...  Check that the AMS service de-register the individual application mobility service and delete the resource
     ...  that represents the individual application mobility service
     ...  ETSI GS MEC 021 2.0.10, clause 8.4.3.5
@@ -311,9 +308,8 @@ Remove a specific AMS service
     Check HTTP Response Status Code Is    204
 
 
-
-Remove a specific AMS Service using non existent identifier
-    [Documentation]   TP_MEC_SRV_AMS_013_NF
+TC_MEC_MEC021_SRV_AMS_014_NF
+    [Documentation]   Remove a specific AMS Service using non existent identifier
     ...  Check that the AMS service sends an error when is requested to delete the resource
 	...		that represents the individual application mobility service
     ...  ETSI GS MEC 021 2.0.10, clause 8.4.3.5
@@ -323,8 +319,8 @@ Remove a specific AMS Service using non existent identifier
 
 
 
-Request to deregister a specific AMS service
-    [Documentation]   TP_MEC_SRV_AMS_014_OK
+TC_MEC_MEC021_SRV_AMS_015_OK
+    [Documentation]   Request to deregister a specific AMS service
     ...  Check that the AMS service deregister an individual application mobility service on expiry of the timer associated with the service
     ...  ETSI GS MEC 021 2.0.10, clause 8.5.3.4
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
@@ -333,8 +329,8 @@ Request to deregister a specific AMS service
 
 
 
-Request to deregister a specific AMS service using non existent identifier
-    [Documentation]   TP_MEC_SRV_AMS_014_NF
+TC_MEC_MEC021_SRV_AMS_015_NF
+    [Documentation]   Request to deregister a specific AMS service using non existent identifier
     ...  Check that the AMS service send an error when is requested to deregister a not existent individual application mobility service
     ...  ETSI GS MEC 021 2.0.10, clause 8.5.3.4
     [Tags]    PIC_AMS    INCLUDE_UNDEFINED_SCHEMAS
