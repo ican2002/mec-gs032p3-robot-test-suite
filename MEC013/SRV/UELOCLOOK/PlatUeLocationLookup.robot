@@ -3,7 +3,8 @@
 Documentation
 ...    A test suite for validating UE Location Lookup (UELOCLOOK) operations.
 
-Resource    ../../GenericKeywords.robot
+Resource    ../../../GenericKeywords.robot
+Resource    ../../../pics.txt
 Resource    environment/variables.txt
 Library     REST    ${SCHEMA}://${HOST}:${PORT}    ssl_verify=false
 Library     OperatingSystem 
@@ -15,7 +16,7 @@ ${response}
 
 *** Test Cases ***
 
-TC_MEC_SRV_UELOCLOOK_001_OK
+TC_MEC_MEC013_SRV_UELOCLOOK_001_OK
     [Documentation]
     ...    Check that the IUT responds with a list for the location of User Equipments
     ...    when queried by a MEC Application
@@ -29,7 +30,7 @@ TC_MEC_SRV_UELOCLOOK_001_OK
     Check HTTP Response Body Json Schema Is    UserList
     Check Result Contains    ${response['body']['userList']['user']}    zoneId    ${ZONE_ID}
 
-TC_MEC_SRV_UELOCLOOK_001_BR
+TC_MEC_MEC013_SRV_UELOCLOOK_001_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -40,7 +41,7 @@ TC_MEC_SRV_UELOCLOOK_001_BR
     Get list of user equipments    z0n3    ${ZONE_ID}
     Check HTTP Response Status Code Is    400
 
-TC_MEC_SRV_UELOCLOOK_001_NF
+TC_MEC_MEC013_SRV_UELOCLOOK_001_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for an unknown URI is sent by a MEC Application
@@ -51,7 +52,7 @@ TC_MEC_SRV_UELOCLOOK_001_NF
     Get list of user equipments    zoneId    ${NON_EXISTENT_ZONE_ID}
     Check HTTP Response Status Code Is    200
 
-TC_MEC_SRV_UELOCLOOK_002_OK
+TC_MEC_MEC013_SRV_UELOCLOOK_002_OK
     [Documentation]
     ...    Check that the IUT responds with a User Equipment information 
     ...    when queried by a MEC Application
@@ -66,7 +67,7 @@ TC_MEC_SRV_UELOCLOOK_002_OK
     # Check HTTP Response Body Json Schema Is    UserInfo
     
 
-TC_MEC_SRV_UELOCLOOK_002_NF
+TC_MEC_MEC013_SRV_UELOCLOOK_002_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for an unknown URI is sent by a MEC Application

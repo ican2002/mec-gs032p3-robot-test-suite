@@ -3,7 +3,8 @@
 Documentation
 ...    A test suite for validating UE Distance Subscribe (UEDISTSUB) operations.
 
-Resource    ../../GenericKeywords.robot
+Resource    ../../../GenericKeywords.robot
+Resource    ../../../pics.txt
 Resource    environment/variables.txt
 Library     REST    ${SCHEMA}://${HOST}:${PORT}    ssl_verify=false
 Library     OperatingSystem   
@@ -13,7 +14,7 @@ Default Tags    TC_MEC_SRV_UEDISTSUB
 
 *** Test Cases ***
 
-TC_MEC_SRV_UEDISTSUB_001_OK
+TC_MEC_MEC013_SRV_UEDISTSUB_001_OK
     [Documentation]
     ...    Check that the IUT acknowledges the UE distance subscription request when commanded by a
     ...    MEC Application and notifies it when (all) the requested UE(s) is (are) within the specified distance
@@ -31,7 +32,7 @@ TC_MEC_SRV_UEDISTSUB_001_OK
     Check Result Contains    ${response['body']['distanceNotificationSubscription']}    referenceAddress    ${UEDISTSUB_IP_ADDRESS}
 
 
-TC_MEC_SRV_UEDISTSUB_001_BR
+TC_MEC_MEC013_SRV_UEDISTSUB_001_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -43,7 +44,7 @@ TC_MEC_SRV_UEDISTSUB_001_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_UEDISTSUB_002_OK
+TC_MEC_MEC013_SRV_UEDISTSUB_002_OK
     [Documentation]
     ...    Check that the IUT acknowledges the cancellation of UE distance notifications
     ...    when commanded by a MEC Application
@@ -55,7 +56,7 @@ TC_MEC_SRV_UEDISTSUB_002_OK
     Check HTTP Response Status Code Is    204
 
 
-TC_MEC_SRV_UEDISTSUB_002_NF
+TC_MEC_MEC013_SRV_UEDISTSUB_002_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for an unknown URI is sent by a MEC Application

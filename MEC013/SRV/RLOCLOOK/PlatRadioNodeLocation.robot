@@ -3,7 +3,8 @@
 Documentation
 ...    A test suite for validating Radio Node Location Lookup (RLOCLOOK) operations.
 
-Resource    ../../GenericKeywords.robot
+Resource    ../../../pics.txt
+Resource    ../../../GenericKeywords.robot
 Resource    environment/variables.txt
 Library     REST    ${SCHEMA}://${HOST}:${PORT}    ssl_verify=false
 Library     OperatingSystem 
@@ -13,7 +14,7 @@ Default Tags    TC_MEC_SRV_RLOCLOOK
 
 *** Test Cases ***
 
-TC_MEC_SRV_RLOCLOOK_001_OK
+TC_MEC_MEC013_SRV_RLOCLOOK_001_OK
     [Documentation]
     ...    Check that the IUT responds with the list of radio nodes currently associated with the MEC host and the location of each radio node
     ...    when queried by a MEC Application
@@ -28,7 +29,7 @@ TC_MEC_SRV_RLOCLOOK_001_OK
     Should Be Equal As Strings    ${response['body']['accessPointList']['zoneId']}    ${ZONE_ID}
 
 
-TC_MEC_SRV_RLOCLOOK_001_NF
+TC_MEC_MEC013_SRV_RLOCLOOK_001_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for an unknown URI is sent by a MEC Application

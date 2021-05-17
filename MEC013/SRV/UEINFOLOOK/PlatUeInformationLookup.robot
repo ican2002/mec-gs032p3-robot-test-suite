@@ -3,7 +3,8 @@
 Documentation
 ...    A test suite for validating UE Information Lookup (UEINFOLOOK) operations.
 
-Resource    ../../GenericKeywords.robot
+Resource    ../../../GenericKeywords.robot
+Resource    ../../../pics.txt
 Resource    environment/variables.txt
 Library     REST    ${SCHEMA}://${HOST}:${PORT}    ssl_verify=false
 Library     OperatingSystem 
@@ -13,7 +14,7 @@ Default Tags    TC_MEC_SRV_UEINFOLOOK
 
 *** Test Cases ***
 
-TC_MEC_SRV_UEINFOLOOK_001_OK
+TC_MEC_MEC013_SRV_UEINFOLOOK_001_OK
     [Documentation]
     ...    Check that the IUT responds with the information pertaining to one or more UEs in a particular location
     ...    when queried by a MEC Application
@@ -27,7 +28,7 @@ TC_MEC_SRV_UEINFOLOOK_001_OK
     Check HTTP Response Body Json Schema Is    UserList
 
 
-TC_MEC_SRV_UEINFOLOOK_001_BR
+TC_MEC_MEC013_SRV_UEINFOLOOK_001_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -39,7 +40,7 @@ TC_MEC_SRV_UEINFOLOOK_001_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_UEINFOLOOK_001_NF
+TC_MEC_MEC013_SRV_UEINFOLOOK_001_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request for an unknown URI is sent by a MEC Application

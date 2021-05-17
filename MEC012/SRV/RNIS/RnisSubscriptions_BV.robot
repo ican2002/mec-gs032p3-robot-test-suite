@@ -4,7 +4,6 @@
 *** Settings ***
 Library    OperatingSystem
 Resource    environment/variables.txt
-Resource    ../../../pics.txt
 Resource    ../../../GenericKeywords.robot
 Resource    resources/RadioNetworkInformationAPI.robot
 Library     REST    ${MEC-APP_SCHEMA}://${MEC-APP_HOST}:${MEC-APP_PORT}    ssl_verify=false

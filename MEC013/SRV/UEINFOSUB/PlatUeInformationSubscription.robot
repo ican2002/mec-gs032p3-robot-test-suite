@@ -3,7 +3,8 @@
 Documentation
 ...    A test suite for validating UE Information Subscription (UEINFOSUB) operations.
 
-Resource    ../../GenericKeywords.robot
+Resource    ../../../GenericKeywords.robot
+Resource    ../../../pics.txt
 Resource    environment/variables.txt
 Library     REST    ${SCHEMA}://${HOST}:${PORT}    ssl_verify=false
 Library     OperatingSystem  
@@ -13,7 +14,7 @@ Default Tags    TC_MEC_SRV_UEINFOSUB
 
 *** Test Cases ***
 
-TC_MEC_SRV_UEINFOSUB_001_OK
+TC_MEC_MEC013_SRV_UEINFOSUB_001_OK
     [Documentation]
     ...    Check that the IUT acknowledges the UE information change subscription request
     ...    when commanded by a MEC Application and notifies it when the location changes
@@ -30,7 +31,7 @@ TC_MEC_SRV_UEINFOSUB_001_OK
     Should Be Equal As Strings    ${response['body']['zonalTrafficSubscription']['callbackReference']}        ${ZONAL_TRAF_NOTIF_CALLBACK_URI}
 
 
-TC_MEC_SRV_UEINFOSUB_001_BR
+TC_MEC_MEC013_SRV_UEINFOSUB_001_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -43,7 +44,7 @@ TC_MEC_SRV_UEINFOSUB_001_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_UEINFOSUB_002_OK
+TC_MEC_MEC013_SRV_UEINFOSUB_002_OK
     [Documentation]
     ...    Check that the IUT acknowledges the cancellation of UE information change notifications
     ...    when commanded by a MEC Application

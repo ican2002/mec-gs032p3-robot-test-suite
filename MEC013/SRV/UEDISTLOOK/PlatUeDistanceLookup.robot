@@ -3,7 +3,8 @@
 Documentation
 ...    A test suite for validating UE Distance Lookup (UEDISTLOOK) operations.
 
-Resource    ../../GenericKeywords.robot
+Resource    ../../../GenericKeywords.robot
+Resource    ../../../pics.txt
 Resource    environment/variables.txt
 Library     REST    ${SCHEMA}://${HOST}:${PORT}    ssl_verify=false
 Library     OperatingSystem   
@@ -17,7 +18,7 @@ ${response}
 
 *** Test Cases ***
 
-TC_MEC_SRV_UEDISTLOOK_001_OK
+TC_MEC_MEC013_SRV_UEDISTLOOK_001_OK
     [Documentation]
     ...    Check that the IUT responds with the distance to a UE
     ...    when queried by a MEC Application
@@ -35,7 +36,7 @@ TC_MEC_SRV_UEDISTLOOK_001_OK
     Check HTTP Response Body Json Schema Is    TerminalDistance
 
 
-TC_MEC_SRV_UEDISTLOOK_001_BR
+TC_MEC_MEC013_SRV_UEDISTLOOK_001_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application

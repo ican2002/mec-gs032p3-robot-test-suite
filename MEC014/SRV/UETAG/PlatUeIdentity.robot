@@ -3,16 +3,16 @@
 
 *** Settings ***
 Resource    environment/variables.txt
-Resource    ../../pics.txt
-Resource    ../../GenericKeywords.robot
+Resource    ../../../pics.txt
+Resource    ../../../GenericKeywords.robot
 Resource    resources/UEidentityAPI.robot
 Library     REST    ${MEC-APP_SCHEMA}://${MEC-APP_HOST}:${MEC-APP_PORT}    ssl_verify=false
 
 
 
 *** Test Cases ***
-Request UE Identity Tag information
-    [Documentation]   TC_MEC_SRV_UETAG_001_OK
+TC_MEC_MEC014_SRV_UETAG_001_OK
+    [Documentation]   Request UE Identity Tag information
     ...  Check that the IUT responds with the information on a UE Identity tag when queried by a MEC Application
     ...  Reference ETSI GS MEC 014 V1.1.1, clause 7.3.3.1
     ...  Reference https://forge.etsi.org/gitlab/mec/gs014-ue-identity-api/blob/master/UEidentityAPI.yaml#/definitions/UeIdentityTagInfo
@@ -22,8 +22,8 @@ Request UE Identity Tag information
     Check Result Contains    ${response['body']['ueIdentityTagInfo']['ueIdentityTags']}    ueIdentityTag    ${UE_IDENTITY_TAG}
 
 
-Request UE Identity Tag information using bad parameters
-    [Documentation]   TC_MEC_SRV_UETAG_001_BR
+TC_MEC_MEC014_SRV_UETAG_001_BR
+    [Documentation]   Request UE Identity Tag information using bad parameters
     ...  Check that the IUT responds with an error when a request with incorrect parameters is sent by a MEC Application
     ...  Reference ETSI GS MEC 014 V1.1.1, clause 7.3.3.1
     ...  Reference https://forge.etsi.org/gitlab/mec/gs014-ue-identity-api/blob/master/UEidentityAPI.yaml#/definitions/UeIdentityTagInfo
@@ -33,8 +33,8 @@ Request UE Identity Tag information using bad parameters
 
 
 
-Request UE Identity Tag information using non-existent application instance
-    [Documentation]   TC_MEC_SRV_UETAG_001_NF
+TC_MEC_MEC014_SRV_UETAG_001_NF
+    [Documentation]   Request UE Identity Tag information using non-existent application instance
     ...  Check that the IUT responds with an error when a request for an URI that cannot be mapped to a valid resource URI is sent by a MEC Application
     ...  Reference ETSI GS MEC 014 V1.1.1, clause 7.3.3.1
     ...  Reference https://forge.etsi.org/gitlab/mec/gs014-ue-identity-api/blob/master/UEidentityAPI.yaml#/definitions/UeIdentityTagInfo
@@ -43,8 +43,8 @@ Request UE Identity Tag information using non-existent application instance
     Check ProblemDetails    404
 
 
-Register an UE Identity Tag
-    [Documentation]   TP_MEC_SRV_UETAG_002_OK
+TC_MEC_MEC014_SRV_UETAG_002_OK
+    [Documentation]   Register an UE Identity Tag
     ...  Check that the IUT registers a tag (representing a UE) or a list of tags when commanded by a MEC Application
     ...  Reference ETSI GS MEC 014 V1.1.1, clause 7.3.3.2
     ...  Reference https://forge.etsi.org/gitlab/mec/gs014-ue-identity-api/blob/master/UEidentityAPI.yaml#/definitions/UeIdentityTagInfo
@@ -55,8 +55,8 @@ Register an UE Identity Tag
     Check User Identity Tag state    ${UE_IDENTITY_TAG}    REGISTERED
 
 
-Register an UE Identity Tag using invalid state
-    [Documentation]   TP_MEC_SRV_UETAG_002_BR
+TC_MEC_MEC014_SRV_UETAG_002_BR
+    [Documentation]   Register an UE Identity Tag using invalid state
     ...  Check that the IUT responds with an error when an unauthorised request is sent by a MEC Application
     ...  Reference ETSI GS MEC 014 V1.1.1, clause 7.3.3.2
     ...  Reference https://forge.etsi.org/gitlab/mec/gs014-ue-identity-api/blob/master/UEidentityAPI.yaml#/definitions/UeIdentityTagInfo
@@ -65,8 +65,8 @@ Register an UE Identity Tag using invalid state
     Check ProblemDetails    400
 
 
-Unregister an UE Identity Tag already in unregistered state
-    [Documentation]   TP_MEC_SRV_UETAG_002_PF
+TC_MEC_MEC014_SRV_UETAG_002_PF
+    [Documentation]   Unregister an UE Identity Tag already in unregistered state
     ...  Check that the IUT responds with ProblemDetails on information an invalid URI
     ...  Reference ETSI GS MEC 014 V1.1.1, clause 7.3.3.2
     ...  Reference https://forge.etsi.org/gitlab/mec/gs014-ue-identity-api/blob/master/UEidentityAPI.yaml#/definitions/UeIdentityTagInfo

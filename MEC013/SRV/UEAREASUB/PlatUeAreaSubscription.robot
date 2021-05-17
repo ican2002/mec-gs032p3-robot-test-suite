@@ -3,7 +3,8 @@
 Documentation
 ...    A test suite for validating UE Area Subscribe (UEAREASUB) operations.
 
-Resource    ../../GenericKeywords.robot
+Resource    ../../../GenericKeywords.robot
+Resource    ../../../pics.txt
 Resource    environment/variables.txt
 Library     REST    ${SCHEMA}://${HOST}:${PORT}    ssl_verify=false
 Library     OperatingSystem 
@@ -13,7 +14,7 @@ Default Tags    TC_MEC_SRV_UEAREASUB
 
 
 *** Test Cases ***
-TC_MEC_SRV_UEAREASUB_001_OK
+TC_MEC_MEC013_SRV_UEAREASUB_001_OK
     [Documentation]
     ...    Check that the IUT acknowledges the UE area change subscription request when
     ...    commanded by a MEC Application and notifies it when the UE enters the specified circle
@@ -30,7 +31,7 @@ TC_MEC_SRV_UEAREASUB_001_OK
     
 
 
-TC_MEC_SRV_UEAREASUB_001_BR
+TC_MEC_MEC013_SRV_UEAREASUB_001_BR
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request with incorrect parameters is sent by a MEC Application
@@ -42,7 +43,7 @@ TC_MEC_SRV_UEAREASUB_001_BR
     Check HTTP Response Status Code Is    400
 
 
-TC_MEC_SRV_UEAREASUB_002_OK
+TC_MEC_MEC013_SRV_UEAREASUB_002_OK
     [Documentation]
     ...    Check that the IUT acknowledges the cancellation of UE area change notifications
     ...    when commanded by a MEC Application
@@ -54,7 +55,7 @@ TC_MEC_SRV_UEAREASUB_002_OK
     Check HTTP Response Status Code Is    204
 
 
-TC_MEC_SRV_UEAREASUB_002_NF
+TC_MEC_MEC013_SRV_UEAREASUB_002_NF
     [Documentation]
     ...    Check that the IUT responds with an error when
     ...    a request sent by a MEC Application doesn't comply with a required condition
