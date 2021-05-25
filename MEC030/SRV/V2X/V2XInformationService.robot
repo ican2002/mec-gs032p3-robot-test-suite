@@ -129,8 +129,9 @@ TP_MEC_MEC030_SRV_V2X_004_OK
     ...  ETSI GS MEC 030 V2.1.1, clause 7.6.3.4
     ...  https://forge.etsi.org/rep/mec/gs030-vis-api/blob/master/MEC030_V2XInformationService.yaml
     Request predicted QoS   PredictedQoS.json
-    Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   PredictedQoS
+    Check HTTP Response Status Code Is    200
+    
     
 TP_MEC_MEC030_SRV_V2X_004_BR
     [Documentation]
@@ -250,18 +251,6 @@ TP_MEC_MEC030_SRV_V2X_006_BR
     Retrieve subscription list information    ${SUB_TYPE_INVALID}
     Check HTTP Response Status Code Is    400
 
-
-##Below test not done yet. See this issue: https://forge.etsi.org/rep/mec/gs032p2-test-purposes/issues/9 
-#TP_MEC_MEC030_SRV_V2X_006_NF 
-#    [Documentation] 
-#    ...  Check that the IUT responds with an error when a request with incorrect parameters is sent by a MEC Application
-#    ...  ETSI GS MEC 030 V2.1.1, clause 7.8.3.1
-#    ...  https://forge.etsi.org/rep/mec/gs030-vis-api/blob/master/MEC030_V2XInformationService.yaml
-#        
-#    Should Be True    ${PIC_MEC_SYSTEM} == 1
-#    Should Be True    ${PIC_SERVICES} == 1
-#    Retrieve subscription list information    ${SUB_TYPE_INVALID}
-#    Check HTTP Response Status Code Is    404
                     
 ##POST on ${apiRoot}/${apiName}/${apiVersion}/subscription  
 TP_MEC_MEC030_SRV_V2X_007_OK_01
@@ -524,24 +513,21 @@ TP_MEC_MEC030_SRV_V2X_009_BR
     Update existing subscription   ${SUB_PROV_CHG_UU_UNI_ID}  ${body}
     Check HTTP Response Status Code Is    400
 
-
-##Below test not done yet. See issue https://forge.etsi.org/rep/mec/gs032p2-test-purposes/issues/10
-#TP_MEC_MEC030_SRV_V2X_009_NF
-#    [Documentation] 
-#    ...  Check that the IUT responds with the requested of updating subscription when queried by a MEC Application
-#    ...  ETSI GS MEC 030 V2.1.1, clause 7.9.3.2
-#    ...  https://forge.etsi.org/rep/mec/gs030-vis-api/blob/master/MEC030_V2XInformationService.yaml
-#    Should Be True    ${PIC_MEC_SYSTEM} == 1
-#    Should Be True    ${PIC_SERVICES} == 1
-#    ${path}    Catenate    SEPARATOR=      jsons/     ProvChgUuUniSubscriptionUpdate_NF.json
-#    ${body}    Get File    ${path}
-#    ${json_object}=	Evaluate  json.loads('''${body}''')  json
-#    Update existing subscription   ${SUB_PROV_CHG_UU_UNI_ID}  ${body}
-#    Check HTTP Response Status Code Is    404
+TP_MEC_MEC030_SRV_V2X_009_NF
+    [Documentation] 
+    ...  Check that the IUT responds with the requested of updating subscription when queried by a MEC Application
+    ...  ETSI GS MEC 030 V2.1.1, clause 7.9.3.2
+    ...  https://forge.etsi.org/rep/mec/gs030-vis-api/blob/master/MEC030_V2XInformationService.yaml
+    Should Be True    ${PIC_MEC_SYSTEM} == 1
+    Should Be True    ${PIC_SERVICES} == 1
+    ${path}    Catenate    SEPARATOR=      jsons/     ProvChgUuUniSubscriptionUpdate.json
+    ${body}    Get File    ${path}
+    ${json_object}=	Evaluate  json.loads('''${body}''')  json
+    Update existing subscription   ${NOT_EXISTING_SUB_ID}  ${body}
+    Log   ${NOT_EXISTING_SUB_ID}
+    Check HTTP Response Status Code Is    404
   
 ##DELETE on ${apiRoot}/${apiName}/${apiVersion}/subscriptions/{subscriptionId}
-
-##Different implementation respect to the TP. See issue: https://forge.etsi.org/rep/mec/gs032p2-test-purposes/issues/7
 TP_MEC_MEC030_SRV_V2X_010_OK_01 
     [Documentation] 
     ...  Check that the IUT responds with the requested of updating subscription when queried by a MEC Application
@@ -552,8 +538,37 @@ TP_MEC_MEC030_SRV_V2X_010_OK_01
     Remove existing subscription    ${SUB_PROV_CHG_UU_UNI_ID}
     Check HTTP Response Status Code Is    204  
 
+TP_MEC_MEC030_SRV_V2X_010_OK_02 
+    [Documentation] 
+    ...  Check that the IUT responds with the requested of updating subscription when queried by a MEC Application
+    ...  ETSI GS MEC 030 V2.1.1, clause 7.9.3.2
+    ...  https://forge.etsi.org/rep/mec/gs030-vis-api/blob/master/MEC030_V2XInformationService.yaml
+    Should Be True    ${PIC_MEC_SYSTEM} == 1
+    Should Be True    ${PIC_SERVICES} == 1
+    Remove existing subscription    ${SUB_PROV_CHG_UU_MBMS_ID}
+    Check HTTP Response Status Code Is    204  
+    
+TP_MEC_MEC030_SRV_V2X_010_OK_03 
+    [Documentation] 
+    ...  Check that the IUT responds with the requested of updating subscription when queried by a MEC Application
+    ...  ETSI GS MEC 030 V2.1.1, clause 7.9.3.2
+    ...  https://forge.etsi.org/rep/mec/gs030-vis-api/blob/master/MEC030_V2XInformationService.yaml
+    Should Be True    ${PIC_MEC_SYSTEM} == 1
+    Should Be True    ${PIC_SERVICES} == 1
+    Remove existing subscription    ${SUB_PROV_CHG_PC5_ID}
+    Check HTTP Response Status Code Is    204  
+    
+TP_MEC_MEC030_SRV_V2X_010_OK_04 
+    [Documentation] 
+    ...  Check that the IUT responds with the requested of updating subscription when queried by a MEC Application
+    ...  ETSI GS MEC 030 V2.1.1, clause 7.9.3.2
+    ...  https://forge.etsi.org/rep/mec/gs030-vis-api/blob/master/MEC030_V2XInformationService.yaml
+    Should Be True    ${PIC_MEC_SYSTEM} == 1
+    Should Be True    ${PIC_SERVICES} == 1
+    Remove existing subscription    ${SUB_V2X_MSG_ID}
+    Check HTTP Response Status Code Is    204  
+    
 
-##Different implementation respect to the TP. See issue: https://forge.etsi.org/rep/mec/gs032p2-test-purposes/issues/7
 TP_MEC_MEC030_SRV_V2X_010_NF
     [Documentation] 
     ...  Check that the IUT responds with the requested of updating subscription when queried by a MEC Application
@@ -564,11 +579,7 @@ TP_MEC_MEC030_SRV_V2X_010_NF
     Remove existing subscription       ${NOT_EXISTING_SUB_ID}
     Check HTTP Response Status Code Is    404   
 
-##TP_MEC_MEC030_SRV_V2X_010_OK_02, TP_MEC_MEC030_SRV_V2X_010_OK_03 and TP_MEC_MEC030_SRV_V2X_010_OK_04 are missing because issue
-## https://forge.etsi.org/rep/mec/gs032p2-test-purposes/issues/7
-
-##TP with identifier TP_MEC_MEC030_SRV_V2X_010_BR is missing because of following issue:
-## https://forge.etsi.org/rep/mec/gs032p2-test-purposes/issues/8       
+      
 *** Keywords ***
 Retrieve configured provisioning information over Uu unicast using ecgi filter
     [Arguments]       ${value}
@@ -753,8 +764,7 @@ Update existing subscription
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    PUT    ${apiRoot}/${apiName}/${apiVersion}/subscriptions/${subscriptionId}      ${body}
-    Log    ${body}   
+    PUT    ${apiRoot}/${apiName}/${apiVersion}/subscriptions/${subscriptionId}      ${body}   
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output} 
     

@@ -170,12 +170,12 @@ TP_MEC_MEC015_SRV_TM_006_OK
     # Preamble
     Register Bandwidth Management Service Application specific   BwInfoApplicationSpecific
     # Test body
-    ${path}    Catenate    SEPARATOR=      jsons/     BwInfoUpdate.json
+    ${path}    Catenate    SEPARATOR=      jsons/     BwInfoDeltas.json
     ${body}    Get File    ${path}
     ${json_object}=	Evaluate  json.loads('''${body}''')  json
     Request a deltas changes    ${ALLOCATION_ID}    ${body}
     Check HTTP Response Status Code Is    200
-    Check HTTP Response Body Json Schema Is   BwInfo
+    Check HTTP Response Body Json Schema Is   BwInfoDelta
         Should Be Equal As Strings  ${response['body']['appInsId']}    ${json_object['appInsId']}  
     Should Be Equal As Strings  ${response['body']['fixedAllocation']}    ${json_object['fixedAllocation']}  
     Should Be Equal As Strings  ${response['body']['allocationDirection']}    ${json_object['allocationDirection']}   
@@ -306,20 +306,6 @@ Request a deltas changes
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    Patch    ${apiRoot}/${apiName}/${apiVersion}/bw_allocations/${allocation_id}    ${body}
-    ${output}=    Output    response
-    Set Suite Variable    ${response}    ${output}
-
-
-Request a deltas changes with invalid ETAG
-    [Arguments]    ${allocation_id}    ${content}
-    Should Be True    ${PIC_MEC_PLAT} == 1
-    Should Be True    ${PIC_SERVICES} == 1
-    Set Headers    {"Accept":"application/json"}
-    Set Headers    {"Content-Type":"application/json"}
-    Set Headers    {"Authorization":"${TOKEN}"}
-    ${file}=    Catenate    SEPARATOR=    jsons/    ${content}    .json
-    ${body}=    Get File    ${file}
     Patch    ${apiRoot}/${apiName}/${apiVersion}/bw_allocations/${allocation_id}    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}

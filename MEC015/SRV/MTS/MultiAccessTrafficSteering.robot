@@ -27,7 +27,8 @@ TP_MEC_MEC015_SRV_MTS_002_OK
     ...  Check that the IUT responds with an error when a request with incorrect parameters is sent by a MEC Application
     ...  ETSI GS MEC 015 V2.1.1, clause 9.5.3.1
     ...  https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.yaml
-    Retrieve MTS session list information
+    #Retrieve MTS session list information
+    Retrieve MTS session list information using filter  ${CORRECT_FILTER}   ${SESSION_ID}   
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   MtsSessionInfo
     FOR    ${mstSessionInfo}    IN    @{response['body']}
@@ -119,7 +120,7 @@ TP_MEC_MEC015_SRV_MTS_004_OK
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   MtsSessionInfo
     Should Be Equal As Strings  ${response['body']['appInsId']}                   ${APP_INSTANCE_ID}
-    Should Be Equal As Strings  ${response['body']['requestType']}             ${REQUEST_TYPE_SESSION}     
+    Should Be Equal As Strings  ${response['body']['requestType']}             ${REQUEST_TYPE_APPLICATION}     
     Should Be Equal As Strings  ${response['body']['mtsMode']}                   ${MTS_LOW_MODE_COST} 
     Should Be Equal As Strings  ${response['body']['trafficDirection']}         ${TRAFFIC_DIRECTION_DL}   
 
@@ -188,9 +189,6 @@ TP_MEC_MEC015_SRV_MTS_006_OK
     ...  https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/blob/master/BwManagementApi.yaml
     Unregister from the MTS Service   ${SESSION_ID}
     Check HTTP Response Status Code Is    204
-
-##TP_MEC_MEC015_SRV_MTS_006_BR missing. 
-#See issues https://forge.etsi.org/rep/mec/gs032p2-test-purposes/issues/11 for further details.
 
 TP_MEC_MEC015_SRV_MTS_006_NF
     [Documentation]
