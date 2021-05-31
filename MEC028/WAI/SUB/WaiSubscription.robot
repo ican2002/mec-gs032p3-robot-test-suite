@@ -41,7 +41,7 @@ TP_MEC_MEC028_SRV_WAI_006_OK
         
 TP_MEC_MEC028_SRV_WAI_006_BR
     [Documentation] 
-    ...  Check that the IUT responds with the requested list of subscription
+    ...  Check that the IUT responds with an error when a request with incorrect parameters is sent by a MEC Application
     ...  Reference "ETSI GS MEC 028 2.1.1, clause 7.5.3.1
     ...  https://forge.etsi.org/rep/mec/gs028-wai-api/blob/v2.1.1/WlanInformationApi.yaml#/schemas/AssocStaSubscription
         
