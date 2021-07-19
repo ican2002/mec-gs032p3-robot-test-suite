@@ -1,0 +1,41 @@
+{
+	"description": "the liveness information of a MEC service instance",
+	"type": "object",
+	"required": [
+		"state",
+		"timeStamp",
+		"interval"
+	],
+	"properties": {
+		"state": {
+			"description": "This enumeration defines the possible states of a service.",
+			"type": "string",
+			"enum": [
+				"ACTIVE",
+				"INACTIVE",
+				"SUSPENDED"
+			],
+			"example": "ACTIVE"
+		},
+		"timeStamp": {
+			"type": "object",
+			"required": [
+				"seconds",
+				"nanoSeconds"
+			],
+			"properties": {
+				"seconds": {
+					"type": "integer",
+					"format": "uint32"
+				},
+				"nanoSeconds": {
+					"type": "integer",
+					"format": "uint32"
+				}
+			}
+		},
+		"interval": {
+			"type": "integer"
+		}
+	}
+}
